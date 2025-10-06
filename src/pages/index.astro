@@ -1,60 +1,19 @@
 ---
-import logo from "../assets/logo.png";
-import Welcome from "../components/Welcome.astro";
+import Banner from "../components/Banner.astro";
+import Contact from "../components/Contact.astro";
+import Header from "../components/Header.astro";
+import Services from "../components/Services.astro";
+import Team from "../components/Team.astro";
+import Video from "../components/Video.astro";
 import Layout from "../layouts/Layout.astro";
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import "../styles/global.css";
 ---
 
 <Layout>
-  <!-- Coming Soon Overlay - Remove this div to see the actual content -->
-  <div
-    id="coming-soon-overlay"
-    style="
-		  position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: black;
-      color: white;
-      padding: 0;
-      margin: 0;
-	  "
-  >
-    <div
-      style="
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        font-family: Arial, sans-serif;
-        z-index: 9999;
-        text-align: center;
-        gap: 2rem;"
-    >
-      <img
-        src={logo.src}
-        alt="Bloom Fitness Logo"
-        style="max-width: 300px; max-height: 300px; width: auto; height: auto;"
-      />
-      <div
-        style="display: flex; flex-direction: column; align-items: center; gap: 1rem;"
-      >
-        <p style="font-size: 2.5rem; font-weight: bold; padding: 0; margin: 0;">
-          Próximamente...
-        </p>
-        <p
-          style="font-size: 1rem; font-weight: normal; margin-top: 1rem; padding: 0; margin: 0;"
-        >
-          Plaza Músico Ibars, 5, 46920 Mislata
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <Welcome />
+  <Header />
+  <Banner />
+  <Services />
+  <Video />
+  <Team />
+  <Contact />
 </Layout>

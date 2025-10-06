@@ -1,0 +1,69 @@
+---
+import team from "../assets/bloom-team.png";
+import daniValenciaPhoto from "../assets/professionals/dani-valencia.jpg";
+import franSaezPhoto from "../assets/professionals/fran-saez.jpg";
+import joseSaezPhoto from "../assets/professionals/jose-saez.jpg";
+
+const professionals = [
+  {
+    name: "JOSE SÁEZ",
+    area: "ESPECIALISTA EN FISIOTERAPIA",
+    description: "TE AYUDARÁ EN LA RECUPERACIÓN DE TUS LESIONES",
+    image: joseSaezPhoto.src,
+  },
+  {
+    name: "FRAN SÁEZ",
+    area: "ENTRENADOR PERSONAL",
+    description:
+      "FRAN LLEVARÁ TUS ENTRENAMIENTOS ADAPTADOS Y TE COMPAÑARÁ A CUMPLIR TUS OBJETIVOS",
+    image: franSaezPhoto.src,
+  },
+  {
+    name: "DANIEL VALENCIA",
+    area: "NUTRICIONISTA",
+    description: "TE AYUDARÁ A ESTABLECER UN PLAN DE ALIMENTACIÓN ADECUADO",
+    image: daniValenciaPhoto.src,
+  },
+];
+---
+
+<section class="min-h-screen bg-black py-16">
+  <div class="w-full flex justify-center items-center mb-16">
+    <img src={team.src} alt="Bloom Fitness Team" class="h-100" />
+  </div>
+
+  <div class="container mx-auto px-4">
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
+    >
+      {
+        professionals.map((professional, index) => (
+          <div>
+            <div class="aspect-w-3 aspect-h-4 bg-gray-800">
+              <img
+                src={professional.image}
+                alt={professional.name}
+                class="w-full h-auto object-cover border-2 border-gray-700 rounded-md
+"
+              />
+            </div>
+
+            <div class="p-6 text-center">
+              <h3 class="text-white text-xl font-bold mb-2">
+                {professional.name}
+              </h3>
+
+              <h4 class="text-gray-300 text-sm font-semibold mb-3 uppercase tracking-wide">
+                {professional.area}
+              </h4>
+
+              <p class="text-gray-400 text-sm leading-relaxed">
+                {professional.description}
+              </p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

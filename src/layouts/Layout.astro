@@ -8,6 +8,8 @@ const {
   title = "Bloom Fitness",
   description = "Centro de entrenamiento, fisioterapia y nutrición en Mislata, Valencia. Entrenamiento personalizado con Fran Sáez, fisioterapia con José Sáez y nutrición especializada. Mejora tu fuerza y sistema cardiovascular.",
 } = Astro.props;
+
+import favicon from "../assets/favicon.ico";
 ---
 
 <!doctype html>
@@ -15,7 +17,7 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href={favicon} />
     <meta name="generator" content={Astro.generator} />
 
     <!-- SEO Meta Tags -->
@@ -30,20 +32,6 @@ const {
       content="Bloom Fitness - Fran Sáez García, José Sáez García"
     />
     <meta name="robots" content="index, follow" />
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://bloomfitness.es/" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:site_name" content="Bloom Fitness" />
-    <meta property="og:locale" content="es_ES" />
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://bloomfitness.es/" />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
 
     <!-- Geo Tags for Local SEO -->
     <meta name="geo.region" content="ES-VC" />
@@ -147,12 +135,3 @@ const {
     <slot />
   </body>
 </html>
-
-<style>
-  html,
-  body {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-  }
-</style>

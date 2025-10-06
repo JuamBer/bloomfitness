@@ -1,0 +1,40 @@
+---
+import presentation from "../assets/presentation.mp4";
+---
+
+<video
+  id="presentation-video"
+  src={presentation}
+  muted
+  loop
+  playsinline
+  class="w-full h-auto"></video>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const video = document.getElementById(
+      "presentation-video"
+    ) as HTMLVideoElement;
+
+    if (video) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              video.play().catch((error: any) => {
+                console.log("Autoplay failed:", error);
+              });
+            } else {
+              video.pause();
+            }
+          });
+        },
+        {
+          threshold: 0.5, // Video will start playing when 50% is visible
+        }
+      );
+
+      observer.observe(video);
+    }
+  });
+</script>
