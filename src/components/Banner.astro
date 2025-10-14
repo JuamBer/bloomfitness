@@ -1,7 +1,28 @@
 ---
 import banner from "../assets/banner.png";
+import eslogan from "../assets/eslogan.png";
 ---
 
-<section class="w-full">
+<section class="w-full relative">
   <img src={banner.src} alt="Bloom Fitness Banner" class="w-full h-auto" />
+  <div
+    class="absolute inset-0 left-1/2 -translate-x-1/2 w-full max-w-7xl flex flex-col justify-center"
+  >
+    <div class="w-full h-full flex items-center pt-5 pb-5">
+      <img
+        src={eslogan.src}
+        alt="Bloom Fitness Eslogan"
+        class="w-full h-auto max-w-lg"
+      />
+    </div>
+    <div class="w-full flex items-center justify-between pt-5 pb-5 mt-auto">
+      <span
+        class="text-neutral-900 font-light text-2xl bg-white italic pl-4 pr-4 pt-1 pb-1 rounded-4xl"
+      >
+        EST.2025
+      </span>
+      <span class="text-white font-bold text-2xl">BORN TO RISE</span>
+      <span class="text-white font-light text-2xl">BLOOM FITNESS</span>
+    </div>
+  </div>
 </section>
