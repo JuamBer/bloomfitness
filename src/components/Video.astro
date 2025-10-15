@@ -24,13 +24,11 @@ import presentation from "../assets/presentation.mp4";
               video.play().catch((error: any) => {
                 console.log("Autoplay failed:", error);
               });
-            } else {
-              video.pause();
             }
           });
         },
         {
-          threshold: 0.5, // Video will start playing when 50% is visible
+          threshold: 0.5,
         }
       );
 
