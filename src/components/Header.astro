@@ -3,10 +3,10 @@ import burger from "../assets/burger.png";
 import isotipo from "../assets/isotipo.png";
 ---
 
-<header class="bg-black h-16 md:h-20 lg:h-30 flex items-center justify-center">
-  <div class="max-w-7xl">
-    <div class="h-full flex items-center justify-between">
-      <div class="w-3xl">
+<header class="bg-black h-25 md:h-30 lg:h-35 flex items-center justify-center">
+  <div class="max-w-7xl w-full pl-[3rem] pr-[3rem]">
+    <div class="h-full flex items-center justify-between w-full">
+      <div class="lg:w-3xl md:w-2xl w-1xl">
         <img src={burger.src} alt="Menu" class="h-[1.25rem]" />
       </div>
       <img
@@ -15,7 +15,7 @@ import isotipo from "../assets/isotipo.png";
         class="h-8 md:h-10 lg:h-16 w-auto"
       />
 
-      <div class="w-3xl hidden md:block"></div>
+      <div class="lg:w-3xl md:w-2xl w-1xl hidden md:block"></div>
     </div>
   </div>
 </header>
