@@ -1,13 +1,21 @@
 ---
+import burger from "../assets/burger.png";
 import isotipo from "../assets/isotipo.png";
 ---
 
-<header class="bg-black h-16 md:h-20 lg:h-30">
-  <div class="h-full flex items-center justify-center">
-    <img
-      src={isotipo.src}
-      alt="Bloom Fitness"
-      class="h-8 md:h-10 lg:h-16 w-auto"
-    />
+<header class="bg-black h-16 md:h-20 lg:h-30 flex items-center justify-center">
+  <div class="max-w-7xl">
+    <div class="h-full flex items-center justify-between">
+      <div class="w-3xl">
+        <img src={burger.src} alt="Menu" class="h-[1.25rem]" />
+      </div>
+      <img
+        src={isotipo.src}
+        alt="Bloom Fitness"
+        class="h-8 md:h-10 lg:h-16 w-auto"
+      />
+
+      <div class="w-3xl hidden md:block"></div>
+    </div>
   </div>
 </header>
