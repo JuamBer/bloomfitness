@@ -15,14 +15,40 @@
       </h2>
     </div>
 
-    <form class="space-y-8 mb-16 flex flex-col max-w-4xl mx-auto">
+    <form
+      id="contact-form"
+      action="https://api.web3forms.com/submit"
+      method="POST"
+      class="space-y-8 mb-16 flex flex-col max-w-4xl mx-auto"
+    >
+      <input
+        type="hidden"
+        name="access_key"
+        value="644a371c-15dc-4f54-9825-9a25ee52660a"
+      />
+
+      <input
+        type="hidden"
+        name="subject"
+        value="🏋️ Nueva Consulta Web - Bloom Fitness"
+      />
+
+      <input type="hidden" name="from_name" value="Web Bloom Fitness" />
+
+      <input
+        type="checkbox"
+        name="botcheck"
+        class="hidden"
+        style="display: none;"
+      />
+
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label
             for="name"
             class="block text-white text-lg font-medium mb-3 uppercase tracking-wide"
           >
-            NOMBRE
+            NOMBRE COMPLETO
           </label>
           <input
             type="text"
@@ -36,38 +62,21 @@
         </div>
         <div>
           <label
-            for="lastname"
+            for="email"
             class="block text-white text-lg font-medium mb-3 uppercase tracking-wide"
           >
-            APELLIDO/S
+            CORREO ELECTRÓNICO
           </label>
           <input
-            type="text"
-            id="lastname"
-            name="lastname"
+            type="email"
+            id="email"
+            name="email"
             class="w-full px-4 py-4 bg-transparent border-2 border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-[var(--color-orange-strong)] transition-all duration-300"
             style="focus:box-shadow: 0 0 0 2px var(--color-orange-strong);"
-            placeholder="Introduce tu apellido/s"
+            required
+            placeholder="Introduce tu correo electrónico"
           />
         </div>
-      </div>
-
-      <div>
-        <label
-          for="email"
-          class="block text-white text-lg font-medium mb-3 uppercase tracking-wide"
-        >
-          CORREO ELECTRÓNICO
-        </label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          class="w-full px-4 py-4 bg-transparent border-2 border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-[var(--color-orange-strong)] transition-all duration-300"
-          style="focus:box-shadow: 0 0 0 2px var(--color-orange-strong);"
-          required
-          placeholder="Introduce tu correo electrónico"
-        />
       </div>
 
       <div>
@@ -87,9 +96,13 @@
           required></textarea>
       </div>
 
+      <!-- Success/Error Messages -->
+      <div id="form-message" class="hidden text-center p-4 rounded-lg"></div>
+
       <div class="flex justify-center sm:justify-end">
         <button
           type="submit"
+          id="submit-btn"
           class="px-8 py-4 text-white font-bold text-lg uppercase tracking-wide rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-2xl relative overflow-hidden cursor-pointer"
           style="background: linear-gradient(135deg, var(--color-red) 0%, var(--color-orange-strong) 35%, var(--color-orange-light) 80%);"
         >
@@ -97,6 +110,56 @@
         </button>
       </div>
     </form>
+
+    <script>
+      const form = document.getElementById("contact-form") as HTMLFormElement;
+      const submitBtn = document.getElementById(
+        "submit-btn"
+      ) as HTMLButtonElement;
+      const formMessage = document.getElementById(
+        "form-message"
+      ) as HTMLDivElement;
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Enviando...";
+
+        const formData = new FormData(form);
+
+        try {
+          const response = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: formData,
+          });
+
+          const data = await response.json();
+
+          if (data.success) {
+            formMessage.classList.remove("hidden", "bg-red-600");
+            formMessage.classList.add("bg-green-600");
+            formMessage.textContent =
+              "¡Mensaje enviado con éxito! Te contactaremos pronto.";
+            form.reset();
+          } else {
+            throw new Error("Error al enviar el formulario");
+          }
+        } catch (error) {
+          formMessage.classList.remove("hidden", "bg-green-600");
+          formMessage.classList.add("bg-red-600");
+          formMessage.textContent =
+            "Hubo un error al enviar el mensaje. Por favor, intenta de nuevo.";
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Enviar Mensaje";
+
+          setTimeout(() => {
+            formMessage.classList.add("hidden");
+          }, 5000);
+        }
+      });
+    </script>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8">
       <div class="text-left">
