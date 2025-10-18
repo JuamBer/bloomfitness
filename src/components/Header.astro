@@ -7,14 +7,18 @@ import isotype from "../assets/isotype.svg";
 <header class="bg-black h-25 md:h-30 lg:h-35 flex items-center justify-center">
   <div class="max-w-7xl w-full pl-[3rem] pr-[3rem]">
     <div class="h-full flex items-center justify-between w-full">
-      <div class="lg:w-3xl md:w-2xl w-1xl">
+      <button
+        id="menu-toggle"
+        class="lg:w-3xl md:w-2xl w-1xl cursor-pointer bg-transparent border-none p-0 transition-transform duration-300 hover:translate-x-2"
+        aria-label="Toggle menu"
+      >
         <Image
           src={burger}
           alt="Menu"
-          class="h-[1.25rem] w-auto"
+          class="h-[1.25rem] w-auto transition-opacity duration-300 hover:opacity-70"
           loading="eager"
         />
-      </div>
+      </button>
       <Image
         src={isotype}
         alt="Bloom Fitness"
@@ -25,3 +29,97 @@ import isotype from "../assets/isotype.svg";
     </div>
   </div>
 </header>
+
+<!-- Menu Overlay -->
+<div
+  id="menu-overlay"
+  class="fixed inset-0 bg-black z-50 flex items-start justify-start opacity-0 pointer-events-none transition-all duration-500 -translate-x-full"
+>
+  <div class="w-full h-full flex flex-col p-8 md:p-12 lg:p-16">
+    <button
+      id="menu-close"
+      class="self-start text-white text-5xl font-light cursor-pointer bg-transparent border-none mb-12 transition-all duration-300 hover:text-[var(--color-orange-strong)] hover:scale-110 hover:rotate-90"
+      aria-label="Close menu"
+    >
+      ×
+    </button>
+
+    <nav class="flex-grow flex items-center">
+      <ul class="space-y-8">
+        <li>
+          <a
+            href="#services"
+            class="menu-link text-white text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-wider hover:text-[var(--color-orange-strong)] transition-all duration-300 inline-block hover:translate-x-4"
+          >
+            SERVICIOS
+          </a>
+        </li>
+        <li>
+          <a
+            href="#team"
+            class="menu-link text-white text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-wider hover:text-[var(--color-orange-strong)] transition-all duration-300 inline-block hover:translate-x-4"
+          >
+            EQUIPO
+          </a>
+        </li>
+        <li>
+          <a
+            href="#contact"
+            class="menu-link text-white text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-wider hover:text-[var(--color-orange-strong)] transition-all duration-300 inline-block hover:translate-x-4"
+          >
+            CONTACTO
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <hr class="border-t border-white mb-4 w-full" />
+    <div class="self-end text-right">
+      <p class="text-white text-lg font-bold tracking-widest">BLOOM FITNESS</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const menuToggle = document.getElementById("menu-toggle");
+  const menuOverlay = document.getElementById("menu-overlay");
+  const menuClose = document.getElementById("menu-close");
+  const menuLinks = document.querySelectorAll(".menu-link");
+
+  function openMenu() {
+    menuOverlay?.classList.remove(
+      "opacity-0",
+      "pointer-events-none",
+      "-translate-x-full"
+    );
+    menuOverlay?.classList.add("opacity-100", "translate-x-0");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeMenu() {
+    menuOverlay?.classList.add(
+      "opacity-0",
+      "pointer-events-none",
+      "-translate-x-full"
+    );
+    menuOverlay?.classList.remove("opacity-100", "translate-x-0");
+    document.body.style.overflow = "";
+  }
+
+  menuToggle?.addEventListener("click", openMenu);
+  menuClose?.addEventListener("click", closeMenu);
+
+  // Close menu when clicking on a link
+  menuLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      closeMenu();
+    });
+  });
+
+  // Close menu when clicking outside the nav
+  menuOverlay?.addEventListener("click", (e) => {
+    if (e.target === menuOverlay) {
+      closeMenu();
+    }
+  });
+</script>
