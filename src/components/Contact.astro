@@ -5,14 +5,17 @@
 <section class="min-h-screen bg-black py-16">
   <div class="container mx-auto px-4">
     <div class="flex justify-center items-center mb-12">
-      <h2 class="text-white text-4xl md:text-6xl font-bold tracking-wider">
+      <h2
+        class="text-white
+      text-4xl sm:text-5xl md:text-6xl lg:text-7xl
+      font-extrabold
+      tracking-wider"
+      >
         CONTÁCTANOS
       </h2>
     </div>
 
-    <!-- Contact Form -->
     <form class="space-y-8 mb-16 flex flex-col max-w-4xl mx-auto">
-      <!-- Name and Surname Row -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label
@@ -25,7 +28,8 @@
             type="text"
             id="name"
             name="name"
-            class="w-full px-4 py-4 bg-transparent border-2 border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none transition-colors duration-300"
+            class="w-full px-4 py-4 bg-transparent border-2 border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-[var(--color-orange-strong)] transition-all duration-300"
+            style="focus:box-shadow: 0 0 0 2px var(--color-orange-strong);"
             required
             placeholder="Introduce tu nombre"
           />
@@ -41,8 +45,8 @@
             type="text"
             id="lastname"
             name="lastname"
-            class="w-full px-4 py-4 bg-transparent border-2 border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none transition-colors duration-300"
-            required
+            class="w-full px-4 py-4 bg-transparent border-2 border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-[var(--color-orange-strong)] transition-all duration-300"
+            style="focus:box-shadow: 0 0 0 2px var(--color-orange-strong);"
             placeholder="Introduce tu apellido/s"
           />
         </div>
@@ -59,13 +63,13 @@
           type="email"
           id="email"
           name="email"
-          class="w-full px-4 py-4 bg-transparent border-2 border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none transition-colors duration-300"
+          class="w-full px-4 py-4 bg-transparent border-2 border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-[var(--color-orange-strong)] transition-all duration-300"
+          style="focus:box-shadow: 0 0 0 2px var(--color-orange-strong);"
           required
           placeholder="Introduce tu correo electrónico"
         />
       </div>
 
-      <!-- Message Field -->
       <div>
         <label
           for="message"
@@ -77,15 +81,17 @@
           id="message"
           name="message"
           rows="6"
-          class="w-full px-4 py-4 bg-transparent border-2 border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none transition-colors duration-300 resize-vertical"
+          class="w-full px-4 py-4 bg-transparent border-2 border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-[var(--color-orange-strong)] transition-all duration-300 resize-vertical"
+          style="focus:box-shadow: 0 0 0 2px var(--color-orange-strong);"
           placeholder="Cuéntanos sobre tus objetivos y cómo podemos ayudarte..."
           required></textarea>
       </div>
 
-      <div class="flex justify-center">
+      <div class="flex justify-center sm:justify-end">
         <button
           type="submit"
-          class="cursor-pointer bg-gradient-to-r from-orange-500 to-blue-500 text-white px-8 py-4 rounded-lg font-bold text-lg uppercase tracking-wide hover:from-orange-600 hover:to-blue-600 transform hover:scale-105 transition-all duration-300 shadow-lg"
+          class="px-8 py-4 text-white font-bold text-lg uppercase tracking-wide rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-2xl relative overflow-hidden cursor-pointer"
+          style="background: linear-gradient(135deg, var(--color-red) 0%, var(--color-orange-strong) 35%, var(--color-orange-light) 80%);"
         >
           Enviar Mensaje
         </button>

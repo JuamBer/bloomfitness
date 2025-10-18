@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+:root {
+    /* Brand colors */
+    --color-orange-strong: #ED6D35;
+    --color-orange-light: #F7C573;
+    --color-blue: #36A9E1;
+    --color-red: #E62C28;
+}
+
 * {
     font-family: "bicyclette", sans-serif;
     color: white;
