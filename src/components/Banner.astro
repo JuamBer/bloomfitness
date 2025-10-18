@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import banner from "../assets/banner.png";
 import bornToRise from "../assets/born-to-rise.png";
 ---
@@ -6,17 +7,19 @@ import bornToRise from "../assets/born-to-rise.png";
 <section class="w-full relative h-auto md:h-auto lg:h-auto">
   <!-- Mobile/Tablet: Almost full viewport height with cropped image -->
   <div class="block lg:hidden relative h-[75vh] overflow-hidden">
-    <img
-      src={banner.src}
+    <Image
+      src={banner}
       alt="Bloom Fitness Banner"
       class="absolute inset-0 w-full h-full object-cover object-center"
+      loading="eager"
     />
     <div class="absolute inset-0 flex flex-col justify-center px-4">
       <div class="w-full h-full flex items-start pt-5 pb-5">
-        <img
-          src={bornToRise.src}
-          alt="Bloom Fitness Eslogan"
+        <Image
+          src={bornToRise}
+          alt="Born to Rise"
           class="w-full h-auto max-w-4/5 sm:max-w-md"
+          loading="eager"
         />
       </div>
       <div class="w-full flex items-center justify-between pt-5 pb-5 mt-auto">
@@ -33,19 +36,21 @@ import bornToRise from "../assets/born-to-rise.png";
 
   <!-- Desktop: Original layout -->
   <div class="hidden lg:block relative h-[75vh]">
-    <img
-      src={banner.src}
+    <Image
+      src={banner}
       alt="Bloom Fitness Banner"
       class="w-full h-full object-cover object-center"
+      loading="eager"
     />
     <div
       class="absolute inset-0 left-1/2 -translate-x-1/2 w-full max-w-7xl flex flex-col justify-center"
     >
       <div class="w-full h-full flex items-center pt-5 pb-5">
-        <img
-          src={bornToRise.src}
-          alt="Bloom Fitness Eslogan"
+        <Image
+          src={bornToRise}
+          alt="Born to Rise"
           class="w-full h-auto max-w-lg"
+          loading="eager"
         />
       </div>
       <div class="w-full flex items-center justify-between pt-5 pb-5 mt-auto">

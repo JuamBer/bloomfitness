@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import burger from "../assets/burger.svg";
 import isotype from "../assets/isotype.svg";
 ---
@@ -7,14 +8,19 @@ import isotype from "../assets/isotype.svg";
   <div class="max-w-7xl w-full pl-[3rem] pr-[3rem]">
     <div class="h-full flex items-center justify-between w-full">
       <div class="lg:w-3xl md:w-2xl w-1xl">
-        <img src={burger.src} alt="Menu" class="h-[1.25rem]" />
+        <Image
+          src={burger}
+          alt="Menu"
+          class="h-[1.25rem] w-auto"
+          loading="eager"
+        />
       </div>
-      <img
-        src={isotype.src}
+      <Image
+        src={isotype}
         alt="Bloom Fitness"
         class="h-8 md:h-10 lg:h-16 w-auto"
+        loading="eager"
       />
-
       <div class="lg:w-3xl md:w-2xl w-1xl hidden md:block"></div>
     </div>
   </div>

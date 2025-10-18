@@ -1,7 +1,19 @@
 ---
+import { Image } from "astro:assets";
 import colorBar from "../assets/color-bar.png";
+
+interface Props {
+  loading?: "eager" | "lazy";
+}
+
+const { loading = "eager" } = Astro.props;
 ---
 
 <section class="w-full">
-  <img src={colorBar.src} alt="Color Bar" class="w-full h-auto" />
+  <Image
+    src={colorBar}
+    alt="Color Bar"
+    class="w-full h-auto"
+    loading={loading}
+  />
 </section>

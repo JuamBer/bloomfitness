@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import team from "../assets/bloom-team.png";
 
 import daniValenciaPhoto from "../assets/professionals/dani-valencia.jpg";
@@ -16,32 +17,32 @@ const professionals = [
     area: "FISIOTERAPEUTA",
     description:
       "TE AYUDARÁ A RECUPERAR LA FUNCIONALIDAD Y BIENESTAR DESDE UN ENFOQUE ACTIVO",
-    image: joseSaezPhoto.src,
-    dot: orangeDot.src,
+    image: joseSaezPhoto,
+    dot: orangeDot,
   },
   {
     name: "FRAN SÁEZ",
     area: "ENTRENADOR PERSONAL",
     description:
       "FRAN LLEVARÁ TUS ENTRENAMIENTOS ADAPTADOS Y TE COMPAÑARÁ A CUMPLIR TUS OBJETIVOS",
-    image: franSaezPhoto.src,
-    dot: blueDot.src,
+    image: franSaezPhoto,
+    dot: blueDot,
   },
   {
     name: "DANIEL VALENCIA",
     area: "ENTRENADOR PERSONAL",
     description:
       "DANIEL LLEVARÁ TUS ENTRENAMIENTOS ADAPTADOS Y TE COMPAÑARÁ A CUMPLIR TUS OBJETIVOS",
-    image: daniValenciaPhoto.src,
-    dot: redDot.src,
+    image: daniValenciaPhoto,
+    dot: redDot,
   },
   {
     name: "GABRIEL MARTÍNEZ",
     area: "ENTRENADOR PERSONAL",
     description:
       "GABRIEL LLEVARÁ TUS ENTRENAMIENTOS ADAPTADOS Y TE COMPAÑARÁ A CUMPLIR TUS OBJETIVOS",
-    image: gabrielMartinezPhoto.src,
-    dot: blueDot.src,
+    image: gabrielMartinezPhoto,
+    dot: blueDot,
   },
 ];
 ---
@@ -51,10 +52,11 @@ const professionals = [
     <div
       class="flex justify-center items-center mb-16 max-w-6xl mx-auto pl-4 pr-4"
     >
-      <img
-        src={team.src}
+      <Image
+        src={team}
         alt="Bloom Fitness Team"
         class="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-90"
+        loading="lazy"
       />
     </div>
 
@@ -63,10 +65,11 @@ const professionals = [
         professionals.map((professional, index) => (
           <div class="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)]">
             <div class="relative aspect-w-3 aspect-h-4">
-              <img
+              <Image
                 src={professional.image}
                 alt={professional.name}
                 class="w-full h-auto object-cover border-2 border-gray-700 rounded-md"
+                loading="lazy"
               />
 
               <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 backdrop-blur-xs border-2 border-white rounded-full px-6 py-3 text-center whitespace-nowrap">
@@ -81,10 +84,11 @@ const professionals = [
             </div>
 
             <div class="p-6 text-center">
-              <img
+              <Image
                 src={professional.dot}
                 alt="Decorative Dot"
                 class="w-6 h-6 mx-auto mb-4"
+                loading="lazy"
               />
               <p class="text-gray-400 text-sm leading-relaxed">
                 {professional.description}
