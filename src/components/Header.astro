@@ -1,0 +1,21 @@
+---
+import burger from "../assets/burger.svg";
+import isotype from "../assets/isotype.svg";
+---
+
+<header class="bg-black h-25 md:h-30 lg:h-35 flex items-center justify-center">
+  <div class="max-w-7xl w-full pl-[3rem] pr-[3rem]">
+    <div class="h-full flex items-center justify-between w-full">
+      <div class="lg:w-3xl md:w-2xl w-1xl">
+        <img src={burger.src} alt="Menu" class="h-[1.25rem]" />
+      </div>
+      <img
+        src={isotype.src}
+        alt="Bloom Fitness"
+        class="h-8 md:h-10 lg:h-16 w-auto"
+      />
+
+      <div class="lg:w-3xl md:w-2xl w-1xl hidden md:block"></div>
+    </div>
+  </div>
+</header>

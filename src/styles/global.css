@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+* {
+    font-family: "bicyclette", sans-serif;
+    color: white;
+}
