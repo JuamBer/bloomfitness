@@ -7,7 +7,20 @@ export default defineConfig({
   site: "https://bloomfitness.es",
   base: "/",
   output: "static",
+  image: {
+    service: {
+      entrypoint: "astro/assets/services/sharp",
+    },
+  },
   vite: {
     plugins: [tailwindcss()],
+    build: {
+      cssMinify: "lightningcss",
+      rollupOptions: {
+        output: {
+          manualChunks: undefined,
+        },
+      },
+    },
   },
 });

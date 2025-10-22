@@ -81,45 +81,47 @@ import isotype from "../assets/isotype.svg";
 </div>
 
 <script>
-  const menuToggle = document.getElementById("menu-toggle");
-  const menuOverlay = document.getElementById("menu-overlay");
-  const menuClose = document.getElementById("menu-close");
-  const menuLinks = document.querySelectorAll(".menu-link");
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.getElementById("menu-toggle");
+    const menuOverlay = document.getElementById("menu-overlay");
+    const menuClose = document.getElementById("menu-close");
+    const menuLinks = document.querySelectorAll(".menu-link");
 
-  function openMenu() {
-    menuOverlay?.classList.remove(
-      "opacity-0",
-      "pointer-events-none",
-      "-translate-x-full"
-    );
-    menuOverlay?.classList.add("opacity-100", "translate-x-0");
-    document.body.style.overflow = "hidden";
-  }
-
-  function closeMenu() {
-    menuOverlay?.classList.add(
-      "opacity-0",
-      "pointer-events-none",
-      "-translate-x-full"
-    );
-    menuOverlay?.classList.remove("opacity-100", "translate-x-0");
-    document.body.style.overflow = "";
-  }
-
-  menuToggle?.addEventListener("click", openMenu);
-  menuClose?.addEventListener("click", closeMenu);
-
-  // Close menu when clicking on a link
-  menuLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      closeMenu();
-    });
-  });
-
-  // Close menu when clicking outside the nav
-  menuOverlay?.addEventListener("click", (e) => {
-    if (e.target === menuOverlay) {
-      closeMenu();
+    function openMenu() {
+      menuOverlay?.classList.remove(
+        "opacity-0",
+        "pointer-events-none",
+        "-translate-x-full"
+      );
+      menuOverlay?.classList.add("opacity-100", "translate-x-0");
+      document.body.style.overflow = "hidden";
     }
+
+    function closeMenu() {
+      menuOverlay?.classList.add(
+        "opacity-0",
+        "pointer-events-none",
+        "-translate-x-full"
+      );
+      menuOverlay?.classList.remove("opacity-100", "translate-x-0");
+      document.body.style.overflow = "";
+    }
+
+    menuToggle?.addEventListener("click", openMenu);
+    menuClose?.addEventListener("click", closeMenu);
+
+    // Close menu when clicking on a link
+    menuLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        closeMenu();
+      });
+    });
+
+    // Close menu when clicking outside the nav
+    menuOverlay?.addEventListener("click", (e) => {
+      if (e.target === menuOverlay) {
+        closeMenu();
+      }
+    });
   });
 </script>

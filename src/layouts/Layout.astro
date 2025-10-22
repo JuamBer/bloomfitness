@@ -42,8 +42,21 @@ import favicon from "../assets/favicon.ico";
     <!-- Canonical URL -->
     <link rel="canonical" href="https://bloomfitness.es/" />
 
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://use.typekit.net/zuy3mhj.css" />
+    <!-- Preconnect to external origins -->
+    <link rel="preconnect" href="https://use.typekit.net" crossorigin />
+    <link rel="preconnect" href="https://www.google.com" />
+    <link rel="dns-prefetch" href="https://maps.googleapis.com" />
+
+    <!-- Fonts - Load asynchronously to prevent render blocking -->
+    <link
+      rel="stylesheet"
+      href="https://use.typekit.net/zuy3mhj.css"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="https://use.typekit.net/zuy3mhj.css" />
+    </noscript>
 
     <!-- Structured Data for Local Business -->
     <script type="application/ld+json">

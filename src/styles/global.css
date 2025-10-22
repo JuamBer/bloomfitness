@@ -13,6 +13,11 @@
     color: white;
 }
 
+/* Prevent layout shift by setting default font with fallback stack */
+body {
+    font-family: "bicyclette", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
 html {
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE and Edge */
