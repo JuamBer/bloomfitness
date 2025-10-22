@@ -4,11 +4,6 @@ export interface Props {
   description?: string;
 }
 
-const {
-  title = "Bloom Fitness",
-  description = "Centro de entrenamiento, fisioterapia y nutrición en Mislata, Valencia. Entrenamiento personalizado con Fran Sáez, fisioterapia con José Sáez y nutrición especializada. Mejora tu fuerza y sistema cardiovascular.",
-} = Astro.props;
-
 import favicon from "../assets/favicon.ico";
 ---
 
@@ -21,23 +16,29 @@ import favicon from "../assets/favicon.ico";
     <meta name="generator" content={Astro.generator} />
 
     <!-- SEO Meta Tags -->
-    <title>{title}</title>
-    <meta name="description" content={description} />
+    <title>
+      Bloom Fitness | Entrenamiento, Fisioterapia y Nutrición Personalizada en
+      Mislata, Valencia
+    </title>
+    <meta
+      name="description"
+      content="Tu centro familiar de entrenamiento, fisioterapia y nutrición en Mislata. Olvídate de los gimnasios masificados. Nos centramos en tu salud, fuerza y readaptación de lesiones leves. Trato 100% personal."
+    />
     <meta
       name="keywords"
-      content="entrenamiento personal, fisioterapia, nutrición, gimnasio Mislata, Valencia, Fran Sáez, José Sáez, fitness, salud, fuerza, cardiovascular, Bloom Fitness, centro deportivo"
+      content="entrenamiento Mislata, fisioterapia cerca de mí, entrenador personal Mislata, gimnasio no masificado Mislata, readaptación lesiones Valencia, dolor espalda ejercicio, entrenamiento seguro, salud integral, nutrición, bloom fitness"
     />
     <meta
       name="author"
-      content="Bloom Fitness - Fran Sáez García, José Sáez García"
+      content="Bloom Fitness - Fran Sáez, José Sáez, Gabriel Martínez, Daniel Valencia"
     />
     <meta name="robots" content="index, follow" />
 
     <!-- Geo Tags for Local SEO -->
     <meta name="geo.region" content="ES-VC" />
     <meta name="geo.placename" content="Mislata, Valencia" />
-    <meta name="geo.position" content="39.4699;-0.4238" />
-    <meta name="ICBM" content="39.4699, -0.4238" />
+    <meta name="geo.position" content="39.473568;-0.418877" />
+    <meta name="ICBM" content="39.473568, -0.418877" />
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://bloomfitness.es/" />
@@ -66,10 +67,10 @@ import favicon from "../assets/favicon.ico";
         "name": "Bloom Fitness",
         "description": "Centro de entrenamiento, fisioterapia y nutrición en Mislata, Valencia",
         "url": "https://bloomfitness.es",
-        "telephone": "+34-XXX-XXX-XXX",
+        "telephone": "+34 645 27 61 18",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Calle XXXXX",
+          "streetAddress": "Plaza Músico Ibars número 5",
           "addressLocality": "Mislata",
           "addressRegion": "Valencia",
           "postalCode": "46920",
@@ -77,37 +78,38 @@ import favicon from "../assets/favicon.ico";
         },
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": 39.4699,
-          "longitude": -0.4238
+          "latitude": 39.473568,
+          "longitude": -0.418877
         },
         "openingHours": [
-          "Mo-Fr 07:00-22:00",
-          "Sa 08:00-20:00",
-          "Su 09:00-18:00"
+          "Mo-Fr 07:00-14:00",
+          "Mo-Fr 16:00-21:00",
+          "Sa 09:00-12:00",
+          "Su Closed"
         ],
         "priceRange": "€€",
         "founder": [
           {
             "@type": "Person",
-            "name": "Fran Sáez García",
+            "name": "Francisco Sáez García",
+            "jobTitle": "Entrenador Personal"
+          }
+        ],
+        "employee": [
+          {
+            "@type": "Person",
+            "name": "Daniel Valencia Martín",
+            "jobTitle": "Entrenador Personal"
+          },
+          {
+            "@type": "Person",
+            "name": "Gabriel Martínez Navarro",
             "jobTitle": "Entrenador Personal"
           },
           {
             "@type": "Person",
             "name": "José Sáez García",
             "jobTitle": "Fisioterapeuta"
-          }
-        ],
-        "employee": [
-          {
-            "@type": "Person",
-            "name": "Daniel Valencia",
-            "jobTitle": "Entrenador Personal"
-          },
-          {
-            "@type": "Person",
-            "name": "Juan Sáez García",
-            "jobTitle": "Consultor y Desarrollo"
           }
         ],
         "hasOfferCatalog": {
@@ -142,7 +144,7 @@ import favicon from "../assets/favicon.ico";
         },
         "areaServed": {
           "@type": "Place",
-          "name": "Valencia y alrededores"
+          "name": "Mislata y alrededores"
         }
       }
     </script>
