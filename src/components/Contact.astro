@@ -92,7 +92,7 @@
           rows="6"
           class="w-full px-4 py-4 bg-transparent border-2 border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-[var(--color-orange-strong)] transition-all duration-300 resize-vertical"
           style="focus:box-shadow: 0 0 0 2px var(--color-orange-strong);"
-          placeholder="Cuéntanos sobre tus objetivos y cómo podemos ayudarte..."
+          placeholder="Cuéntanos sobre tus objetivos y cómo podemos ayudarte"
           required></textarea>
       </div>
 
@@ -104,7 +104,7 @@
           type="submit"
           id="submit-btn"
           class="px-8 py-4 text-white font-bold text-lg uppercase tracking-wide rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-2xl relative overflow-hidden cursor-pointer"
-          style="background: linear-gradient(135deg, var(--color-red) 0%, var(--color-orange-strong) 35%, var(--color-orange-light) 80%);"
+          style="background: linear-gradient(135deg, var(--color-red) 0%, var(--color-orange-strong) 35%, var(--color-orange-strong) 80%);"
         >
           Enviar Mensaje
         </button>
@@ -134,8 +134,8 @@
             const data = await response.json();
 
             if (data.success) {
-              formMessage.classList.remove("hidden", "bg-red-600");
-              formMessage.classList.add("bg-green-600");
+              formMessage.classList.remove("hidden", "bg-(--color-red)");
+              formMessage.classList.add("bg-(--color-orange-strong)");
               formMessage.textContent =
                 "¡Mensaje enviado con éxito! Te contactaremos pronto.";
               form.reset();
@@ -143,8 +143,11 @@
               throw new Error("Error al enviar el formulario");
             }
           } catch (error) {
-            formMessage.classList.remove("hidden", "bg-green-600");
-            formMessage.classList.add("bg-red-600");
+            formMessage.classList.remove(
+              "hidden",
+              "bg-(--color-orange-strong)"
+            );
+            formMessage.classList.add("bg-(--color-red)");
             formMessage.textContent =
               "Hubo un error al enviar el mensaje. Por favor, intenta de nuevo.";
           } finally {
