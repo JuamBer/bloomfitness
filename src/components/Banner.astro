@@ -4,9 +4,12 @@ import banner from "../assets/banner.png";
 import bornToRise from "../assets/born-to-rise.png";
 ---
 
+<!-- header height h-25 lg:h-35 -->
 <section class="w-full relative h-auto md:h-auto lg:h-auto">
   <!-- Mobile/Tablet: Almost full viewport height with cropped image -->
-  <div class="block lg:hidden relative h-[75vh] overflow-hidden">
+  <div
+    class="block lg:hidden relative h-[calc(100dvh-6.25rem)] overflow-hidden"
+  >
     <Image
       src={banner}
       alt="Bloom Fitness Banner"
@@ -36,7 +39,7 @@ import bornToRise from "../assets/born-to-rise.png";
   </div>
 
   <!-- Desktop: Original layout -->
-  <div class="hidden lg:block relative h-[75vh]">
+  <div class="hidden lg:block relative h-[calc(100dvh-8.75rem)]">
     <Image
       src={banner}
       alt="Bloom Fitness Banner"
