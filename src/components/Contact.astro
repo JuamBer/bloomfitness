@@ -1,5 +1,7 @@
 ---
+import { Image } from "astro:assets";
 
+import whatsappIcon from "../assets/icons/whatsapp-brands-solid-full.svg";
 ---
 
 <section id="contact" class="min-h-screen bg-black py-16">
@@ -123,14 +125,13 @@
           class="flex flex-col sm:flex-row items-center justify-between gap-4"
         >
           <div class="flex items-center gap-4 text-white">
-            <div
-              class="bg-white p-3 rounded-full group-hover:scale-110 transition-all duration-300"
-            >
-              <img
-                src="/src/assets/icons/whatsapp-brands-solid-full.svg"
+            <div class="bg-white p-3 rounded-full">
+              <Image
+                src={whatsappIcon}
                 alt="WhatsApp"
                 class="w-8 h-8"
                 style="filter: brightness(0) saturate(100%) invert(50%) sepia(89%) saturate(1637%) hue-rotate(98deg) brightness(94%) contrast(89%);"
+                loading="lazy"
               />
             </div>
             <div>
