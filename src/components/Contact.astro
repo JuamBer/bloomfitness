@@ -111,6 +111,58 @@
       </div>
     </form>
 
+    <!-- WhatsApp Floating Banner -->
+    <div class="max-w-4xl mx-auto mb-12">
+      <a
+        href="https://wa.me/+34614047269"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="block bg-gradient-to-r from-[#25D366] to-[#20BA5A] rounded-xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] group"
+      >
+        <div
+          class="flex flex-col sm:flex-row items-center justify-between gap-4"
+        >
+          <div class="flex items-center gap-4 text-white">
+            <div
+              class="bg-white p-3 rounded-full group-hover:scale-110 transition-all duration-300"
+            >
+              <img
+                src="/src/assets/icons/whatsapp-brands-solid-full.svg"
+                alt="WhatsApp"
+                class="w-8 h-8"
+                style="filter: brightness(0) saturate(100%) invert(50%) sepia(89%) saturate(1637%) hue-rotate(98deg) brightness(94%) contrast(89%);"
+              />
+            </div>
+            <div>
+              <p class="font-bold text-xl uppercase tracking-wide">
+                ¿Prefieres WhatsApp?
+              </p>
+              <p class="text-base opacity-90">
+                Chatea directamente con nosotros
+              </p>
+            </div>
+          </div>
+          <div
+            class="flex items-center gap-2 text-white font-bold text-lg uppercase tracking-wide group-hover:gap-3 transition-all duration-300"
+          >
+            <span>Abrir Chat</span>
+            <svg
+              class="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </div>
+        </div>
+      </a>
+    </div>
+
     <script is:inline>
       document.addEventListener("DOMContentLoaded", function () {
         const form = document.getElementById("contact-form");
@@ -162,17 +214,27 @@
       });
     </script>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 pt-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8">
       <div class="text-left">
         <p class="text-gray-300 text-base sm:text-xl">
           <span class="font-medium">BLOOM FITNESS</span>
-          <span class="font-bold text-white">+34 614 04 72 69</span>
+          <a
+            href="tel:+34614047269"
+            class="font-bold text-white hover:text-[var(--color-orange-strong)] transition-colors duration-300 inline-block"
+            >+34 614 04 72 69</a
+          >
         </p>
       </div>
       <div class="text-left md:text-right">
         <p class="text-gray-300 text-base sm:text-xl">
           <span class="font-medium">PZA MÚSICO IBARS, 5,</span>
-          <span class="font-bold text-white">MISLATA, VALENCIA</span>
+          <a
+            href="https://maps.app.goo.gl/iUTmr8QdNCauKDrA7"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-bold text-white hover:text-[var(--color-orange-strong)] transition-colors duration-300 inline-block"
+            >MISLATA, VALENCIA</a
+          >
         </p>
       </div>
     </div>
