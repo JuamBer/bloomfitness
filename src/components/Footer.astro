@@ -1,9 +1,9 @@
 ---
 import { Image } from "astro:assets";
+import facebookIcon from "../assets/icons/facebook-brands-solid-full.svg";
 import instagramIcon from "../assets/icons/instagram-brands-solid-full.svg";
 import linkedinIcon from "../assets/icons/linkedin-brands-solid-full.svg";
-import locationIcon from "../assets/icons/location-dot-solid-full.svg";
-import whatsappIcon from "../assets/icons/whatsapp-brands-solid-full.svg";
+import tiktokIcon from "../assets/icons/tiktok-brands-solid-full.svg";
 import youtubeIcon from "../assets/icons/youtube-brands-solid-full.svg";
 import isotype from "../assets/isotype.svg";
 ---
@@ -30,9 +30,9 @@ import isotype from "../assets/isotype.svg";
         <ul class="space-y-2 text-gray-400 text-sm mb-4">
           <li>
             <a
-              href="tel:+34645276118"
+              href="#contact"
               class="hover:text-[var(--color-orange-strong)] transition-colors duration-300"
-              title="Llamar a Bloom Fitness"
+              title="Contactar con Bloom Fitness"
               itemprop="telephone"
             >
               +34 614 04 72 69
@@ -40,9 +40,9 @@ import isotype from "../assets/isotype.svg";
           </li>
           <li>
             <a
-              href="mailto:contacto@bloomfitness.es"
+              href="#contact"
               class="hover:text-[var(--color-orange-strong)] transition-colors duration-300"
-              title="Enviar email a Bloom Fitness"
+              title="Contactar con Bloom Fitness"
               itemprop="email"
             >
               contacto@bloomfitness.es
@@ -50,11 +50,9 @@ import isotype from "../assets/isotype.svg";
           </li>
           <li class="pt-2">
             <a
-              href="https://maps.app.goo.gl/iUTmr8QdNCauKDrA7"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#contact"
               class="hover:text-[var(--color-orange-strong)] transition-colors duration-300"
-              title="Ver ubicación de Bloom Fitness en Google Maps"
+              title="Ir al formulario de contacto"
               itemprop="address"
               itemscope
               itemtype="https://schema.org/PostalAddress"
@@ -111,16 +109,16 @@ import isotype from "../assets/isotype.svg";
           </a>
 
           <a
-            href="https://wa.me/+34614047269"
+            href="https://www.tiktok.com/@bloomfitnessmislata"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Contáctanos por WhatsApp - Bloom Fitness"
-            title="WhatsApp de Bloom Fitness"
+            aria-label="Síguenos en TikTok - Bloom Fitness Mislata"
+            title="TikTok de Bloom Fitness"
             class="w-10 h-10 rounded-full border-2 border-gray-600 flex items-center justify-center hover:border-[var(--color-orange-strong)] transition-colors duration-300"
           >
             <Image
-              src={whatsappIcon}
-              alt="WhatsApp"
+              src={tiktokIcon}
+              alt="TikTok"
               class="w-5 h-5 brightness-0 invert"
               loading="lazy"
             />
@@ -143,6 +141,22 @@ import isotype from "../assets/isotype.svg";
           </a>
 
           <a
+            href="https://www.facebook.com/people/Bloom-Fitness/61583805626769/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Síguenos en Facebook - Bloom Fitness"
+            title="Facebook de Bloom Fitness"
+            class="w-10 h-10 rounded-full border-2 border-gray-600 flex items-center justify-center hover:border-[var(--color-orange-strong)] transition-colors duration-300"
+          >
+            <Image
+              src={facebookIcon}
+              alt="Facebook"
+              class="w-5 h-5 brightness-0 invert"
+              loading="lazy"
+            />
+          </a>
+
+          <a
             href="https://www.linkedin.com/company/bloom-fitness-mislata/"
             target="_blank"
             rel="noopener noreferrer"
@@ -153,22 +167,6 @@ import isotype from "../assets/isotype.svg";
             <Image
               src={linkedinIcon}
               alt="LinkedIn"
-              class="w-5 h-5 brightness-0 invert"
-              loading="lazy"
-            />
-          </a>
-
-          <a
-            href="https://maps.app.goo.gl/iUTmr8QdNCauKDrA7"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Encuéntranos en Google Maps - Bloom Fitness Mislata"
-            title="Ubicación de Bloom Fitness en Google Maps"
-            class="w-10 h-10 rounded-full border-2 border-gray-600 flex items-center justify-center hover:border-[var(--color-orange-strong)] transition-colors duration-300"
-          >
-            <Image
-              src={locationIcon}
-              alt="Ubicación"
               class="w-5 h-5 brightness-0 invert"
               loading="lazy"
             />
