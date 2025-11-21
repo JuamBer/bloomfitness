@@ -11,7 +11,16 @@ import blueDot from "../assets/dots/blue-dot.png";
 import orangeDot from "../assets/dots/orange-dot.png";
 import redDot from "../assets/dots/red-dot.png";
 
-const professionals = [
+import type { ImageMetadata } from "astro";
+
+const professionals: Array<{
+  name: string;
+  area: string;
+  description: string;
+  image: ImageMetadata | null;
+  dot: ImageMetadata;
+  comingSoon?: boolean;
+}> = [
   {
     name: "JOSE SÁEZ",
     area: "FISIOTERAPEUTA",
@@ -44,6 +53,15 @@ const professionals = [
     image: gabrielMartinezPhoto,
     dot: blueDot,
   },
+  {
+    name: "PRÓXIMAMENTE",
+    area: "NUTRICIONISTA",
+    description:
+      "PRONTO SE REVELARÁ QUIÉN TE AYUDARÁ A OPTIMIZAR TU ALIMENTACIÓN Y ALCANZAR TUS OBJETIVOS",
+    image: null,
+    dot: orangeDot,
+    comingSoon: true,
+  },
 ];
 ---
 
@@ -64,23 +82,47 @@ const professionals = [
       {
         professionals.map((professional, index) => (
           <div class="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)]">
-            <div class="relative aspect-w-3 aspect-h-4">
-              <Image
-                src={professional.image}
-                alt={professional.name}
-                class="w-full h-auto object-cover border-2 border-gray-700 rounded-md"
-                loading="lazy"
-              />
-
-              <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 backdrop-blur-xs border-2 border-white rounded-full px-6 py-3 text-center whitespace-nowrap">
-                <p class="text-white text-lg font-bold uppercase">
-                  {professional.name}
-                </p>
-
-                <p class="text-white text-xs font-semibold uppercase tracking-wide">
-                  {professional.area}
-                </p>
-              </div>
+            <div class="relative">
+              {professional.comingSoon ? (
+                <div class="w-full aspect-[4/6] flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-800 border-2 border-gray-700 rounded-md relative overflow-hidden">
+                  <div class="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-blue-500/10 animate-pulse" />
+                  <div class="relative z-10 text-center px-4">
+                    <p class="text-white text-2xl font-bold uppercase mb-2">
+                      Próximamente
+                    </p>
+                    <p class="text-gray-400 text-sm uppercase tracking-wider">
+                      Se revelará pronto
+                    </p>
+                  </div>
+                  <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 backdrop-blur-xs border-2 border-white rounded-full px-6 py-3 text-center whitespace-nowrap">
+                    <p class="text-white text-lg font-bold uppercase">
+                      {professional.name}
+                    </p>
+                    <p class="text-white text-xs font-semibold uppercase tracking-wide">
+                      {professional.area}
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                professional.image && (
+                  <>
+                    <Image
+                      src={professional.image}
+                      alt={professional.name}
+                      class="aspect-[4/6] w-full h-auto object-cover border-2 border-gray-700 rounded-md"
+                      loading="lazy"
+                    />
+                    <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 backdrop-blur-xs border-2 border-white rounded-full px-6 py-3 text-center whitespace-nowrap">
+                      <p class="text-white text-lg font-bold uppercase">
+                        {professional.name}
+                      </p>
+                      <p class="text-white text-xs font-semibold uppercase tracking-wide">
+                        {professional.area}
+                      </p>
+                    </div>
+                  </>
+                )
+              )}
             </div>
 
             <div class="p-6 text-center">
