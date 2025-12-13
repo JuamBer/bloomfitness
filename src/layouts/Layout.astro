@@ -1,4 +1,7 @@
 ---
+import { ViewTransitions } from "astro:transitions";
+import "../styles/global.css";
+
 export interface Props {
   title?: string;
   description?: string;
@@ -147,6 +150,7 @@ import favicon from "../assets/favicon.ico";
         }
       }
     </script>
+    <ViewTransitions />
   </head>
   <body>
     <slot />

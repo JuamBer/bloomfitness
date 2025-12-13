@@ -19,12 +19,17 @@ import isotype from "../assets/isotype.svg";
           loading="eager"
         />
       </button>
-      <Image
-        src={isotype}
-        alt="Bloom Fitness"
-        class="h-8 md:h-10 lg:h-16 w-auto"
-        loading="eager"
-      />
+      <a
+        href="/"
+        class="transition-opacity duration-300 hover:opacity-70 flex items-center justify-center h-full w-full"
+      >
+        <Image
+          src={isotype}
+          alt="Bloom Fitness"
+          class="h-8 md:h-10 lg:h-16 w-auto"
+          loading="eager"
+        />
+      </a>
       <div class="lg:w-3xl md:w-2xl w-1xl hidden md:block"></div>
     </div>
   </div>
@@ -48,7 +53,7 @@ import isotype from "../assets/isotype.svg";
       <ul class="space-y-8">
         <li>
           <a
-            href="#services"
+            href="/#services"
             class="menu-link text-white text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-wider hover:text-[var(--color-orange-strong)] transition-all duration-300 inline-block hover:translate-x-4"
           >
             SERVICIOS
@@ -56,7 +61,7 @@ import isotype from "../assets/isotype.svg";
         </li>
         <li>
           <a
-            href="#team"
+            href="/#team"
             class="menu-link text-white text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-wider hover:text-[var(--color-orange-strong)] transition-all duration-300 inline-block hover:translate-x-4"
           >
             EQUIPO
@@ -64,7 +69,15 @@ import isotype from "../assets/isotype.svg";
         </li>
         <li>
           <a
-            href="#contact"
+            href="/historia"
+            class="menu-link text-white text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-wider hover:text-[var(--color-orange-strong)] transition-all duration-300 inline-block hover:translate-x-4"
+          >
+            HISTORIA
+          </a>
+        </li>
+        <li>
+          <a
+            href="/#contact"
             class="menu-link text-white text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-wider hover:text-[var(--color-orange-strong)] transition-all duration-300 inline-block hover:translate-x-4"
           >
             CONTACTO
@@ -81,7 +94,7 @@ import isotype from "../assets/isotype.svg";
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
+  function setupMenu() {
     const menuToggle = document.getElementById("menu-toggle");
     const menuOverlay = document.getElementById("menu-overlay");
     const menuClose = document.getElementById("menu-close");
@@ -123,5 +136,11 @@ import isotype from "../assets/isotype.svg";
         closeMenu();
       }
     });
-  });
+  }
+
+  // Run on initial load
+  document.addEventListener("DOMContentLoaded", setupMenu);
+
+  // Run after each page navigation (for Astro view transitions)
+  document.addEventListener("astro:page-load", setupMenu);
 </script>

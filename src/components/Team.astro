@@ -1,68 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import team from "../assets/bloom-team.png";
-
-import daniValenciaPhoto from "../assets/professionals/dani-valencia.jpg";
-import franSaezPhoto from "../assets/professionals/fran-saez.jpg";
-import gabrielMartinezPhoto from "../assets/professionals/gabriel-martinez.jpg";
-import javierSanchezPhoto from "../assets/professionals/javier-sanchez.jpg";
-import joseSaezPhoto from "../assets/professionals/jose-saez.jpg";
-
-import blueDot from "../assets/dots/blue-dot.png";
-import orangeDot from "../assets/dots/orange-dot.png";
-import redDot from "../assets/dots/red-dot.png";
-
-import type { ImageMetadata } from "astro";
-
-const professionals: Array<{
-  name: string;
-  area: string;
-  description: string;
-  image: ImageMetadata | null;
-  dot: ImageMetadata;
-  comingSoon?: boolean;
-}> = [
-  {
-    name: "JOSE SÁEZ",
-    area: "FISIOTERAPEUTA",
-    description:
-      "TE AYUDARÁ A RECUPERAR LA FUNCIONALIDAD Y BIENESTAR DESDE UN ENFOQUE ACTIVO",
-    image: joseSaezPhoto,
-    dot: orangeDot,
-  },
-  {
-    name: "FRAN SÁEZ",
-    area: "ENTRENADOR PERSONAL",
-    description:
-      "FRAN LLEVARÁ TUS ENTRENAMIENTOS ADAPTADOS Y TE COMPAÑARÁ A CUMPLIR TUS OBJETIVOS",
-    image: franSaezPhoto,
-    dot: blueDot,
-  },
-  {
-    name: "DANIEL VALENCIA",
-    area: "ENTRENADOR PERSONAL",
-    description:
-      "DANIEL DISEÑARÁ ENTRENAMIENTOS PERSONALIZADOS Y TE GUIARÁ HACIA TUS METAS",
-    image: daniValenciaPhoto,
-    dot: redDot,
-  },
-  {
-    name: "GABRIEL MARTÍNEZ",
-    area: "ENTRENADOR PERSONAL",
-    description:
-      "GABRIEL CREARÁ RUTINAS A TU MEDIDA Y TE APOYARÁ EN TU PROGRESO",
-    image: gabrielMartinezPhoto,
-    dot: blueDot,
-  },
-  {
-    name: "JAVIER SÁNCHEZ",
-    area: "NUTRICIONISTA",
-    description:
-      "JAVIER TE ASESORARÁ PARA MEJORAR TUS HÁBITOS ALIMENTICIOS Y TU SALUD",
-    image: javierSanchezPhoto,
-    dot: orangeDot,
-  },
-];
+import { professionals } from "../data/professionals";
 ---
 
 <section class="min-h-screen bg-black py-16">
@@ -82,15 +21,15 @@ const professionals: Array<{
       {
         professionals.map((professional, index) => (
           <div class="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)]">
-            <div class="relative">
-              {professional.comingSoon ? (
+            {professional.comingSoon ? (
+              <div class="relative">
                 <div class="w-full aspect-[4/6] flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-800 border-2 border-gray-700 rounded-md relative overflow-hidden">
                   <div class="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-blue-500/10 animate-pulse" />
                   <div class="relative z-10 text-center px-4">
                     <p class="text-white text-2xl font-bold uppercase mb-2">
                       Próximamente
                     </p>
-                    <p class="text-gray-400 text-sm uppercase tracking-wider">
+                    <p class="text-gray-200 text-sm uppercase tracking-wider">
                       Se revelará pronto
                     </p>
                   </div>
@@ -103,39 +42,61 @@ const professionals: Array<{
                     </p>
                   </div>
                 </div>
-              ) : (
-                professional.image && (
-                  <>
+                <div class="p-6 text-center">
+                  <Image
+                    src={professional.dot}
+                    alt="Decorative Dot"
+                    class="w-6 h-6 mx-auto mb-4"
+                    loading="lazy"
+                  />
+                  <p class="text-gray-200 text-sm leading-relaxed">
+                    {professional.description}
+                  </p>
+                </div>
+              </div>
+            ) : (
+              professional.image && (
+                <a
+                  href={`/equipo/${professional.slug}#professional`}
+                  class="block group cursor-pointer"
+                >
+                  <div class="relative">
                     <Image
                       src={professional.image}
                       alt={professional.name}
-                      class="aspect-[4/6] w-full h-auto object-cover border-2 border-gray-700 rounded-md"
+                      class="aspect-[4/6] w-full h-auto object-cover border-2 border-gray-700 rounded-md group-hover:border-[#ED6D35] transition-colors"
                       loading="lazy"
+                      transition:name={`professional-image-${professional.slug}`}
                     />
-                    <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 backdrop-blur-xs border-2 border-white rounded-full px-6 py-3 text-center whitespace-nowrap">
-                      <p class="text-white text-lg font-bold uppercase">
+                    <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 backdrop-blur-xs border-2 border-white rounded-full px-6 py-3 text-center whitespace-nowrap group-hover:border-[#ED6D35] transition-colors">
+                      <p
+                        class="text-white text-lg font-bold uppercase"
+                        transition:name={`professional-name-${professional.slug}`}
+                      >
                         {professional.name}
                       </p>
-                      <p class="text-white text-xs font-semibold uppercase tracking-wide">
+                      <p
+                        class="text-white text-xs font-semibold uppercase tracking-wide"
+                        transition:name={`professional-area-${professional.slug}`}
+                      >
                         {professional.area}
                       </p>
                     </div>
-                  </>
-                )
-              )}
-            </div>
-
-            <div class="p-6 text-center">
-              <Image
-                src={professional.dot}
-                alt="Decorative Dot"
-                class="w-6 h-6 mx-auto mb-4"
-                loading="lazy"
-              />
-              <p class="text-gray-400 text-sm leading-relaxed">
-                {professional.description}
-              </p>
-            </div>
+                  </div>
+                  <div class="p-6 text-center">
+                    <Image
+                      src={professional.dot}
+                      alt="Decorative Dot"
+                      class="w-6 h-6 mx-auto mb-4"
+                      loading="lazy"
+                    />
+                    <p class="text-gray-200 text-sm leading-relaxed group-hover:text-gray-300 transition-colors">
+                      {professional.description}
+                    </p>
+                  </div>
+                </a>
+              )
+            )}
           </div>
         ))
       }

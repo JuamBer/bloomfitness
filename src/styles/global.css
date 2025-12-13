@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+@theme {
+  @keyframes gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  --animate-gradient-shift: gradient-shift 2s ease infinite;
+}
+
 :root {
     /* Brand colors */
     --color-orange-strong: #ED6D35;
@@ -10,7 +26,6 @@
 
 * {
     font-family: "bicyclette", sans-serif;
-    color: white;
 }
 
 /* Prevent layout shift by setting default font with fallback stack */

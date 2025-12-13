@@ -13,7 +13,7 @@ import presentation from "../assets/videos/presentation.mp4";
 ></video>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
+  function setupVideo() {
     const video = document.getElementById(
       "presentation-video"
     ) as HTMLVideoElement;
@@ -36,5 +36,11 @@ import presentation from "../assets/videos/presentation.mp4";
 
       observer.observe(video);
     }
-  });
+  }
+
+  // Initial load
+  document.addEventListener("DOMContentLoaded", setupVideo);
+
+  // After View Transitions
+  document.addEventListener("astro:after-swap", setupVideo);
 </script>
