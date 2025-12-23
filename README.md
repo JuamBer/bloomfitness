@@ -1,46 +1,59 @@
-# Astro Starter Kit: Basics
+# Bloom Fitness 🌸
 
-```sh
-npm create astro@latest -- --template basics
-```
+Tu centro familiar de entrenamiento, fisioterapia y nutrición en Mislata. Olvídate de los gimnasios masificados. Nos centramos en tu salud, fuerza y readaptación de lesiones leves con un trato 100% personal.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 🚀 Descripción del Proyecto
 
-## 🚀 Project Structure
+Bloom Fitness es una plataforma web moderna diseñada para presentar los servicios y la filosofía de un centro de bienestar integral en Mislata, Valencia. La web ofrece una experiencia de usuario fluida y visualmente atractiva, reflejando el compromiso del centro con la salud personalizada.
 
-Inside of your Astro project, you'll see the following folders and files:
+## ✨ Características Principales
+
+- **Entrenamiento Personalizado**: Planes adaptados a tus objetivos y necesidades.
+- **Fisioterapia**: Readaptación de lesiones y tratamiento especializado.
+- **Nutrición**: Asesoramiento nutricional para complementar tu actividad física.
+- **Sistema de Referidos**: Descuentos exclusivos para miembros que traen a nuevos amigos.
+- **Historia del Centro**: Conoce el recorrido de Fran, José y el equipo desde sus inicios.
+- **Formulario de Contacto**: Integración directa para consultas y citas.
+- **SEO Optimizado**: Estructura semántica y metadatos para un mejor posicionamiento.
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Astro](https://astro.build/) (v5.0+)
+- **Estilos**: [Tailwind CSS](https://tailwindcss.com/) (v4.0+)
+- **Lenguaje**: TypeScript
+- **Componentes**: Astro Components para una arquitectura basada en islas de interactividad.
+
+## 📂 Estructura del Proyecto
 
 ```text
 /
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+├── public/             # Recursos estáticos (favicons, etc.)
+├── src/
+│   ├── assets/         # Imágenes, iconos y recursos multimedia
+│   ├── components/     # Componentes reutilizables (Header, Footer, Team, etc.)
+│   ├── data/           # Datos estáticos (profesionales, servicios)
+│   ├── layouts/        # Esquemas de página base
+│   ├── pages/          # Páginas y rutas de la aplicación
+│   └── styles/         # Configuración global de estilos
+└── package.json        # Dependencias y scripts
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## 🧞 Comandos
 
-## 🧞 Commands
+Todos los comandos se ejecutan desde la raíz del proyecto:
 
-All commands are run from the root of the project, from a terminal:
+| Comando | Acción |
+| :--- | :--- |
+| `npm install` | Instala las dependencias del proyecto |
+| `npm run dev` | Inicia el servidor de desarrollo en `localhost:4321` |
+| `npm run build` | Compila el sitio para producción en `./dist/` |
+| `npm run preview` | Previsualiza la compilación de producción localmente |
+| `npm run astro ...` | Ejecuta comandos de la CLI de Astro |
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## 🤝 Contribución
 
-## 👀 Want to learn more?
+Este proyecto es parte del ecosistema de Bloom Fitness. Si deseas reportar un error o sugerir una mejora, por favor contacta con el equipo de desarrollo.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+---
+
+Diseñado con ❤️ para la comunidad de **Bloom Fitness Mislata**.
