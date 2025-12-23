@@ -20,11 +20,15 @@ import favicon from "../assets/favicon.ico";
 
     <!-- SEO Meta Tags -->
     <title>
-      Bloom Fitness | Entrenamiento, Fisioterapia y Nutrición Personalizada
+      {
+        Astro.props.title ||
+          "Bloom Fitness | Entrenamiento, Fisioterapia y Nutrición Personalizada"
+      }
     </title>
     <meta
       name="description"
-      content="Tu centro familiar de entrenamiento, fisioterapia y nutrición en Mislata. Olvídate de los gimnasios masificados. Nos centramos en tu salud, fuerza y readaptación de lesiones leves. Trato 100% personal."
+      content={Astro.props.description ||
+        "Tu centro familiar de entrenamiento, fisioterapia y nutrición en Mislata. Olvídate de los gimnasios masificados. Nos centramos en tu salud, fuerza y readaptación de lesiones leves. Trato 100% personal."}
     />
     <meta
       name="keywords"

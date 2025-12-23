@@ -1,0 +1,252 @@
+---
+import arrowRight from "../../assets/icons/arrow-right-solid-full.svg";
+import percent from "../../assets/icons/percent-solid-full.svg";
+import ColorBar from "../../components/ColorBar.astro";
+import Footer from "../../components/Footer.astro";
+import Header from "../../components/Header.astro";
+import ProfessionalsSidebar from "../../components/ProfessionalsSidebar.astro";
+import { ProfessionalArea, professionals } from "../../data/professionals";
+import Layout from "../../layouts/Layout.astro";
+
+const physios = professionals.filter((p) => p.area === ProfessionalArea.FISIOTERAPIA);
+---
+
+<Layout
+  title="Fisioterapia | Bloom Fitness"
+  description="Servicio de fisioterapia profesional en Bloom Fitness. Tratamiento, recuperación y prevención de lesiones con seguimiento personalizado."
+>
+  <Header />
+  <ColorBar />
+
+  <main class="min-h-screen bg-black pt-16 pb-16">
+    <nav class="max-w-7xl mx-auto px-6 md:px-12 mb-8">
+      <ol class="flex items-center gap-2 text-sm">
+        <li>
+          <a
+            href="/servicios"
+            class="text-gray-400 hover:text-[var(--color-blue)] transition-colors"
+          >
+            Servicios
+          </a>
+        </li>
+        <li class="text-gray-600">/</li>
+        <li class="text-[var(--color-blue)] font-semibold">Fisioterapia</li>
+      </ol>
+    </nav>
+
+    <section class="max-w-7xl mx-auto px-6 md:px-12 mb-16">
+      <span
+        class="text-[var(--color-blue)] uppercase tracking-wider font-bold text-sm mb-2 block"
+        >02</span
+      >
+      <h1
+        class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-wider text-white uppercase mb-8"
+      >
+        FISIOTERAPIA
+      </h1>
+      <p class="text-gray-300 text-lg md:text-xl max-w-3xl leading-relaxed">
+        Servicio de fisioterapia profesional para tratamiento, recuperación y
+        prevención de lesiones. Ofrecemos sesiones individuales, bonos y
+        programas completos con seguimiento personalizado.
+      </p>
+    </section>
+
+    <div
+      class="max-w-7xl mx-auto px-6 md:px-12 mb-16 grid md:grid-cols-12 gap-8 lg:gap-12"
+    >
+      <div class="md:col-span-4 lg:col-span-3 order-last md:order-first">
+        <ProfessionalsSidebar
+          professionals={physios}
+          title="Nuestro Fisioterapeuta"
+          color="text-[var(--color-blue)]"
+        />
+      </div>
+      <div class="md:col-span-8 lg:col-span-9 space-y-16">
+        <section>
+          <h2
+            class="text-white font-bold text-2xl uppercase tracking-wide mb-6 flex items-center gap-3"
+          >
+            <span class="w-8 h-[2px] bg-[var(--color-blue)] inline-block"
+            ></span>
+            Sesiones
+          </h2>
+          <div class="grid md:grid-cols-2 gap-6 max-w-2xl">
+            <div
+              class="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-[var(--color-blue)] transition-all duration-300"
+            >
+              <p class="text-gray-400 text-sm uppercase tracking-wide mb-2">
+                Sesión 30 minutos
+              </p>
+              <p class="text-white text-3xl font-extrabold">25€</p>
+            </div>
+            <div
+              class="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-[var(--color-blue)] transition-all duration-300"
+            >
+              <p class="text-gray-400 text-sm uppercase tracking-wide mb-2">
+                Sesión 60 minutos
+              </p>
+              <p class="text-white text-3xl font-extrabold">38€</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2
+            class="text-white font-bold text-2xl uppercase tracking-wide mb-6 flex items-center gap-3"
+          >
+            <span class="w-8 h-[2px] bg-[var(--color-blue)] inline-block"
+            ></span>
+            Bonos
+          </h2>
+          <div class="grid md:grid-cols-2 gap-6 max-w-2xl">
+            <div
+              class="bg-gray-900 border-2 border-[var(--color-blue)] rounded-lg p-6 relative overflow-hidden"
+            >
+              <span
+                class="absolute bottom-2 right-2 bg-[var(--color-blue)] text-black text-[10px] font-bold px-2 py-1 rounded-full uppercase"
+                >Popular</span
+              >
+              <p class="text-gray-400 text-sm uppercase tracking-wide mb-2">
+                Bono 5 Sesiones
+              </p>
+              <p class="text-white text-3xl font-extrabold">180€</p>
+              <p class="text-[var(--color-blue)] text-xs mt-2">
+                36€ por sesión
+              </p>
+            </div>
+            <div
+              class="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-[var(--color-blue)] transition-all duration-300"
+            >
+              <p class="text-gray-400 text-sm uppercase tracking-wide mb-2">
+                Bono 10 Sesiones
+              </p>
+              <p class="text-white text-3xl font-extrabold">350€</p>
+              <p class="text-[var(--color-blue)] text-xs mt-2">
+                35€ por sesión
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2
+            class="text-white font-bold text-2xl uppercase tracking-wide mb-6 flex items-center gap-3"
+          >
+            <span class="w-8 h-[2px] bg-[var(--color-blue)] inline-block"
+            ></span>
+            Programas
+          </h2>
+          <p class="text-gray-400 text-sm mb-6">
+            * Los programas incluyen test + dinamometría + informe de evolución
+          </p>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div
+              class="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-[var(--color-blue)] transition-all duration-300"
+            >
+              <p class="text-[var(--color-blue)] text-sm font-semibold mb-1">
+                8 Semanas
+              </p>
+              <p class="text-gray-400 text-sm uppercase tracking-wide mb-2">
+                16 Sesiones
+              </p>
+              <p class="text-white text-3xl font-extrabold">544€</p>
+              <p class="text-gray-500 text-xs mt-2">34€ por sesión</p>
+            </div>
+            <div
+              class="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-[var(--color-blue)] transition-all duration-300"
+            >
+              <p class="text-[var(--color-blue)] text-sm font-semibold mb-1">
+                12 Semanas
+              </p>
+              <p class="text-gray-400 text-sm uppercase tracking-wide mb-2">
+                24 Sesiones
+              </p>
+              <p class="text-white text-3xl font-extrabold">792€</p>
+              <p class="text-gray-500 text-xs mt-2">33€ por sesión</p>
+            </div>
+            <div
+              class="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-[var(--color-blue)] transition-all duration-300"
+            >
+              <p class="text-[var(--color-blue)] text-sm font-semibold mb-1">
+                24 Semanas
+              </p>
+              <p class="text-gray-400 text-sm uppercase tracking-wide mb-2">
+                48 Sesiones
+              </p>
+              <p class="text-white text-3xl font-extrabold">1.536€</p>
+              <p class="text-gray-500 text-xs mt-2">32€ por sesión</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div class="bg-gray-900 border border-gray-700 rounded-xl p-8">
+            <h3
+              class="text-white font-bold text-xl uppercase tracking-wide mb-4"
+            >
+              <span class="flex items-center gap-2">
+                <span
+                  class="w-6 h-6 bg-current flex-shrink-0"
+                  style={`mask: url(${percent.src}) no-repeat center / contain; -webkit-mask: url(${percent.src}) no-repeat center / contain;`}
+                  aria-hidden="true"></span>
+                Descuentos Disponibles
+              </span>
+            </h3>
+            <p class="text-gray-300 mb-4">
+              Consulta nuestros descuentos por discapacidad, mayores de 65 años
+              y más.
+            </p>
+            <a
+              href="/servicios/descuentos"
+              class="inline-flex px-6 py-3 border-2 border-[var(--color-blue)] text-[var(--color-blue)] font-bold uppercase tracking-wide rounded-full hover:bg-[var(--color-blue)] hover:text-black transition-all duration-300 items-center gap-2"
+            >
+              Ver Descuentos
+              <span
+                class="w-5 h-5 bg-current flex-shrink-0"
+                style={`mask: url(${arrowRight.src}) no-repeat center / contain; -webkit-mask: url(${arrowRight.src}) no-repeat center / contain;`}
+                aria-hidden="true"></span>
+            </a>
+          </div>
+        </section>
+      </div>
+    </div>
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 text-center">
+        <h2
+          class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-wider text-white uppercase mb-6"
+        >
+          ¿Necesitas fisioterapia?
+        </h2>
+        <p class="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
+          Contacta con nosotros para más información o para reservar tu primera
+          sesión de fisioterapia.
+        </p>
+        <a
+          href="/?service=fisioterapia#contact"
+          class="inline-block px-8 py-4 text-white font-bold text-lg uppercase tracking-wide rounded-full transition-all duration-300 shadow-lg hover:shadow-2xl relative overflow-hidden cursor-pointer group"
+        >
+          <span class="relative z-10">Contactar</span>
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-[var(--color-blue)] via-[var(--color-blue)] to-[var(--color-blue)] bg-[length:200%_100%] group-hover:animate-[gradient-shift_2s_ease_infinite]"
+          >
+          </div>
+        </a>
+      </div>
+    </section>
+  </main><ColorBar />
+  <Footer /></Layout
+>
+
+<style>
+  @keyframes gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+</style>

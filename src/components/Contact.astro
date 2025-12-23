@@ -31,6 +31,7 @@ import whatsappIcon from "../assets/icons/whatsapp-brands-solid-full.svg";
 
       <input
         type="hidden"
+        id="form-subject"
         name="subject"
         value="🏋️ Nueva Consulta Web - Bloom Fitness"
       />
@@ -98,7 +99,6 @@ import whatsappIcon from "../assets/icons/whatsapp-brands-solid-full.svg";
           required></textarea>
       </div>
 
-      <!-- Success/Error Messages -->
       <div id="form-message" class="hidden text-center p-4 rounded-lg"></div>
 
       <div class="flex justify-center sm:justify-end">
@@ -116,7 +116,6 @@ import whatsappIcon from "../assets/icons/whatsapp-brands-solid-full.svg";
       </div>
     </form>
 
-    <!-- WhatsApp Floating Banner -->
     <div class="max-w-4xl mx-auto mb-12">
       <a
         href="https://wa.me/+34614047269"
@@ -168,7 +167,26 @@ import whatsappIcon from "../assets/icons/whatsapp-brands-solid-full.svg";
     </div>
 
     <script is:inline>
+      function prefillSubject() {
+        const params = new URLSearchParams(window.location.search);
+        const service = params.get("service");
+        const subjectInput = document.getElementById("form-subject");
+
+        if (service) {
+          const subjects = {
+            entrenamiento: "Consulta: Entrenamiento - Bloom Fitness",
+            fisioterapia: "Consulta: Fisioterapia - Bloom Fitness",
+            nutricion: "Consulta: Nutrición - Bloom Fitness",
+          };
+
+          if (subjects[service] && subjectInput) {
+            subjectInput.value = subjects[service];
+          }
+        }
+      }
+
       document.addEventListener("DOMContentLoaded", function () {
+        prefillSubject();
         const form = document.getElementById("contact-form");
         const submitBtn = document.getElementById("submit-btn");
         const formMessage = document.getElementById("form-message");
@@ -201,7 +219,7 @@ import whatsappIcon from "../assets/icons/whatsapp-brands-solid-full.svg";
           } catch (error) {
             formMessage.classList.remove(
               "hidden",
-              "bg-(--color-orange-strong)"
+              "bg-(--color-orange-strong)",
             );
             formMessage.classList.add("bg-(--color-red)");
             formMessage.textContent =

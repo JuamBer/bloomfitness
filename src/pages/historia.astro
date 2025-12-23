@@ -76,13 +76,11 @@ const timeline = [
         </h2>
 
         <div class="relative max-w-7xl mx-auto">
-          <!-- Mobile vertical line -->
           <div
             class="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-800 md:hidden"
           >
           </div>
 
-          {/* Mobile layout */}
           <div class="md:hidden space-y-16">
             {
               timeline.map((item) => (
@@ -98,7 +96,6 @@ const timeline = [
                       {item.description}
                     </p>
                   </div>
-                  {/* Mobile dot */}
                   <div class="absolute left-4 top-0 transform -translate-x-1/2">
                     <div class="w-8 h-8 rounded-full bg-black border-2 border-gray-800 flex items-center justify-center">
                       <Image
@@ -114,9 +111,7 @@ const timeline = [
             }
           </div>
 
-          {/* Desktop vertical timeline layout */}
           <div class="hidden md:block relative py-10">
-            {/* Central Line */}
             <div
               class="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gray-800"
             >
@@ -128,12 +123,10 @@ const timeline = [
                   <div
                     class={`flex items-center justify-between w-full ${index % 2 !== 0 ? "flex-row-reverse" : ""}`}
                   >
-                    {/* Content Side */}
                     <div class="w-[45%]">
                       <div
                         class={`bg-gray-900 border border-gray-800 rounded-xl p-8 hover:border-[#ED6D35]/30 transition-all duration-300 relative group ${index % 2 !== 0 ? "text-left" : "text-right"}`}
                       >
-                        {/* Arrow pointing to center */}
                         <div
                           class={`absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-gray-900 border-t border-r border-gray-800 transform rotate-45 ${index % 2 !== 0 ? "-left-2.5 border-t-0 border-r-0 border-b border-l" : "-right-2.5"}`}
                         />
@@ -150,7 +143,6 @@ const timeline = [
                       </div>
                     </div>
 
-                    {/* Center Dot */}
                     <div class="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center">
                       <div class="w-14 h-14 rounded-full bg-black border-4 border-gray-800 flex items-center justify-center z-10 shadow-[0_0_15px_rgba(237,109,53,0.2)]">
                         <Image
@@ -162,7 +154,6 @@ const timeline = [
                       </div>
                     </div>
 
-                    {/* Empty Side for spacing */}
                     <div class="w-[45%]" />
                   </div>
                 ))
@@ -172,7 +163,6 @@ const timeline = [
         </div>
       </div>
 
-      <!-- CTA -->
       <div class="max-w-2xl mx-auto text-center mt-20">
         <h2 class="text-2xl font-bold text-white uppercase mb-4">
           ¿Quieres formar parte de nuestra historia?

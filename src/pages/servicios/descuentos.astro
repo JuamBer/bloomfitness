@@ -1,0 +1,290 @@
+---
+import gift from "../../assets/icons/gift-solid-full.svg";
+import question from "../../assets/icons/question-solid-full.svg";
+import ColorBar from "../../components/ColorBar.astro";
+import Footer from "../../components/Footer.astro";
+import Header from "../../components/Header.astro";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout
+  title="Descuentos | Bloom Fitness"
+  description="Descubre los descuentos disponibles en Bloom Fitness. Sistema de referidos, descuentos por edad y más beneficios para nuestros clientes."
+>
+  <Header />
+  <ColorBar />
+
+  <main class="min-h-screen bg-black pt-16 pb-16">
+    <nav class="max-w-7xl mx-auto px-6 md:px-12 mb-8">
+      <ol class="flex items-center gap-2 text-sm">
+        <li>
+          <a
+            href="/servicios"
+            class="text-gray-400 hover:text-[var(--color-red)] transition-colors"
+          >
+            Servicios
+          </a>
+        </li>
+        <li class="text-gray-600">/</li>
+        <li class="text-[var(--color-red)] font-semibold">Descuentos</li>
+      </ol>
+    </nav>
+
+    <section class="max-w-7xl mx-auto px-6 md:px-12 mb-16">
+      <h1
+        class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-wider text-white uppercase mb-8"
+      >
+        DESCUENTOS
+      </h1>
+      <p class="text-gray-300 text-lg md:text-xl max-w-3xl leading-relaxed">
+        En Bloom Fitness premiamos tu compromiso. Descubre nuestras tarifas
+        especiales y el sistema de referidos diseñado para que el bienestar sea
+        accesible para todos.
+      </p>
+    </section>
+
+    <div class="max-w-7xl mx-auto px-6 md:px-12 mb-16 space-y-16">
+      <section>
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Entrenamiento -->
+          <div class="flex flex-col">
+            <h3
+              class="text-[var(--color-orange-strong)] font-bold text-xl uppercase tracking-wide mb-4"
+            >
+              Entrenamiento
+            </h3>
+            <div class="grid sm:grid-cols-2 gap-4 flex-grow">
+              <div
+                class="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-[var(--color-orange-strong)] transition-all duration-300 flex flex-col h-full"
+              >
+                <p class="text-gray-400 text-sm uppercase tracking-wide mb-2">
+                  Por Referencia
+                </p>
+                <p class="text-white text-3xl font-extrabold mb-2">5% DTO</p>
+                <p class="text-gray-400 text-xs leading-relaxed flex-grow">
+                  Recibe un descuento vitalicio por cada amigo que traigas.
+                </p>
+                <p class="text-[var(--color-orange-strong)] text-xs mt-3">
+                  Acumulable
+                </p>
+              </div>
+              <div
+                class="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-[var(--color-orange-strong)] transition-all duration-300 flex flex-col h-full"
+              >
+                <p class="text-gray-400 text-sm uppercase tracking-wide mb-2">
+                  Mayores 65 años
+                </p>
+                <p class="text-white text-3xl font-extrabold mb-2">10% DTO</p>
+                <p class="text-gray-400 text-xs leading-relaxed">
+                  Tarifa especial diseñada para seniors que buscan mantenerse en
+                  forma.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fisioterapia -->
+          <div class="flex flex-col">
+            <h3
+              class="text-[var(--color-blue)] font-bold text-xl uppercase tracking-wide mb-4"
+            >
+              Fisioterapia
+            </h3>
+            <div class="grid sm:grid-cols-2 gap-4 flex-grow">
+              <div
+                class="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-[var(--color-blue)] transition-all duration-300 flex flex-col h-full"
+              >
+                <p class="text-gray-400 text-sm uppercase tracking-wide mb-2">
+                  Discapacidad ≥33%
+                </p>
+                <p class="text-white text-3xl font-extrabold mb-2">10% DTO</p>
+                <p class="text-gray-400 text-xs leading-relaxed">
+                  Apoyamos tu salud con tarifas adaptadas a tus necesidades.
+                </p>
+              </div>
+              <div
+                class="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-[var(--color-blue)] transition-all duration-300 flex flex-col h-full"
+              >
+                <p class="text-gray-400 text-sm uppercase tracking-wide mb-2">
+                  Mayores 65 años
+                </p>
+                <p class="text-white text-3xl font-extrabold mb-2">10% DTO</p>
+                <p class="text-gray-400 text-xs leading-relaxed">
+                  Fisioterapia especializada al mejor precio para nuestros
+                  mayores.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sistema de Referidos -->
+      <section>
+        <div
+          class="bg-gradient-to-br from-gray-900 to-gray-800 border-2 border-[var(--color-red)] rounded-xl p-8 md:p-12"
+        >
+          <div
+            class="flex flex-col md:flex-row gap-8 items-start md:items-center justify-between mb-8"
+          >
+            <div class="flex items-center gap-4">
+              <div
+                class="flex-shrink-0 w-12 h-12 rounded-lg bg-[var(--color-red)] flex items-center justify-center shadow-lg"
+              >
+                <span
+                  class="w-6 h-6 bg-white"
+                  style={`mask: url(${gift.src}) no-repeat center / contain; -webkit-mask: url(${gift.src}) no-repeat center / contain;`}
+                  aria-hidden="true"></span>
+              </div>
+              <h2
+                class="text-white font-bold text-2xl md:text-3xl uppercase tracking-wide"
+              >
+                Sistema de Referidos
+              </h2>
+            </div>
+            <div
+              class="bg-[var(--color-red)]/10 px-4 py-2 rounded-full border border-[var(--color-red)]/20"
+            >
+              <p
+                class="text-[var(--color-red)] font-bold text-sm uppercase tracking-wider"
+              >
+                Plan de Fidelidad
+              </p>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8 relative">
+            <!-- Connector Line (Desktop) -->
+            <div
+              class="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-px h-16 bg-gray-700"
+            >
+            </div>
+
+            <div class="relative">
+              <div class="flex items-center gap-3 mb-4">
+                <span
+                  class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-[var(--color-red)] font-bold border border-gray-700"
+                  >1</span
+                >
+                <h3 class="text-white font-bold text-lg">
+                  Beneficio Inmediato
+                </h3>
+              </div>
+              <p class="text-gray-400 text-sm leading-relaxed pl-11">
+                Recibe un <span class="text-white font-bold"
+                  >5% de descuento</span
+                > mensual en tu cuota por cada persona que traigas y se inscriba.
+                Este descuento es vitalicio para ti siempre que te mantengas apuntado,
+                aunque tu referido se dé de baja.
+              </p>
+            </div>
+
+            <div class="relative">
+              <div class="flex items-center gap-3 mb-4">
+                <span
+                  class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-[var(--color-red)] font-bold border border-gray-700"
+                  >2</span
+                >
+                <h3 class="text-white font-bold text-lg">Gran Recompensa</h3>
+              </div>
+              <p class="text-gray-400 text-sm leading-relaxed pl-11">
+                ¡Acumula éxitos! Al llegar a <span class="text-white font-bold"
+                  >5 referidos</span
+                > activos, te regalamos un <span class="text-white font-bold"
+                  >mes de entrenamiento gratis</span
+                >.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section>
+        <h2
+          class="text-white font-bold text-2xl uppercase tracking-wide mb-6 flex items-center gap-3"
+        >
+          <span
+            class="w-6 h-6 bg-white inline-block flex-shrink-0"
+            style={`mask: url(${question.src}) no-repeat center / contain; -webkit-mask: url(${question.src}) no-repeat center / contain;`}
+            aria-hidden="true"></span>
+          Preguntas Frecuentes
+        </h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div
+            class="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-[var(--color-red)] transition-all duration-300"
+          >
+            <h3 class="text-white font-bold text-lg mb-3">¿Son acumulables?</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Sí, los descuentos por referidos se pueden combinar hasta un
+              máximo del 10% de descuento total sobre tu cuota.
+            </p>
+          </div>
+          <div
+            class="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-[var(--color-red)] transition-all duration-300"
+          >
+            <h3 class="text-white font-bold text-lg mb-3">
+              ¿Cuándo se aplica?
+            </h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              El descuento se aplica en la siguiente mensualidad una vez que tu
+              referido haya completado su inscripción.
+            </p>
+          </div>
+          <div
+            class="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-[var(--color-red)] transition-all duration-300"
+          >
+            <h3 class="text-white font-bold text-lg mb-3">
+              Bajas y Periodo de Gracia
+            </h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Si decides darte de baja, dispones de 3 meses para volver a
+              inscribirte manteniendo tus descuentos acumulados por referidos.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 text-center">
+        <h2
+          class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-wider text-white uppercase mb-6"
+        >
+          ¿Tienes dudas?
+        </h2>
+        <p class="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
+          Estamos aquí para explicarte todos los detalles y ayudarte a
+          aprovechar al máximo tus beneficios.
+        </p>
+        <a
+          href="/#contact"
+          class="inline-block px-8 py-4 text-white font-bold text-lg uppercase tracking-wide rounded-full transition-all duration-300 shadow-lg hover:shadow-2xl relative overflow-hidden cursor-pointer group"
+        >
+          <span class="relative z-10">Contactar</span>
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-[var(--color-red)] via-[var(--color-orange-strong)] to-[var(--color-red)] bg-[length:200%_100%] group-hover:animate-[gradient-shift_2s_ease_infinite]"
+          >
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <ColorBar />
+  <Footer />
+</Layout>
+
+<style>
+  @keyframes gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+</style>
