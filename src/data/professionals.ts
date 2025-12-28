@@ -27,7 +27,6 @@ export interface Professional {
   reviews?: Review[];
   whatsapp?: string;
   email?: string;
-  link?: string;
 }
 
 export enum ProfessionalArea {
@@ -50,7 +49,6 @@ export const professionals: Professional[] = [
     history:
       "Soy José Sáez, Fisioterapeuta (2021) y Técnico en Animación de Actividades Físicas y Deportivas (2017). Mi vida siempre ha estado ligada al deporte y la naturaleza, una pasión que me define tanto personal como profesionalmente.\\n\\nA lo largo de los años, me ha tocado experimentar en primera persona diversos dolores y lesiones. Lejos de ser un obstáculo, vivir ese proceso me impulsó a querer comprender qué sucede realmente en nuestro cuerpo cuando hay dolor. Esa voluntad de recuperarme, sumada al deseo de ayudar a otros tal como hicieron conmigo, es lo que me motiva a dedicarme plenamente a esta profesión.\\n\\nMi metodología se basa en el razonamiento clínico y el tratamiento activo. Durante mi formación, entendí que el paradigma de la fisioterapia ha evolucionado: hemos pasado de técnicas puramente pasivas a un modelo donde el paciente es el protagonista. Por ello, mi compromiso es empoderar a las personas para que tomen acción en su propia recuperación, encontrando mi mayor satisfacción en ver su progreso y mejora clínica real.\\n\\nUn saludo, ¡nos vemos en Bloom Fitness Mislata!",
     reviews: [],
-    link: "https://www.instagram.com/josesaez_physio/",
   },
   {
     slug: "fran-saez",
@@ -81,7 +79,6 @@ export const professionals: Professional[] = [
           "Un profesional, su trabajo lo hace con cariño y se ajusta a tus necesidades y no se hace pesado, muy contenta por todo sobre todo el trato que da a todas la personas de 10",
       },
     ],
-    link: "https://www.instagram.com/fransaez_trainer/",
   },
   {
     slug: "daniel-valencia",
@@ -107,7 +104,6 @@ export const professionals: Professional[] = [
           "Como siempre pendiente de todos los que estamos allí y preocupándose si tenemos algún problema. Un cielo",
       },
     ],
-    link: "https://www.instagram.com/dani_valencia_trainer/",
   },
   {
     slug: "gabriel-martinez",
@@ -121,7 +117,6 @@ export const professionals: Professional[] = [
     dot: blueDot,
     history: "Soy Gabriel, Entrenador Personal y apasionado del entrenamiento de alta intensidad. Mi formación técnica comenzó junto a Fran en TAFAD, donde no solo compartimos estudios, sino también una visión exigente y profesional sobre el deporte. Desde entonces, he centrado mi carrera en llevar el rendimiento físico al siguiente nivel a través de la disciplina y el esfuerzo real.\\n\\nMi filosofía de trabajo es clara: para ver resultados distintos, hay que entrenar con una intensidad verdadera. Me especializo en crear rutinas totalmente a medida, diseñadas para exprimir el potencial de cada persona que pasa por Bloom Fitness. No creo en los entrenamientos genéricos; creo en planes específicos que desafíen tus límites y te obliguen a progresar de forma constante, siempre bajo un control técnico riguroso.\\n\\nEntrenar conmigo significa tener a alguien que te apoyará en cada repetición y que no te dejará rendirte antes de tiempo. Mi mayor compromiso es acompañarte en tu evolución, asegurándome de que cada gota de sudor cuente y que alcances tus metas con la constancia y la energía que requiere el éxito. Si buscas compromiso y un entrenamiento que de verdad te ponga a prueba, estoy aquí para guiarte.",
     reviews: [],
-    link: "https://www.instagram.com/gabriel_martinez_trainer/",
   },
   {
     slug: "javier-sanchez",
@@ -135,6 +130,5 @@ export const professionals: Professional[] = [
     dot: orangeDot,
     history:
       "Soy Javier Sánchez, Dietista-Nutricionista especializado en Nutrición Deportiva. Mis raíces están en un pequeño pueblo de Cuenca, un entorno donde el deporte y la vida activa despertaron mi curiosidad por entender cómo la alimentación influye decisivamente en el rendimiento y el bienestar general.\\n\\nEsa curiosidad se convirtió en mi vocación. A lo largo de mi trayectoria, he trabajado con perfiles muy diversos, y actualmente soy el nutricionista del Club Deportivo Castellón (Segunda División). En el deporte profesional, aplico un enfoque integral para optimizar la composición corporal y la recuperación, pero siempre manteniendo la misma filosofía que aplico con cualquier persona: la nutrición debe ser individualizada, rigurosa y, sobre todo, disfrutable.\\n\\nEstoy convencido de que comer nunca debe ser algo restrictivo o negativo. Mi objetivo es que cada persona aprenda a alimentarse sin renunciar al placer, mediante estrategias realistas y sostenibles. Mi mayor motivación es acompañarte de forma honesta y cercana, convirtiendo la nutrición en una herramienta de salud y mejora a largo plazo.",
-    link: "https://www.instagram.com/squat_nutrition/",
   },
 ];
