@@ -1,14 +1,14 @@
 import type { ImageMetadata } from "astro";
 
-import daniValenciaPhoto from "../assets/professionals/dani-valencia.jpg";
-import franSaezPhoto from "../assets/professionals/fran-saez.jpg";
-import gabrielMartinezPhoto from "../assets/professionals/gabriel-martinez.jpg";
-import javierSanchezPhoto from "../assets/professionals/javier-sanchez.jpg";
-import joseSaezPhoto from "../assets/professionals/jose-saez.jpg";
+import daniValenciaPhoto from "../assets/professionals/dani-valencia.webp";
+import franSaezPhoto from "../assets/professionals/fran-saez.webp";
+import gabrielMartinezPhoto from "../assets/professionals/gabriel-martinez.webp";
+import javierSanchezPhoto from "../assets/professionals/javier-sanchez.webp";
+import joseSaezPhoto from "../assets/professionals/jose-saez.webp";
 
-import blueDot from "../assets/dots/blue-dot.png";
-import orangeDot from "../assets/dots/orange-dot.png";
-import redDot from "../assets/dots/red-dot.png";
+import blueDot from "../assets/dots/blue-dot.webp";
+import orangeDot from "../assets/dots/orange-dot.webp";
+import redDot from "../assets/dots/red-dot.webp";
 
 export interface Review {
   name: string;
@@ -115,7 +115,8 @@ export const professionals: Professional[] = [
     whatsapp: "677752522",
     image: gabrielMartinezPhoto,
     dot: blueDot,
-    history: "Soy Gabriel, Entrenador Personal y apasionado del entrenamiento de alta intensidad. Mi formación técnica comenzó junto a Fran en TAFAD, donde no solo compartimos estudios, sino también una visión exigente y profesional sobre el deporte. Desde entonces, he centrado mi carrera en llevar el rendimiento físico al siguiente nivel a través de la disciplina y el esfuerzo real.\\n\\nMi filosofía de trabajo es clara: para ver resultados distintos, hay que entrenar con una intensidad verdadera. Me especializo en crear rutinas totalmente a medida, diseñadas para exprimir el potencial de cada persona que pasa por Bloom Fitness. No creo en los entrenamientos genéricos; creo en planes específicos que desafíen tus límites y te obliguen a progresar de forma constante, siempre bajo un control técnico riguroso.\\n\\nEntrenar conmigo significa tener a alguien que te apoyará en cada repetición y que no te dejará rendirte antes de tiempo. Mi mayor compromiso es acompañarte en tu evolución, asegurándome de que cada gota de sudor cuente y que alcances tus metas con la constancia y la energía que requiere el éxito. Si buscas compromiso y un entrenamiento que de verdad te ponga a prueba, estoy aquí para guiarte.",
+    history:
+      "Soy Gabriel, Entrenador Personal y apasionado del entrenamiento de alta intensidad. Mi formación técnica comenzó junto a Fran en TAFAD, donde no solo compartimos estudios, sino también una visión exigente y profesional sobre el deporte. Desde entonces, he centrado mi carrera en llevar el rendimiento físico al siguiente nivel a través de la disciplina y el esfuerzo real.\\n\\nMi filosofía de trabajo es clara: para ver resultados distintos, hay que entrenar con una intensidad verdadera. Me especializo en crear rutinas totalmente a medida, diseñadas para exprimir el potencial de cada persona que pasa por Bloom Fitness. No creo en los entrenamientos genéricos; creo en planes específicos que desafíen tus límites y te obliguen a progresar de forma constante, siempre bajo un control técnico riguroso.\\n\\nEntrenar conmigo significa tener a alguien que te apoyará en cada repetición y que no te dejará rendirte antes de tiempo. Mi mayor compromiso es acompañarte en tu evolución, asegurándome de que cada gota de sudor cuente y que alcances tus metas con la constancia y la energía que requiere el éxito. Si buscas compromiso y un entrenamiento que de verdad te ponga a prueba, estoy aquí para guiarte.",
     reviews: [],
   },
   {

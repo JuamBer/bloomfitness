@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import colorBar from "../assets/color-bar.png";
+import colorBar from "../assets/color-bar.webp";
 
 interface Props {
   loading?: "eager" | "lazy";
@@ -15,5 +15,7 @@ const { loading = "eager" } = Astro.props;
     alt="Color Bar"
     class="w-full h-auto"
     loading={loading}
+    widths={[320, 480, 768, 1024, 1280, 1920]}
+    sizes="100vw"
   />
 </section>

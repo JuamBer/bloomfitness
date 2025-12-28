@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import team from "../assets/bloom-team.png";
+import team from "../assets/bloom-team.webp";
 import { professionals } from "../data/professionals";
 ---
 
@@ -14,6 +14,8 @@ import { professionals } from "../data/professionals";
         alt="Bloom Fitness Team"
         class="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-90"
         loading="lazy"
+        widths={[360, 720]}
+        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 360px"
       />
     </div>
 
@@ -69,6 +71,8 @@ import { professionals } from "../data/professionals";
                       class="aspect-[4/6] w-full h-auto object-cover border-2 border-gray-700 rounded-md group-hover:border-[#ED6D35] transition-colors"
                       loading="lazy"
                       transition:name={`professional-image-${professional.slug}`}
+                      widths={[320, 500, 555, 640]}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                     <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 backdrop-blur-xs border-2 border-white rounded-full px-6 py-3 text-center whitespace-nowrap group-hover:border-[#ED6D35] transition-colors">
                       <p

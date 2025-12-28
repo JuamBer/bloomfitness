@@ -56,6 +56,8 @@ const { professional } = Astro.props;
                 alt={professional.name}
                 class="w-full aspect-[4/6] object-cover border-2 border-gray-700 rounded-md"
                 transition:name={`professional-image-${professional.slug}`}
+                widths={[360, 480, 555, 768, 1024]}
+                sizes="(max-width: 1024px) 100vw, 400px"
               />
             )
           }
