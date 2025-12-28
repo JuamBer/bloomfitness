@@ -1,0 +1,90 @@
+---
+import arrowRight from "../assets/icons/arrow-right-solid-full.svg";
+import ColorBar from "../components/ColorBar.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+    title="Página no encontrada | Bloom Fitness"
+    description="Lo sentimos, la página que buscas no existe en Bloom Fitness. Vuelve al inicio para explorar nuestros servicios de entrenamiento, fisioterapia y nutrición."
+>
+    <Header />
+    <ColorBar />
+
+    <main
+        class="min-h-[70vh] bg-black flex flex-col items-center justify-center px-6 py-20 text-center relative overflow-hidden"
+    >
+        <div
+            class="absolute top-1/4 -left-20 w-64 h-64 bg-[var(--color-orange-strong)] opacity-10 blur-[120px] rounded-full"
+        >
+        </div>
+        <div
+            class="absolute bottom-1/4 -right-20 w-80 h-80 bg-[var(--color-blue)] opacity-10 blur-[150px] rounded-full"
+        >
+        </div>
+
+        <div class="relative z-10 max-w-2xl">
+            <h1
+                class="text-[120px] sm:text-[160px] md:text-[200px] leading-none bg-clip-text mb-4 select-none text-white font-bold"
+            >
+                404
+            </h1>
+
+            <div
+                class="w-20 h-1.5 bg-[var(--color-red)] mx-auto mb-10 rounded-full"
+            >
+            </div>
+
+            <h2
+                class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white uppercase tracking-wider mb-6"
+            >
+                Página no encontrada
+            </h2>
+
+            <p
+                class="text-gray-400 text-lg md:text-xl mb-12 leading-relaxed max-w-lg mx-auto"
+            >
+                Parece que el camino que buscabas no está disponible. No te
+                preocupes, siempre puedes volver a la pista principal.
+            </p>
+
+            <div
+                class="flex flex-col sm:flex-row items-center justify-center gap-6"
+            >
+                <a
+                    href="/"
+                    class="inline-flex items-center gap-3 px-8 py-4 text-white font-bold text-lg uppercase tracking-wide rounded-full transition-all duration-300 shadow-lg hover:shadow-2xl relative overflow-hidden group"
+                >
+                    <span class="relative z-10">Volver al inicio</span>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-r from-[var(--color-red)] via-[var(--color-orange-strong)] to-[var(--color-red)] bg-[length:200%_100%] group-hover:animate-[gradient-shift_2s_ease_infinite]"
+                    >
+                    </div>
+                    <span
+                        class="relative z-10 w-5 h-5 bg-white transition-transform group-hover:translate-x-1"
+                        style={`mask: url(${arrowRight.src}) no-repeat center / contain; -webkit-mask: url(${arrowRight.src}) no-repeat center / contain;`}
+                    ></span>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <ColorBar />
+    <Footer />
+</Layout>
+
+<style>
+    @keyframes gradient-shift {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+</style>
