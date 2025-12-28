@@ -8,6 +8,8 @@ export interface Props {
 }
 
 import favicon from "../assets/favicon.ico";
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -47,7 +49,7 @@ import favicon from "../assets/favicon.ico";
     <meta name="ICBM" content="39.473568, -0.418877" />
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://bloomfitness.es/" />
+    <link rel="canonical" href={canonicalURL} />
 
     <!-- Preconnect to external origins -->
     <link rel="preconnect" href="https://use.typekit.net" crossorigin />
