@@ -132,4 +132,15 @@ export const professionals: Professional[] = [
     history:
       "Soy Javier Sánchez, Dietista-Nutricionista especializado en Nutrición Deportiva. Mis raíces están en un pequeño pueblo de Cuenca, un entorno donde el deporte y la vida activa despertaron mi curiosidad por entender cómo la alimentación influye decisivamente en el rendimiento y el bienestar general.\\n\\nEsa curiosidad se convirtió en mi vocación. A lo largo de mi trayectoria, he trabajado con perfiles muy diversos, y actualmente soy el nutricionista del Club Deportivo Castellón (Segunda División). En el deporte profesional, aplico un enfoque integral para optimizar la composición corporal y la recuperación, pero siempre manteniendo la misma filosofía que aplico con cualquier persona: la nutrición debe ser individualizada, rigurosa y, sobre todo, disfrutable.\\n\\nEstoy convencido de que comer nunca debe ser algo restrictivo o negativo. Mi objetivo es que cada persona aprenda a alimentarse sin renunciar al placer, mediante estrategias realistas y sostenibles. Mi mayor motivación es acompañarte de forma honesta y cercana, convirtiendo la nutrición en una herramienta de salud y mejora a largo plazo.",
   },
+  {
+    slug: "enzo-perez",
+    name: "Enzo Pérez Maraver",
+    area: ProfessionalArea.ENTRENADOR_PERSONAL,
+    email: "enzo.perez.maraver2002@gmail.com",
+    whatsapp: "608773717",
+    description: "Se revelará pronto",
+    image: null,
+    dot: blueDot,
+    comingSoon: true,
+  },
 ];
