@@ -9,13 +9,13 @@ import presentation from "../assets/videos/presentation.mp4";
   loop
   playsinline
   preload="metadata"
-  class="w-full h-[70vh] md:h-auto object-cover md:object-contain bg-black"
+  class="w-full h-[70vh] md:h-auto md:aspect-video object-cover md:object-contain bg-black"
 ></video>
 
 <script>
   function setupVideo() {
     const video = document.getElementById(
-      "presentation-video"
+      "presentation-video",
     ) as HTMLVideoElement;
 
     if (video) {
@@ -31,7 +31,7 @@ import presentation from "../assets/videos/presentation.mp4";
         },
         {
           threshold: 0.5,
-        }
+        },
       );
 
       observer.observe(video);
