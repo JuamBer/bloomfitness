@@ -8,7 +8,9 @@ import ProfessionalsSidebar from "../../components/ProfessionalsSidebar.astro";
 import { ProfessionalArea, professionals } from "../../data/professionals";
 import Layout from "../../layouts/Layout.astro";
 
-const physios = professionals.filter((p) => p.area === ProfessionalArea.FISIOTERAPIA);
+const physios = professionals.filter(
+  (p) => p.area === ProfessionalArea.FISIOTERAPIA,
+);
 ---
 
 <Layout
@@ -37,10 +39,11 @@ const physios = professionals.filter((p) => p.area === ProfessionalArea.FISIOTER
     <section class="max-w-7xl mx-auto px-6 md:px-12 mb-16">
       <span
         class="text-[var(--color-blue)] uppercase tracking-wider font-bold text-sm mb-2 block"
-        >02</span
+        transition:name="servicio-numero-02">02</span
       >
       <h1
         class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-wider text-white uppercase mb-8"
+        transition:name="servicio-nombre-fisioterapia"
       >
         FISIOTERAPIA
       </h1>
