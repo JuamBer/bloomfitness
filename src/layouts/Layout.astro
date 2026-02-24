@@ -28,6 +28,19 @@ const socialImageURL = new URL(Astro.props.image || ogImage.src, Astro.site);
 <!doctype html>
 <html lang="es">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MNX52HLPYZ"
+    ></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-MNX52HLPYZ");
+    </script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href={favicon} />
@@ -173,6 +186,7 @@ const socialImageURL = new URL(Astro.props.image || ogImage.src, Astro.site);
     </script>
     <ClientRouter />
   </head>
+
   <body>
     <slot />
   </body>
