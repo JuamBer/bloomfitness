@@ -5,11 +5,24 @@ import "../styles/global.css";
 export interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  keywords?: string;
 }
 
 import favicon from "../assets/favicon.ico";
+import ogImage from "../assets/banner.webp";
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const siteTitle =
+  Astro.props.title ||
+  "Bloom Fitness | Entrenamiento, Fisioterapia y Nutrición Personalizada";
+const siteDescription =
+  Astro.props.description ||
+  "Tu centro familiar de entrenamiento, fisioterapia y nutrición en Mislata. Olvídate de los gimnasios masificados. Nos centramos en tu salud, fuerza y readaptación de lesiones leves. Trato 100% personal.";
+const siteKeywords =
+  Astro.props.keywords ||
+  "entrenamiento Mislata, fisioterapia cerca de mí, entrenador personal Mislata, gimnasio no masificado Mislata, readaptación lesiones Valencia, dolor espalda ejercicio, entrenamiento seguro, salud integral, nutrición, bloom fitness";
+const socialImageURL = new URL(Astro.props.image || ogImage.src, Astro.site);
 ---
 
 <!doctype html>
@@ -21,26 +34,28 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="generator" content={Astro.generator} />
 
     <!-- SEO Meta Tags -->
-    <title>
-      {
-        Astro.props.title ||
-          "Bloom Fitness | Entrenamiento, Fisioterapia y Nutrición Personalizada"
-      }
-    </title>
-    <meta
-      name="description"
-      content={Astro.props.description ||
-        "Tu centro familiar de entrenamiento, fisioterapia y nutrición en Mislata. Olvídate de los gimnasios masificados. Nos centramos en tu salud, fuerza y readaptación de lesiones leves. Trato 100% personal."}
-    />
-    <meta
-      name="keywords"
-      content="entrenamiento Mislata, fisioterapia cerca de mí, entrenador personal Mislata, gimnasio no masificado Mislata, readaptación lesiones Valencia, dolor espalda ejercicio, entrenamiento seguro, salud integral, nutrición, bloom fitness"
-    />
+    <title>{siteTitle}</title>
+    <meta name="description" content={siteDescription} />
+    <meta name="keywords" content={siteKeywords} />
     <meta
       name="author"
       content="Bloom Fitness - Fran Sáez, José Sáez, Gabriel Martínez, Daniel Valencia"
     />
     <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={siteTitle} />
+    <meta property="og:description" content={siteDescription} />
+    <meta property="og:image" content={socialImageURL} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={siteTitle} />
+    <meta property="twitter:description" content={siteDescription} />
+    <meta property="twitter:image" content={socialImageURL} />
 
     <!-- Geo Tags for Local SEO -->
     <meta name="geo.region" content="ES-VC" />
