@@ -8,9 +8,9 @@ import youtubeIcon from "../assets/icons/youtube-brands-solid-full.svg";
 import isotype from "../assets/isotype.svg";
 ---
 
-<footer class="w-full bg-black py-12">
+<footer class="w-full bg-black py-8">
   <div class="container mx-auto px-4 max-w-7xl">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-4">
       <div class="flex flex-col items-center md:items-start">
         <Image
           src={isotype}
@@ -181,6 +181,14 @@ import isotype from "../assets/isotype.svg";
       <p class="text-gray-200 text-sm text-center md:text-left">
         © {new Date().getFullYear()} Bloom Fitness. Todos los derechos reservados.
       </p>
+      <div class="flex gap-6">
+        <a
+          href="/politica-de-devoluciones"
+          class="text-gray-400 hover:text-[var(--color-orange-strong)] text-sm transition-colors duration-300"
+        >
+          Política de Devoluciones
+        </a>
+      </div>
     </div>
   </div>
 </footer>

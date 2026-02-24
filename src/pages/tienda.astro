@@ -1,0 +1,59 @@
+---
+import ColorBar from "../components/ColorBar.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import ProductCard from "../components/ProductCard.astro";
+import { products } from "../data/products";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Tienda | Bloom Fitness"
+  description="Camisetas exclusivas de Bloom Fitness. Entrena con estilo y motivación."
+>
+  <Header />
+
+  <main
+    class="bg-black py-8 px-4 sm:px-6 lg:px-8 min-h-[calc(100vh-theme(spacing.20))] flex items-center"
+  >
+    <div class="max-w-[1400px] mx-auto w-full">
+      <div class="lg:flex lg:items-center lg:gap-16">
+        <div class="text-center lg:text-left lg:w-1/3 mb-12 lg:mb-0">
+          <h1
+            class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-widest uppercase mb-4 lg:leading-[1.1]"
+          >
+            NUESTRA <span class="text-[var(--color-orange-strong)]"
+              >COLECCIÓN</span
+            >
+          </h1>
+          <div class="hidden lg:flex items-center gap-4 mb-6">
+            <div class="w-12 h-[0.15rem] bg-[var(--color-orange-strong)]"></div>
+          </div>
+          <p
+            class="max-w-2xl mx-auto lg:mx-0 text-base md:text-lg text-gray-300 font-light italic leading-relaxed"
+          >
+            "Viste tu pasión. Diseños únicos para tu entrenamiento diario."
+          </p>
+        </div>
+
+        <div
+          class="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8"
+        >
+          {
+            products.map((product) => (
+              <ProductCard
+                title={product.title}
+                slug={product.slug}
+                price={product.price}
+                images={product.images}
+              />
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <ColorBar loading="lazy" />
+  <Footer />
+</Layout>

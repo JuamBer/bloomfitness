@@ -4,7 +4,7 @@ import burger from "../assets/burger.svg";
 import isotype from "../assets/isotype.svg";
 ---
 
-<header class="bg-black h-25 lg:h-35 flex items-center justify-center">
+<header class="bg-black h-25 lg:h-30 flex items-center justify-center">
   <div class="max-w-7xl w-full pl-[3rem] pr-[3rem]">
     <div class="h-full flex items-center justify-between w-full">
       <button
@@ -40,10 +40,12 @@ import isotype from "../assets/isotype.svg";
   id="menu-overlay"
   class="fixed inset-0 bg-black z-50 flex items-start justify-start opacity-0 pointer-events-none transition-all duration-500 -translate-x-full"
 >
-  <div class="w-full h-full flex flex-col p-8 md:p-12 lg:p-16">
+  <div
+    class="w-full h-full flex flex-col px-8 md:px-12 py-8 lg:px-16 justify-between"
+  >
     <button
       id="menu-close"
-      class="self-start text-white text-5xl font-light cursor-pointer bg-transparent border-none mb-12 transition-all duration-300 hover:text-[var(--color-orange-strong)] hover:scale-110 hover:rotate-90"
+      class="self-start text-white text-5xl font-light cursor-pointer bg-transparent border-none transition-all duration-300 hover:text-[var(--color-orange-strong)] hover:scale-110 hover:rotate-90"
       aria-label="Close menu"
     >
       ×
@@ -77,6 +79,14 @@ import isotype from "../assets/isotype.svg";
         </li>
         <li>
           <a
+            href="/tienda"
+            class="menu-link text-white text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-wider hover:text-[var(--color-orange-strong)] transition-all duration-300 inline-block hover:translate-x-4"
+          >
+            TIENDA
+          </a>
+        </li>
+        <li>
+          <a
             href="/#contact"
             class="menu-link text-white text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-wider hover:text-[var(--color-orange-strong)] transition-all duration-300 inline-block hover:translate-x-4"
           >
@@ -104,7 +114,7 @@ import isotype from "../assets/isotype.svg";
       menuOverlay?.classList.remove(
         "opacity-0",
         "pointer-events-none",
-        "-translate-x-full"
+        "-translate-x-full",
       );
       menuOverlay?.classList.add("opacity-100", "translate-x-0");
       document.body.style.overflow = "hidden";
@@ -114,7 +124,7 @@ import isotype from "../assets/isotype.svg";
       menuOverlay?.classList.add(
         "opacity-0",
         "pointer-events-none",
-        "-translate-x-full"
+        "-translate-x-full",
       );
       menuOverlay?.classList.remove("opacity-100", "translate-x-0");
       document.body.style.overflow = "";

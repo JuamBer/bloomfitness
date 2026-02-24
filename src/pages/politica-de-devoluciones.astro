@@ -1,0 +1,102 @@
+---
+import ColorBar from "../components/ColorBar.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Política de Devoluciones | Bloom Fitness">
+  <Header />
+  <main class="pt-32 pb-16 bg-black min-h-screen">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <h1
+        class="text-4xl md:text-5xl font-bold text-white mb-8 border-b border-[var(--color-orange-strong)] pb-4 uppercase"
+      >
+        Política de Devoluciones
+      </h1>
+
+      <div class="max-w-none">
+        <p class="text-gray-300 text-lg mb-12">
+          En Bloom Fitness queremos que estés satisfecho con tus compras. A
+          continuación detallamos nuestra política de cambios y devoluciones
+          para los productos adquiridos en nuestra tienda:
+        </p>
+
+        <ul class="space-y-8">
+          <li class="flex gap-6">
+            <div
+              class="flex-shrink-0 w-10 h-10 rounded-full bg-[var(--color-orange-strong)] flex items-center justify-center text-white font-bold text-xl"
+            >
+              1
+            </div>
+            <div>
+              <h3 class="text-2xl font-bold text-white mb-3 uppercase">
+                Cambios de Talla
+              </h3>
+              <p class="text-gray-300 leading-relaxed">
+                Si el producto es nuevo y está en perfecto estado, pero la talla
+                no es la correcta, realizamos <strong
+                  >solo cambios de talla</strong
+                >. No se admiten devoluciones de dinero ni cambios por otros
+                modelos si el producto original es correcto y está en buen
+                estado.
+              </p>
+            </div>
+          </li>
+
+          <li class="flex gap-6">
+            <div
+              class="flex-shrink-0 w-10 h-10 rounded-full bg-[var(--color-orange-strong)] flex items-center justify-center text-white font-bold text-xl"
+            >
+              2
+            </div>
+            <div>
+              <h3 class="text-2xl font-bold text-white mb-3 uppercase">
+                Productos Defectuosos
+              </h3>
+              <p class="text-gray-300 leading-relaxed">
+                Si el producto presenta algún defecto de fábrica, procederemos a
+                cambiarlo por otro idéntico en perfecto estado. En este caso,
+                Bloom Fitness se hará cargo de los costes asociados al cambio.
+              </p>
+            </div>
+          </li>
+
+          <li class="flex gap-6">
+            <div
+              class="flex-shrink-0 w-10 h-10 rounded-full bg-[var(--color-orange-strong)] flex items-center justify-center text-white font-bold text-xl"
+            >
+              3
+            </div>
+            <div>
+              <h3 class="text-2xl font-bold text-white mb-3 uppercase">
+                Plazo Máximo
+              </h3>
+              <p class="text-gray-300 leading-relaxed">
+                El plazo máximo para solicitar cualquier cambio o reportar un
+                defecto es de <strong>7 días naturales</strong> a partir de la fecha
+                de recepción del pedido. Pasado este plazo, no se aceptarán reclamaciones.
+              </p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="mt-16 p-8 bg-zinc-900/50 rounded-xl border border-zinc-800">
+          <h4 class="text-white font-bold mb-4 uppercase">
+            ¿Cómo solicitar un cambio?
+          </h4>
+          <p class="text-gray-400">
+            Para gestionar tu cambio, por favor contacta con nosotros indicando
+            tu número de pedido y el motivo del cambio a través de nuestro <a
+              href="/#contact"
+              class="text-[var(--color-orange-strong)] hover:underline font-semibold"
+              >formulario de contacto</a
+            > o directamente en nuestro centro.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <ColorBar />
+  <Footer />
+</Layout>

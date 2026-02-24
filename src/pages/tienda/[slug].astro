@@ -1,0 +1,432 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import ColorBar from "../../components/ColorBar.astro";
+import { products, baseBuyLink } from "../../data/products";
+import { Image } from "astro:assets";
+
+export function getStaticPaths() {
+  return products.map((product) => ({
+    params: { slug: product.slug },
+    props: { product },
+  }));
+}
+
+const { product } = Astro.props;
+
+const colorMap: Record<string, string> = {
+  "Gris Pizarra": "#686662",
+  "Rojo Carmín": "#824440",
+  "Azul Turquesa": "#507071",
+  Negro: "#000000",
+  Blanco: "#ffffff",
+  Naranja: "#ED6D35",
+};
+---
+
+<Layout
+  title={`${product.title} | Bloom Fitness Shop`}
+  description={product.description}
+>
+  <Header />
+
+  <main
+    class="min-h-[calc(100vh-theme(spacing.20))] bg-black pt-4 pb-12 px-4 sm:px-6 lg:px-8 flex items-center"
+  >
+    <div class="max-w-[1400px] mx-auto w-full">
+      <div class="lg:grid lg:grid-cols-2 lg:gap-x-12 lg:items-center">
+        {/* Image gallery */}
+        <div class="flex flex-col-reverse sm:flex-row gap-4">
+          <!-- Image Selector -->
+          <div class="hidden sm:block w-20 lg:w-24 flex-shrink-0">
+            <div
+              class="flex flex-col gap-4"
+              aria-orientation="vertical"
+              role="tablist"
+            >
+              {
+                product.images.map((image, index) => (
+                  <button
+                    id={`tab-${index}`}
+                    class="relative h-16 lg:h-20 bg-zinc-900 rounded-md flex items-center justify-center text-sm font-medium uppercase text-white cursor-pointer hover:bg-zinc-800 transition-colors focus:outline-none"
+                    role="tab"
+                    type="button"
+                    onclick={`switchImage(${index})`}
+                  >
+                    <span class="sr-only">Image {index + 1}</span>
+                    <div class="absolute inset-0 rounded-md overflow-hidden">
+                      <Image
+                        src={image}
+                        alt=""
+                        class="w-full h-full object-center object-cover opacity-60 hover:opacity-100 transition-opacity"
+                      />
+                    </div>
+                    <div
+                      class={`ring-transparent absolute inset-0 rounded-md ring-2 ring-offset-2 ring-offset-black pointer-events-none transition-all ${index === 0 ? "ring-[var(--color-orange-strong)]" : ""}`}
+                      aria-hidden="true"
+                      id={`ring-${index}`}
+                    />
+                  </button>
+                ))
+              }
+            </div>
+          </div>
+
+          <div
+            class="w-full flex-1 aspect-square bg-zinc-900 rounded-lg overflow-hidden lg:aspect-none lg:h-[60vh] relative border-2 border-zinc-800"
+          >
+            {
+              product.images.length > 0 ? (
+                product.images.map((image, index) => (
+                  <div
+                    id={`image-${index}`}
+                    class={`w-full h-full ${index === 0 ? "block" : "hidden"}`}
+                  >
+                    <Image
+                      src={image}
+                      alt={product.title}
+                      class="w-full h-full object-contain object-center bg-zinc-900"
+                    />
+                  </div>
+                ))
+              ) : (
+                <div class="w-full h-full flex items-center justify-center bg-zinc-900 text-white">
+                  <span class="text-4xl font-bold text-[var(--color-orange-strong)] text-center px-4">
+                    {product.title}
+                  </span>
+                </div>
+              )
+            }
+          </div>
+        </div>
+
+        {/* Product info */}
+        <div class="mt-8 px-4 sm:px-0 sm:mt-16 lg:mt-0 lg:max-w-xl">
+          <div class="mb-4">
+            <nav class="flex mb-2" aria-label="Breadcrumb">
+              <ol
+                class="flex items-center space-x-2 text-xs uppercase tracking-widest text-gray-500"
+              >
+                <li>
+                  <a
+                    href="/tienda"
+                    class="hover:text-[var(--color-orange-strong)] transition-colors"
+                    >Tienda</a
+                  >
+                </li>
+                <li><span class="mx-2">/</span></li>
+                <li class="text-[var(--color-orange-strong)] font-bold">
+                  {product.title}
+                </li>
+              </ol>
+            </nav>
+            <h1
+              class="text-3xl md:text-4xl font-extrabold tracking-tight text-white uppercase mb-2"
+            >
+              {product.title}
+            </h1>
+
+            <div class="flex items-center gap-4">
+              <p class="text-2xl font-bold text-[var(--color-orange-strong)]">
+                {product.price}
+              </p>
+              <span
+                class="px-2 py-0.5 bg-zinc-800 text-white text-[10px] font-bold rounded-full border border-zinc-700"
+                >IVA INCLUIDO</span
+              >
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <div>
+              <div
+                class="text-base text-gray-300 font-light italic leading-relaxed border-l-2 border-zinc-800 pl-4 py-1"
+              >
+                <p>{product.description}</p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+              {/* Colors */}
+              <div>
+                <h3
+                  class="text-xs font-bold text-white uppercase tracking-widest mb-3"
+                >
+                  Color Disponible
+                </h3>
+                <div class="flex items-center gap-3 mb-2">
+                  {
+                    product.colors.map((color, index) => (
+                      <label class="relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none group">
+                        <input
+                          type="radio"
+                          name="color-choice"
+                          value={color}
+                          class="sr-only"
+                          onclick={`selectColor(this)`}
+                        />
+                        <span class="sr-only">{color}</span>
+                        <span
+                          aria-hidden="true"
+                          class="h-8 w-8 border-2 border-zinc-800 rounded-full transition-all duration-300 group-hover:scale-110"
+                          style={{
+                            backgroundColor: colorMap[color] || "#e5e7eb",
+                          }}
+                        />
+                        <span
+                          class="hidden absolute -inset-1 rounded-full border-2 border-[var(--color-orange-strong)] pointer-events-none"
+                          id={`color-ring-${color.replace(/\s+/g, "-")}`}
+                        />
+                      </label>
+                    ))
+                  }
+                </div>
+                <p
+                  id="selected-color-text"
+                  class="mt-1 text-[10px] text-[var(--color-orange-strong)] font-bold uppercase tracking-widest h-4"
+                >
+                </p>
+              </div>
+
+              {/* Sizes */}
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <h3
+                    class="text-xs font-bold text-white uppercase tracking-widest"
+                  >
+                    Tallas
+                  </h3>
+                  <a
+                    href="/tienda/guia-de-tallas"
+                    class="text-[9px] font-bold text-gray-500 uppercase tracking-tighter hover:text-[var(--color-orange-strong)] transition-colors border-b border-gray-800"
+                  >
+                    Guía de tallas
+                  </a>
+                </div>
+
+                <div class="grid grid-cols-5 gap-1.5">
+                  {
+                    product.sizes.map((size) => (
+                      <label
+                        class="group relative border-2 border-zinc-800 rounded-md h-9 flex items-center justify-center text-[10px] font-bold uppercase hover:bg-zinc-800 focus:outline-none bg-zinc-900 text-white cursor-pointer transition-all duration-300"
+                        id={`size-label-${size}`}
+                      >
+                        <input
+                          type="radio"
+                          name="size-choice"
+                          value={size}
+                          class="sr-only"
+                          onclick={`selectSize(this)`}
+                        />
+                        <span id={`size-text-${size}`}>{size}</span>
+                        <span
+                          class="hidden absolute -inset-px rounded-md border-2 border-[var(--color-orange-strong)] pointer-events-none"
+                          id={`size-ring-${size}`}
+                        />
+                      </label>
+                    ))
+                  }
+                </div>
+                <p
+                  id="selected-size-text"
+                  class="mt-1 text-[10px] text-[var(--color-orange-strong)] font-bold uppercase tracking-widest h-4"
+                >
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-6 pt-6 border-t border-zinc-800">
+              <div class="mb-6 grid grid-cols-2 gap-4">
+                <a
+                  href="/politica-de-devoluciones"
+                  class="flex items-center gap-3 p-3 bg-zinc-900/50 rounded-lg border border-zinc-800 hover:border-zinc-600 transition-colors group/card"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="text-[var(--color-orange-strong)]"
+                    ><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"
+                    ></path><path d="M3 3v5h5"></path></svg
+                  >
+                  <div class="flex flex-col">
+                    <span
+                      class="text-[10px] text-gray-500 uppercase font-bold tracking-wider group-hover/card:text-[var(--color-orange-strong)] transition-colors"
+                      >Devoluciones</span
+                    >
+                    <span class="text-xs text-white font-medium"
+                      >7 días para cambios</span
+                    >
+                  </div>
+                </a>
+                <div
+                  class="flex items-center gap-3 p-3 bg-zinc-900/50 rounded-lg border border-zinc-800"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="text-[var(--color-orange-strong)]"
+                    ><rect x="1" y="3" width="15" height="13"></rect><polygon
+                      points="16 8 20 8 23 11 23 16 16 16 16 8"
+                    ></polygon><circle cx="5.5" cy="18.5" r="2.5"
+                    ></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg
+                  >
+                  <div class="flex flex-col">
+                    <span
+                      class="text-[10px] text-gray-500 uppercase font-bold tracking-wider"
+                      >Envío</span
+                    >
+                    <span class="text-xs text-white font-medium"
+                      >Recogida en centro</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <a
+                id="buy-button"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full bg-[var(--color-orange-strong)] border-2 border-[var(--color-orange-strong)] rounded-full py-3 px-8 flex items-center justify-center text-base font-extrabold text-white hover:bg-transparent hover:text-[var(--color-orange-strong)] transition-all duration-300 text-center uppercase tracking-[0.2em] opacity-50 pointer-events-none grayscale"
+              >
+                ELIGE TALLA Y COLOR
+              </a>
+            </div>
+
+            <p
+              class="mt-4 text-[10px] text-gray-400 font-bold uppercase tracking-widest text-center italic"
+            >
+              * La compra se realizará de forma segura a través de la plataforma
+              externa Timp.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <ColorBar loading="lazy" />
+  <Footer />
+</Layout>
+
+<script define:vars={{ productVariants: product.variants, baseBuyLink }}>
+  window.productVariants = productVariants;
+  window.baseBuyLink = baseBuyLink;
+</script>
+
+<script is:inline>
+  window.selectedColor = null;
+  window.selectedSize = null;
+
+  function switchImage(index) {
+    // Hide all images
+    const images = document.querySelectorAll('[id^="image-"]');
+    images.forEach((img) => {
+      img.classList.add("hidden");
+      img.classList.remove("block");
+    });
+
+    // Show selected image
+    const selectedImage = document.getElementById(`image-${index}`);
+    if (selectedImage) {
+      selectedImage.classList.remove("hidden");
+      selectedImage.classList.add("block");
+    }
+
+    // Update rings
+    const rings = document.querySelectorAll('[id^="ring-"]');
+    rings.forEach((ring) => {
+      ring.classList.remove("ring-[var(--color-orange-strong)]");
+      ring.classList.add("ring-transparent");
+    });
+
+    const selectedRing = document.getElementById(`ring-${index}`);
+    if (selectedRing) {
+      selectedRing.classList.remove("ring-transparent");
+      selectedRing.classList.add("ring-[var(--color-orange-strong)]");
+    }
+  }
+
+  function selectColor(input) {
+    const color = input.value;
+    window.selectedColor = color;
+    const cleanColor = color.replace(/\s+/g, "-");
+
+    // Reset all color rings
+    const allRings = document.querySelectorAll('[id^="color-ring-"]');
+    allRings.forEach((ring) => ring.classList.add("hidden"));
+
+    // Show selected ring
+    const selectedRing = document.getElementById(`color-ring-${cleanColor}`);
+    if (selectedRing) selectedRing.classList.remove("hidden");
+
+    // Update text
+    const textElement = document.getElementById("selected-color-text");
+    if (textElement) textElement.innerText = `Color: ${color}`;
+
+    updateBuyButton();
+  }
+
+  function selectSize(input) {
+    const size = input.value;
+    window.selectedSize = size;
+
+    // Reset all size styles
+    const allLabels = document.querySelectorAll('[id^="size-label-"]');
+    allLabels.forEach((label) => {
+      label.classList.remove(
+        "ring-2",
+        "ring-[var(--color-orange-strong)]",
+        "border-transparent",
+      );
+    });
+
+    const allRings = document.querySelectorAll('[id^="size-ring-"]');
+    allRings.forEach((ring) => ring.classList.add("hidden"));
+
+    // Apply styles to selected
+    const selectedRing = document.getElementById(`size-ring-${size}`);
+    if (selectedRing) selectedRing.classList.remove("hidden");
+
+    // Update text
+    const textElement = document.getElementById("selected-size-text");
+    if (textElement) textElement.innerText = `Talla: ${size}`;
+
+    updateBuyButton();
+  }
+
+  function updateBuyButton() {
+    const buyButton = document.getElementById("buy-button");
+    const colorVariants = window.productVariants?.[window.selectedColor];
+    const timpId = colorVariants?.[window.selectedSize];
+
+    if (window.selectedColor && window.selectedSize && timpId) {
+      buyButton.classList.remove(
+        "opacity-50",
+        "pointer-events-none",
+        "grayscale",
+      );
+      buyButton.href = window.baseBuyLink + timpId;
+      buyButton.innerText = "COMPRAR AHORA";
+    } else {
+      buyButton.classList.add("opacity-50", "pointer-events-none", "grayscale");
+      buyButton.href = "#";
+      buyButton.innerText = "ELIGE TALLA Y COLOR";
+    }
+  }
+</script>

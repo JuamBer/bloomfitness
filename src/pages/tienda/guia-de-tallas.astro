@@ -1,0 +1,160 @@
+---
+import ColorBar from "../../components/ColorBar.astro";
+import Footer from "../../components/Footer.astro";
+import Header from "../../components/Header.astro";
+import Layout from "../../layouts/Layout.astro";
+
+const sizeGuide = [
+  { size: "S", width: "48 cm", length: "69 cm" },
+  { size: "M", width: "50 cm", length: "71 cm" },
+  { size: "L", width: "52 cm", length: "73 cm" },
+  { size: "XL", width: "54 cm", length: "75 cm" },
+  { size: "XXL", width: "56 cm", length: "77 cm" },
+];
+---
+
+<Layout
+  title="Guía de Tallas | Bloom Fitness Shop"
+  description="Consulta nuestra guía de tallas para elegir la prenda que mejor se adapte a ti. Medidas detalladas de nuestras camisetas unisex."
+>
+  <Header />
+
+  <main class="min-h-screen bg-black pt-12 pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto">
+      <nav class="flex mb-8" aria-label="Breadcrumb">
+        <ol
+          class="flex items-center space-x-2 text-xs uppercase tracking-widest text-gray-500"
+        >
+          <li>
+            <a
+              href="/tienda"
+              class="hover:text-[var(--color-orange-strong)] transition-colors"
+              >Tienda</a
+            >
+          </li>
+          <li><span class="mx-2">/</span></li>
+          <li class="text-[var(--color-orange-strong)] font-bold">
+            Guía de Tallas
+          </li>
+        </ol>
+      </nav>
+
+      <h1
+        class="text-4xl md:text-5xl font-extrabold tracking-tight text-white uppercase mb-8"
+      >
+        Guía de <span class="text-[var(--color-orange-strong)]">Tallas</span>
+      </h1>
+
+      <div class="prose prose-invert max-w-none mb-12">
+        <p class="text-gray-300 text-lg leading-relaxed">
+          Nuestras prendas están diseñadas para ofrecerte la máxima comodidad
+          durante tus entrenamientos y en tu día a día. Para asegurar un ajuste
+          perfecto, te recomendamos medir una de tus camisetas favoritas y
+          comparar las medidas con nuestra tabla.
+        </p>
+      </div>
+
+      <div
+        class="bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden shadow-2xl"
+      >
+        <table class="w-full text-left text-white border-collapse">
+          <thead>
+            <tr class="bg-zinc-800 border-b border-zinc-700">
+              <th class="px-6 py-4 font-bold uppercase tracking-wider text-sm"
+                >Talla</th
+              >
+              <th class="px-6 py-4 font-bold uppercase tracking-wider text-sm"
+                >Ancho (A)</th
+              >
+              <th class="px-6 py-4 font-bold uppercase tracking-wider text-sm"
+                >Largo (B)</th
+              >
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-zinc-800">
+            {
+              sizeGuide.map((item) => (
+                <tr class="hover:bg-zinc-800/50 transition-colors">
+                  <td class="px-6 py-4 font-bold text-[var(--color-orange-strong)]">
+                    {item.size}
+                  </td>
+                  <td class="px-6 py-4 text-gray-300">{item.width}</td>
+                  <td class="px-6 py-4 text-gray-300">{item.length}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div
+          class="bg-zinc-900/50 p-6 rounded-xl border border-zinc-800 border-dashed"
+        >
+          <h3
+            class="text-white font-bold uppercase tracking-wide mb-4 flex items-center gap-2"
+          >
+            <span class="w-2 h-2 bg-[var(--color-orange-strong)] rounded-full"
+            ></span>
+            ¿Cómo medir?
+          </h3>
+          <ul class="space-y-4 text-gray-300 text-sm">
+            <li class="flex gap-3">
+              <span
+                class="font-bold text-[var(--color-orange-strong)] whitespace-nowrap"
+                >Ancho:</span
+              >
+              <span
+                >Mide de sisa a sisa (un centímetro por debajo de las mangas).</span
+              >
+            </li>
+            <li class="flex gap-3">
+              <span
+                class="font-bold text-[var(--color-orange-strong)] whitespace-nowrap"
+                >Largo:</span
+              >
+              <span
+                >Mide desde el punto más alto del hombro hasta el borde
+                inferior.</span
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div
+          class="text-center p-6 bg-[var(--color-orange-strong)]/5 rounded-xl border border-[var(--color-orange-strong)]/20 flex items-center justify-center"
+        >
+          <p class="text-gray-300 text-sm italic">
+            * Las medidas son aproximadas y pueden variar ±1-2 cm según la
+            fabricación. Todas las tallas son unisex.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-16 text-center">
+        <a
+          href="/tienda"
+          class="inline-flex items-center gap-2 text-white font-bold uppercase tracking-widest hover:text-[var(--color-orange-strong)] transition-colors group"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="transition-transform group-hover:-translate-x-1"
+            ><path d="m15 18-6-6 6-6"></path></svg
+          >
+          Volver a la Tienda
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <ColorBar loading="lazy" />
+  <Footer />
+</Layout>
