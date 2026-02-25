@@ -30,7 +30,7 @@ export const GET: APIRoute = async ({ site }) => {
         if (!variantId) continue; // Skip if no variant ID exists for this combination
 
         const title = `${product.title} - ${color} - Talla ${size}`;
-        const link = `${baseUrl}/tienda/${product.slug}?color=${encodeURIComponent(color)}&size=${encodeURIComponent(size)}`;
+        const link = `${baseUrl}/tienda/${product.slug}?color=${encodeURIComponent(color)}&amp;size=${encodeURIComponent(size)}`;
 
         itemsXml += `
     <item>
