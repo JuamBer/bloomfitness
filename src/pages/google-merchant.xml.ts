@@ -9,12 +9,8 @@ export const GET: APIRoute = async ({ site }) => {
   let itemsXml = "";
 
   for (const product of products) {
-    // Get the first image as the main image for the product
-    // In Astro, imported images have a .src property
-    const mainImageSrc = product.images[0]?.src || "";
-    const imageUrl = mainImageSrc.startsWith("http")
-      ? mainImageSrc
-      : `${baseUrl}${mainImageSrc}`;
+    const mainImage = product.images[0]?.src || "";
+    const additionalImages = product.images.slice(1).map((img) => img.src);
 
     // Clean up price (e.g., "25€" -> "25.00 EUR")
     const numericPrice = product.price
@@ -32,13 +28,21 @@ export const GET: APIRoute = async ({ site }) => {
         const title = `${product.title} - ${color} - Talla ${size}`;
         const link = `${baseUrl}/tienda/${product.slug}?color=${encodeURIComponent(color)}&amp;size=${encodeURIComponent(size)}`;
 
+        const additionalImagesXml = additionalImages
+          .map(
+            (imgUrl) =>
+              `<g:additional_image_link>${imgUrl}</g:additional_image_link>`,
+          )
+          .join("\n      ");
+
         itemsXml += `
     <item>
       <g:id>${variantId}</g:id>
       <g:title><![CDATA[${title}]]></g:title>
       <g:description><![CDATA[${product.description}]]></g:description>
       <g:link>${link}</g:link>
-      <g:image_link>${imageUrl}</g:image_link>
+      <g:image_link>${mainImage}</g:image_link>
+      ${additionalImagesXml}
       <g:condition>new</g:condition>
       <g:availability>in_stock</g:availability>
       <g:price>${formattedPrice}</g:price>
