@@ -48,7 +48,13 @@ export const professionals: Professional[] = [
     dot: orangeDot,
     history:
       "Soy José Sáez, Fisioterapeuta (2021) y Técnico en Animación de Actividades Físicas y Deportivas (2017). Mi vida siempre ha estado ligada al deporte y la naturaleza, una pasión que me define tanto personal como profesionalmente.\\n\\nA lo largo de los años, me ha tocado experimentar en primera persona diversos dolores y lesiones. Lejos de ser un obstáculo, vivir ese proceso me impulsó a querer comprender qué sucede realmente en nuestro cuerpo cuando hay dolor. Esa voluntad de recuperarme, sumada al deseo de ayudar a otros tal como hicieron conmigo, es lo que me motiva a dedicarme plenamente a esta profesión.\\n\\nMi metodología se basa en el razonamiento clínico y el tratamiento activo. Durante mi formación, entendí que el paradigma de la fisioterapia ha evolucionado: hemos pasado de técnicas puramente pasivas a un modelo donde el paciente es el protagonista. Por ello, mi compromiso es empoderar a las personas para que tomen acción en su propia recuperación, encontrando mi mayor satisfacción en ver su progreso y mejora clínica real.\\n\\nUn saludo, ¡nos vemos en Bloom Fitness Mislata!",
-    reviews: [],
+    reviews: [
+      {
+        name: "Lourdes Álvarez",
+        comment:
+          "Fantástico. Súper profesional y me encuentro mucho mejor. Si vuelvo a tener necesidad de ir a un fisio iré sin duda a Bloom",
+      },
+    ],
   },
   {
     slug: "fran-saez",
@@ -131,6 +137,13 @@ export const professionals: Professional[] = [
     dot: orangeDot,
     history:
       "Soy Javier Sánchez, Dietista-Nutricionista especializado en Nutrición Deportiva. Mis raíces están en un pequeño pueblo de Cuenca, un entorno donde el deporte y la vida activa despertaron mi curiosidad por entender cómo la alimentación influye decisivamente en el rendimiento y el bienestar general.\\n\\nEsa curiosidad se convirtió en mi vocación. A lo largo de mi trayectoria, he trabajado con perfiles muy diversos, y actualmente soy el nutricionista del Club Deportivo Castellón (Segunda División). En el deporte profesional, aplico un enfoque integral para optimizar la composición corporal y la recuperación, pero siempre manteniendo la misma filosofía que aplico con cualquier persona: la nutrición debe ser individualizada, rigurosa y, sobre todo, disfrutable.\\n\\nEstoy convencido de que comer nunca debe ser algo restrictivo o negativo. Mi objetivo es que cada persona aprenda a alimentarse sin renunciar al placer, mediante estrategias realistas y sostenibles. Mi mayor motivación es acompañarte de forma honesta y cercana, convirtiendo la nutrición en una herramienta de salud y mejora a largo plazo.",
+    reviews: [
+      {
+        name: "Paz Martinez Bueno",
+        comment:
+          "Tuve problemas para llegar a la hora establecida y me retrasó la visita con amabilidad. Me va a preparar un plan personalizado y seguro que me ayuda a lograrlo",
+      },
+    ],
   },
   {
     slug: "enzo-perez",

@@ -1,0 +1,40 @@
+---
+const reviews = [
+  {
+    name: "Silvia Martin",
+    comment:
+      "He decidido valorar positivamente el servicio del gimnasio. La ubicación es perfecta para mí, ya que está muy cerca de casa, y el precio me parece razonable. Además, la variedad de clases que ofrecen se adapta a mis necesidades y preferencias. En cuanto al equipamiento, está en buen estado y limpio, lo que me hace sentir cómodo al entrenar. En general, estoy satisfecho con el servicio y lo recomendaría 👍.",
+  },
+  {
+    name: "Carlota Andres Castañer",
+    comment:
+      "Llevo ya un año en Bloom y no puedo estar más contenta con mi progreso. Los entrenadores, tanto Dani como Fran, son muy buenos y cercanos. Hacen que los entrenamientos sean amenos, dinámicos y súper motivadores. Siempre te animan a dar lo mejor de ti y eso se nota en los resultados. Además, se ve el esfuerzo constante por mejorar el gimnasio y las instalaciones y se nota el cariño y el esfuerzo que ponen en todo. ¡¡Súper recomendable!!",
+  },
+];
+---
+
+<section class="bg-black py-20">
+  <div class="container mx-auto px-4 max-w-6xl">
+    <h2
+      class="text-4xl md:text-5xl font-extrabold text-white uppercase mb-12 text-center"
+    >
+      Opiniones de nuestros clientes
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {
+        reviews.map((review) => (
+          <div class="bg-gray-900 border border-gray-700 rounded-lg p-8 flex flex-col justify-between h-full hover:border-[#ED6D35] transition-colors duration-300">
+            <div>
+              <p class="text-gray-300 text-lg leading-relaxed mb-6 italic">
+                "{review.comment}"
+              </p>
+            </div>
+            <p class="text-white font-bold uppercase tracking-wider">
+              — {review.name}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
