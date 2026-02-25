@@ -5,11 +5,11 @@ import isotype from "../assets/isotype.svg";
 ---
 
 <header class="bg-black h-25 lg:h-30 flex items-center justify-center">
-  <div class="max-w-7xl w-full pl-[3rem] pr-[3rem]">
+  <div class="max-w-7xl w-full px-6 lg:px-12">
     <div class="h-full flex items-center justify-between w-full">
       <button
         id="menu-toggle"
-        class="lg:w-3xl md:w-2xl w-1xl cursor-pointer bg-transparent border-none p-0 transition-transform duration-300 hover:translate-x-2"
+        class="w-10 lg:w-16 flex-shrink-0 cursor-pointer bg-transparent border-none p-0 transition-transform duration-300 hover:translate-x-2"
         aria-label="Toggle menu"
       >
         <Image
@@ -21,7 +21,7 @@ import isotype from "../assets/isotype.svg";
       </button>
       <a
         href="/"
-        class="transition-opacity duration-300 hover:opacity-70 flex items-center justify-center h-full w-full"
+        class="transition-opacity duration-300 hover:opacity-70 flex items-center justify-center h-full"
       >
         <Image
           src={isotype}
@@ -30,7 +30,7 @@ import isotype from "../assets/isotype.svg";
           loading="eager"
         />
       </a>
-      <div class="lg:w-3xl md:w-2xl w-1xl hidden md:block"></div>
+      <div class="w-10 lg:w-16 hidden md:block flex-shrink-0"></div>
     </div>
   </div>
 </header>

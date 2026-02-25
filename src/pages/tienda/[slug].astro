@@ -103,11 +103,11 @@ const colorMap: Record<string, string> = {
         </div>
 
         {/* Product info */}
-        <div class="mt-8 px-4 sm:px-0 sm:mt-16 lg:mt-0 lg:max-w-xl">
+        <div class="mt-8 sm:mt-16 lg:mt-0 lg:max-w-xl">
           <div class="mb-4">
             <nav class="flex mb-2" aria-label="Breadcrumb">
               <ol
-                class="flex items-center space-x-2 text-xs uppercase tracking-widest text-gray-500"
+                class="flex flex-wrap items-center space-x-2 text-[10px] md:text-xs uppercase tracking-widest text-gray-500"
               >
                 <li>
                   <a
@@ -303,7 +303,7 @@ const colorMap: Record<string, string> = {
                 href="#"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="w-full bg-[var(--color-orange-strong)] border-2 border-[var(--color-orange-strong)] rounded-full py-3 px-8 flex items-center justify-center text-base font-extrabold text-white hover:bg-transparent hover:text-[var(--color-orange-strong)] transition-all duration-300 text-center uppercase tracking-[0.2em] opacity-50 pointer-events-none grayscale"
+                class="w-full bg-[var(--color-orange-strong)] border-2 border-[var(--color-orange-strong)] rounded-full py-3 px-4 sm:px-8 flex items-center justify-center text-sm sm:text-base font-extrabold text-white hover:bg-transparent hover:text-[var(--color-orange-strong)] transition-all duration-300 text-center uppercase tracking-widest sm:tracking-[0.2em] opacity-50 pointer-events-none grayscale"
               >
                 ELIGE TALLA Y COLOR
               </a>
@@ -451,7 +451,9 @@ const colorMap: Record<string, string> = {
     const sizeParam = urlParams.get("size");
 
     if (colorParam) {
-      const colorInput = document.querySelector(`input[name="color-choice"][value="${colorParam}"]`);
+      const colorInput = document.querySelector(
+        `input[name="color-choice"][value="${colorParam}"]`,
+      );
       if (colorInput) {
         colorInput.checked = true;
         selectColor(colorInput);
@@ -459,7 +461,9 @@ const colorMap: Record<string, string> = {
     }
 
     if (sizeParam) {
-      const sizeInput = document.querySelector(`input[name="size-choice"][value="${sizeParam}"]`);
+      const sizeInput = document.querySelector(
+        `input[name="size-choice"][value="${sizeParam}"]`,
+      );
       if (sizeInput) {
         sizeInput.checked = true;
         selectSize(sizeInput);
