@@ -380,6 +380,7 @@ const colorMap: Record<string, string> = {
     const textElement = document.getElementById("selected-color-text");
     if (textElement) textElement.innerText = `Color: ${color}`;
 
+    updateUrlParams();
     updateBuyButton();
   }
 
@@ -408,7 +409,19 @@ const colorMap: Record<string, string> = {
     const textElement = document.getElementById("selected-size-text");
     if (textElement) textElement.innerText = `Talla: ${size}`;
 
+    updateUrlParams();
     updateBuyButton();
+  }
+
+  function updateUrlParams() {
+    const url = new URL(window.location);
+    if (window.selectedColor) {
+      url.searchParams.set("color", window.selectedColor);
+    }
+    if (window.selectedSize) {
+      url.searchParams.set("size", window.selectedSize);
+    }
+    window.history.replaceState({}, "", url);
   }
 
   function updateBuyButton() {
@@ -430,4 +443,27 @@ const colorMap: Record<string, string> = {
       buyButton.innerText = "ELIGE TALLA Y COLOR";
     }
   }
+
+  // Initialize from URL parameters on page load
+  document.addEventListener("DOMContentLoaded", () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const colorParam = urlParams.get("color");
+    const sizeParam = urlParams.get("size");
+
+    if (colorParam) {
+      const colorInput = document.querySelector(`input[name="color-choice"][value="${colorParam}"]`);
+      if (colorInput) {
+        colorInput.checked = true;
+        selectColor(colorInput);
+      }
+    }
+
+    if (sizeParam) {
+      const sizeInput = document.querySelector(`input[name="size-choice"][value="${sizeParam}"]`);
+      if (sizeInput) {
+        sizeInput.checked = true;
+        selectSize(sizeInput);
+      }
+    }
+  });
 </script>

@@ -14,10 +14,23 @@ export interface Product {
   sizes: string[];
   images: ImageMetadata[];
   variants: Record<string, Record<string, number>>;
+  googleCategory?: string;
+  gender?: string;
+  ageGroup?: string;
+  sizeSystem?: string;
+  sizeType?: string;
 }
 
 const colors = ["Gris Pizarra", "Rojo Carmín", "Azul Turquesa"];
 const sizes = ["S", "M", "L", "XL", "XXL"];
+
+const defaultClothingMetadata = {
+  googleCategory: "Ropa y accesorios > Ropa > Camisetas y tops",
+  gender: "unisex",
+  ageGroup: "adult",
+  sizeSystem: "EU",
+  sizeType: "oversize",
+};
 
 export const baseBuyLink =
   "https://web.timp.pro/home/18931/branch_building/siblings#/home/18931/branch_building/store/item/";
@@ -37,6 +50,7 @@ export const products: Product[] = [
       "Rojo Carmín": { S: 38650, M: 38651, L: 38652, XL: 38653, XXL: 38654 },
       "Azul Turquesa": { S: 38655, M: 38656, L: 38657, XL: 38658, XXL: 38659 },
     },
+    ...defaultClothingMetadata,
   },
   {
     title: "Go to Bloom",
@@ -52,6 +66,7 @@ export const products: Product[] = [
       "Rojo Carmín": { S: 38665, M: 38666, L: 38667, XL: 38668, XXL: 38669 },
       "Azul Turquesa": { S: 38670, M: 38671, L: 38672, XL: 38673, XXL: 38674 },
     },
+    ...defaultClothingMetadata,
   },
   {
     title: "Your Only Limit is Mental",
@@ -67,5 +82,6 @@ export const products: Product[] = [
       "Rojo Carmín": { S: 38681, M: 38682, L: 38683, XL: 38684, XXL: 38685 },
       "Azul Turquesa": { S: 38686, M: 38687, L: 38688, XL: 38689, XXL: 38690 },
     },
+    ...defaultClothingMetadata,
   },
 ];

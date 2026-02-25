@@ -9,8 +9,15 @@ export const GET: APIRoute = async ({ site }) => {
   let itemsXml = "";
 
   for (const product of products) {
-    const mainImage = product.images[0]?.src || "";
-    const additionalImages = product.images.slice(1).map((img) => img.src);
+    const mainImageSrc = product.images[0]?.src || "";
+    const mainImage = mainImageSrc.startsWith("http")
+      ? mainImageSrc
+      : `${baseUrl}${mainImageSrc}`;
+
+    const additionalImages = product.images.slice(1).map((img) => {
+      const src = img.src || "";
+      return src.startsWith("http") ? src : `${baseUrl}${src}`;
+    });
 
     // Clean up price (e.g., "25€" -> "25.00 EUR")
     const numericPrice = product.price
@@ -50,6 +57,11 @@ export const GET: APIRoute = async ({ site }) => {
       <g:item_group_id>${product.slug}</g:item_group_id>
       <g:color><![CDATA[${color}]]></g:color>
       <g:size><![CDATA[${size}]]></g:size>
+      <g:gender>${product.gender || "unisex"}</g:gender>
+      <g:age_group>${product.ageGroup || "adult"}</g:age_group>
+      <g:size_system>${product.sizeSystem || "EU"}</g:size_system>
+      <g:size_type>${product.sizeType || "regular"}</g:size_type>
+      <g:google_product_category>${(product.googleCategory || "Ropa y accesorios > Ropa > Camisetas y tops").replace(/>/g, "&gt;")}</g:google_product_category>
       <g:identifier_exists>no</g:identifier_exists>
     </item>`;
       }
