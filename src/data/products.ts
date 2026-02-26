@@ -41,7 +41,7 @@ export const products: Product[] = [
     slug: "faith-moves-mountains",
     price: "25€",
     description:
-      "Una camiseta diseñada para recordarte que con fe y esfuerzo, no hay obstáculo insuperable. Tejido transpirable ideal para entrenar.",
+      "Una camiseta diseñada para recordarte que con fe y esfuerzo, no hay obstáculo insuperable.",
     colors: colors,
     sizes: sizes,
     images: [faith1, faith2],
