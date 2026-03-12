@@ -72,6 +72,8 @@ const allImages = Object.entries(product.images).flatMap(([color, imgs]) =>
                         format="webp"
                         quality={80}
                         class="w-full h-full object-center object-cover opacity-60 hover:opacity-100 transition-opacity"
+                        loading={index === 0 ? "eager" : "lazy"}
+                        fetchpriority={index === 0 ? "high" : "auto"}
                       />
                     </div>
                     <div
@@ -107,6 +109,8 @@ const allImages = Object.entries(product.images).flatMap(([color, imgs]) =>
                       format="webp"
                       quality={80}
                       class="w-full h-full object-cover object-center bg-zinc-900 transition-transform duration-300 pointer-events-none scale-125 sm:scale-100"
+                      loading={index === 0 ? "eager" : "lazy"}
+                      fetchpriority={index === 0 ? "high" : "auto"}
                     />
                   </div>
                 ))
@@ -131,7 +135,7 @@ const allImages = Object.entries(product.images).flatMap(([color, imgs]) =>
                 <li>
                   <a
                     href="/tienda"
-                    class="hover:text-[var(--color-orange-strong)] transition-colors"
+                    class="hover:text-[var(--color-orange-strong)] text-gray-400 transition-colors"
                     >Tienda</a
                   >
                 </li>
@@ -170,11 +174,11 @@ const allImages = Object.entries(product.images).flatMap(([color, imgs]) =>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
               {/* Colors */}
               <div>
-                <h3
+                <h2
                   class="text-xs font-bold text-white uppercase tracking-widest mb-3"
                 >
                   Color Disponible
-                </h3>
+                </h2>
                 <div class="flex items-center gap-3 mb-2">
                   {
                     product.colors.map((color, index) => (
@@ -212,14 +216,14 @@ const allImages = Object.entries(product.images).flatMap(([color, imgs]) =>
               {/* Sizes */}
               <div>
                 <div class="flex items-center justify-between mb-3">
-                  <h3
+                  <h2
                     class="text-xs font-bold text-white uppercase tracking-widest"
                   >
                     Tallas
-                  </h3>
+                  </h2>
                   <a
                     href="/tienda/guia-de-tallas"
-                    class="text-[9px] font-bold text-gray-500 uppercase tracking-tighter hover:text-[var(--color-orange-strong)] transition-colors border-b border-gray-800"
+                    class="text-[9px] font-bold text-gray-400 uppercase tracking-tighter hover:text-[var(--color-orange-strong)] transition-colors border-b border-gray-800"
                   >
                     Guía de tallas
                   </a>
@@ -278,7 +282,7 @@ const allImages = Object.entries(product.images).flatMap(([color, imgs]) =>
                   >
                   <div class="flex flex-col">
                     <span
-                      class="text-[10px] text-gray-500 uppercase font-bold tracking-wider group-hover/card:text-[var(--color-orange-strong)] transition-colors"
+                      class="text-[10px] text-gray-400 uppercase font-bold tracking-wider group-hover/card:text-[var(--color-orange-strong)] transition-colors"
                       >Devoluciones</span
                     >
                     <span class="text-xs text-white font-medium"
@@ -307,7 +311,7 @@ const allImages = Object.entries(product.images).flatMap(([color, imgs]) =>
                   >
                   <div class="flex flex-col">
                     <span
-                      class="text-[10px] text-gray-500 uppercase font-bold tracking-wider"
+                      class="text-[10px] text-gray-400 uppercase font-bold tracking-wider"
                       >Envío</span
                     >
                     <span class="text-xs text-white font-medium"
@@ -322,7 +326,8 @@ const allImages = Object.entries(product.images).flatMap(([color, imgs]) =>
                 href="#"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="w-full bg-[var(--color-orange-strong)] border-2 border-[var(--color-orange-strong)] rounded-full py-3 px-4 sm:px-8 flex items-center justify-center text-sm sm:text-base font-extrabold text-white hover:bg-transparent hover:text-[var(--color-orange-strong)] transition-all duration-300 text-center uppercase tracking-widest sm:tracking-[0.2em] opacity-50 pointer-events-none grayscale"
+                class="w-full bg-[var(--color-orange-strong)] border-2 border-[var(--color-orange-strong)] rounded-full py-3 px-4 sm:px-8 flex items-center justify-center text-sm sm:text-base font-extrabold text-white hover:bg-transparent hover:text-[var(--color-orange-strong)] transition-all duration-300 text-center uppercase tracking-widest sm:tracking-[0.2em] opacity-50 pointer-events-none grayscale data-[disabled=true]:bg-zinc-800 data-[disabled=true]:border-zinc-700 data-[disabled=true]:text-zinc-400 data-[disabled=true]:opacity-100 data-[disabled=true]:grayscale-0"
+                data-disabled="true"
               >
                 ELIGE TALLA Y COLOR
               </a>
@@ -503,10 +508,12 @@ const allImages = Object.entries(product.images).flatMap(([color, imgs]) =>
         "pointer-events-none",
         "grayscale",
       );
+      buyButton.removeAttribute('data-disabled');
       buyButton.href = window.baseBuyLink + timpId;
       buyButton.innerText = "COMPRAR AHORA";
     } else {
       buyButton.classList.add("opacity-50", "pointer-events-none", "grayscale");
+      buyButton.setAttribute('data-disabled', 'true');
       buyButton.href = "#";
       buyButton.innerText = "ELIGE TALLA Y COLOR";
     }
