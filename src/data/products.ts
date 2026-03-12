@@ -104,7 +104,7 @@ export const products: Product[] = [
       "Azul Turquesa": [mentalTurquesa1, mentalTurquesa2],
     },
     variants: {
-      "Gris Pizarra": { S: 38676, M: 38677, L: 38678, XL: 38679, XXL: 38680 },
+      "Gris Pizarra": { S: 38675, M: 38676, L: 38677, XL: 38678, XXL: 38680 },
       "Rojo Carmín": { S: 38681, M: 38682, L: 38683, XL: 38684, XXL: 38685 },
       "Azul Turquesa": { S: 38686, M: 38687, L: 38688, XL: 38689, XXL: 38690 },
     },
