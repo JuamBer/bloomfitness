@@ -8,6 +8,7 @@ interface Props {
   slug: string;
   initialColor?: string;
   sizes?: string[];
+  eagerLoad?: boolean;
 }
 
 const {
@@ -17,6 +18,7 @@ const {
   slug,
   initialColor,
   sizes = [],
+  eagerLoad = false,
 } = Astro.props;
 
 const sizeRange =
@@ -50,6 +52,8 @@ const productUrl = initialColor
             sizes="(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1024px) 720px, 1024px"
             format="webp"
             quality={80}
+            loading={eagerLoad ? "eager" : "lazy"}
+            fetchpriority={eagerLoad ? "high" : "auto"}
             class={`h-full w-full object-cover object-center transition-all duration-700 group-hover:scale-105 ${secondImage ? "group-hover:opacity-0" : "group-hover:opacity-80"}`}
           />
           {secondImage && (
@@ -94,11 +98,11 @@ const productUrl = initialColor
     </div>
   </div>
   <div class="mt-5 text-center px-2">
-    <h3
+    <h2
       class="text-xl font-bold text-white uppercase tracking-wider group-hover:text-[var(--color-orange-strong)] transition-colors duration-300"
     >
       {title}
-    </h3>
+    </h2>
     <div class="flex items-center justify-center gap-2 mt-2">
       <span
         class="text-xs text-gray-400 uppercase tracking-widest font-semibold"

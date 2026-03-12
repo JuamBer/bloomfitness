@@ -49,6 +49,7 @@ import Layout from "../layouts/Layout.astro";
                 images={product.images}
                 sizes={product.sizes}
                 initialColor={product.colors[index % product.colors.length]}
+                eagerLoad={index < 6}
               />
             ))
           }
