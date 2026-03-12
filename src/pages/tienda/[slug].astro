@@ -94,7 +94,10 @@ const allImages = Object.entries(product.images).flatMap(([color, imgs]) =>
                   <div
                     id={`image-${color.replace(/ /g, "-")}-${index}`}
                     data-color={color}
-                    class={`w-full h-full ${color === "Azul Turquesa" && index === 0 ? "block" : "hidden"}`}
+                    class={`w-full h-full cursor-zoom-in group/image relative overflow-hidden select-none ${color === "Azul Turquesa" && index === 0 ? "block" : "hidden"}`}
+                    onclick="toggleProductZoom(this, event)"
+                    onmousemove="handleZoomPan(this, event)"
+                    onmouseleave="resetProductZoom(this)"
                   >
                     <Image
                       src={img}
@@ -103,7 +106,7 @@ const allImages = Object.entries(product.images).flatMap(([color, imgs]) =>
                       sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, (max-width: 1536px) 1024px, 1500px"
                       format="webp"
                       quality={80}
-                      class="w-full h-full object-cover object-center bg-zinc-900 scale-125 sm:scale-100 transition-transform"
+                      class="w-full h-full object-cover object-center bg-zinc-900 transition-transform duration-300 pointer-events-none scale-125 sm:scale-100"
                     />
                   </div>
                 ))
@@ -379,6 +382,42 @@ const allImages = Object.entries(product.images).flatMap(([color, imgs]) =>
     }
   }
 
+  function toggleProductZoom(container, event) {
+    const isZoomed = container.classList.contains("is-zoomed");
+
+    if (isZoomed) {
+      resetProductZoom(container);
+    } else {
+      container.classList.add("is-zoomed");
+      container.classList.remove("cursor-zoom-in");
+      container.classList.add("cursor-zoom-out");
+      handleZoomPan(container, event);
+    }
+  }
+
+  function handleZoomPan(container, event) {
+    if (!container.classList.contains("is-zoomed")) return;
+
+    const img = container.querySelector("img");
+    const rect = container.getBoundingClientRect();
+
+    const x = ((event.clientX - rect.left) / rect.width) * 100;
+    const y = ((event.clientY - rect.top) / rect.height) * 100;
+
+    img.style.transformOrigin = `${x}% ${y}%`;
+    img.style.transform = "scale(2.5)";
+  }
+
+  function resetProductZoom(container) {
+    container.classList.remove("is-zoomed");
+    container.classList.add("cursor-zoom-in");
+    container.classList.remove("cursor-zoom-out");
+
+    const img = container.querySelector("img");
+    img.style.transform = "scale(1)";
+    img.style.transformOrigin = "center center";
+  }
+
   function selectColor(input) {
     const color = input.value;
     window.selectedColor = color;
@@ -485,7 +524,9 @@ const allImages = Object.entries(product.images).flatMap(([color, imgs]) =>
         `input[name="color-choice"][value="${colorParam}"]`,
       )
     ) {
-      const firstColorInput = document.querySelector('input[name="color-choice"]');
+      const firstColorInput = document.querySelector(
+        'input[name="color-choice"]',
+      );
       colorParam = firstColorInput ? firstColorInput.value : "Azul Turquesa";
     }
 
