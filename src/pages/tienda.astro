@@ -41,12 +41,14 @@ import Layout from "../layouts/Layout.astro";
           class="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8"
         >
           {
-            products.map((product) => (
+            products.map((product, index) => (
               <ProductCard
                 title={product.title}
                 slug={product.slug}
                 price={product.price}
                 images={product.images}
+                sizes={product.sizes}
+                initialColor={product.colors[index % product.colors.length]}
               />
             ))
           }

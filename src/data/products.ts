@@ -1,9 +1,23 @@
-import faith1 from "../assets/products/faith-moves-mountains/faith-moves-mountains-1.png";
-import faith2 from "../assets/products/faith-moves-mountains/faith-moves-mountains-2.png";
-import bloom1 from "../assets/products/go-to-bloom/go-to-bloom-1.png";
-import bloom2 from "../assets/products/go-to-bloom/go-to-bloom-2.png";
-import mental1 from "../assets/products/your-only-limit-is-mental/your-only-limit-is-mental-1.png";
-import mental2 from "../assets/products/your-only-limit-is-mental/your-only-limit-is-mental-2.png";
+import faithCarmin1 from "../assets/products/faith-moves-mountains/faith-moves-mountains-carmin-1.png";
+import faithCarmin2 from "../assets/products/faith-moves-mountains/faith-moves-mountains-carmin-2.png";
+import faithPizarra1 from "../assets/products/faith-moves-mountains/faith-moves-mountains-pizarra-1.png";
+import faithPizarra2 from "../assets/products/faith-moves-mountains/faith-moves-mountains-pizarra-2.png";
+import faithTurquesa1 from "../assets/products/faith-moves-mountains/faith-moves-mountains-turquesa-1.png";
+import faithTurquesa2 from "../assets/products/faith-moves-mountains/faith-moves-mountains-turquesa-2.png";
+
+import bloomCarmin1 from "../assets/products/go-to-bloom/go-to-bloom-carmin-1.png";
+import bloomCarmin2 from "../assets/products/go-to-bloom/go-to-bloom-carmin-2.png";
+import bloomPizarra1 from "../assets/products/go-to-bloom/go-to-bloom-pizarra-1.png";
+import bloomPizarra2 from "../assets/products/go-to-bloom/go-to-bloom-pizarra-2.png";
+import bloomTurquesa1 from "../assets/products/go-to-bloom/go-to-bloom-turquesa-1.png";
+import bloomTurquesa2 from "../assets/products/go-to-bloom/go-to-bloom-turquesa-2.png";
+
+import mentalCarmin1 from "../assets/products/your-only-limit-is-mental/your-only-limit-is-mental-carmin-1.png";
+import mentalCarmin2 from "../assets/products/your-only-limit-is-mental/your-only-limit-is-mental-carmin-2.png";
+import mentalPizarra1 from "../assets/products/your-only-limit-is-mental/your-only-limit-is-mental-pizarra-1.png";
+import mentalPizarra2 from "../assets/products/your-only-limit-is-mental/your-only-limit-is-mental-pizarra-2.png";
+import mentalTurquesa1 from "../assets/products/your-only-limit-is-mental/your-only-limit-is-mental-turquesa-1.png";
+import mentalTurquesa2 from "../assets/products/your-only-limit-is-mental/your-only-limit-is-mental-turquesa-2.png";
 
 export interface Product {
   title: string;
@@ -12,7 +26,7 @@ export interface Product {
   description: string;
   colors: string[];
   sizes: string[];
-  images: ImageMetadata[];
+  images: Record<string, ImageMetadata[]>;
   variants: Record<string, Record<string, number>>;
   googleCategory?: string;
   gender?: string;
@@ -44,7 +58,11 @@ export const products: Product[] = [
       "Una camiseta diseñada para recordarte que con fe y esfuerzo, no hay obstáculo insuperable.",
     colors: colors,
     sizes: sizes,
-    images: [faith1, faith2],
+    images: {
+      "Gris Pizarra": [faithPizarra1, faithPizarra2],
+      "Rojo Carmín": [faithCarmin1, faithCarmin2],
+      "Azul Turquesa": [faithTurquesa1, faithTurquesa2],
+    },
     variants: {
       "Gris Pizarra": { S: 38645, M: 38646, L: 38647, XL: 38648, XXL: 38649 },
       "Rojo Carmín": { S: 38650, M: 38651, L: 38652, XL: 38653, XXL: 38654 },
@@ -60,7 +78,11 @@ export const products: Product[] = [
       "La esencia de Bloom Fitness en una prenda. Únete a la comunidad y lleva tu entrenamiento al siguiente nivel.",
     colors: colors,
     sizes: sizes,
-    images: [bloom1, bloom2],
+    images: {
+      "Gris Pizarra": [bloomPizarra1, bloomPizarra2],
+      "Rojo Carmín": [bloomCarmin1, bloomCarmin2],
+      "Azul Turquesa": [bloomTurquesa1, bloomTurquesa2],
+    },
     variants: {
       "Gris Pizarra": { S: 38660, M: 38661, L: 38662, XL: 38663, XXL: 38664 },
       "Rojo Carmín": { S: 38665, M: 38666, L: 38667, XL: 38668, XXL: 38669 },
@@ -76,7 +98,11 @@ export const products: Product[] = [
       "Derriba tus barreras mentales. Esta camiseta es tu armadura para esos días en los que necesitas un empujón extra.",
     colors: colors,
     sizes: sizes,
-    images: [mental1, mental2],
+    images: {
+      "Gris Pizarra": [mentalPizarra1, mentalPizarra2],
+      "Rojo Carmín": [mentalCarmin1, mentalCarmin2],
+      "Azul Turquesa": [mentalTurquesa1, mentalTurquesa2],
+    },
     variants: {
       "Gris Pizarra": { S: 38676, M: 38677, L: 38678, XL: 38679, XXL: 38680 },
       "Rojo Carmín": { S: 38681, M: 38682, L: 38683, XL: 38684, XXL: 38685 },

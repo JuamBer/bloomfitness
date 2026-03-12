@@ -9,16 +9,6 @@ export const GET: APIRoute = async ({ site }) => {
   let itemsXml = "";
 
   for (const product of products) {
-    const mainImageSrc = product.images[0]?.src || "";
-    const mainImage = mainImageSrc.startsWith("http")
-      ? mainImageSrc
-      : `${baseUrl}${mainImageSrc}`;
-
-    const additionalImages = product.images.slice(1).map((img) => {
-      const src = img.src || "";
-      return src.startsWith("http") ? src : `${baseUrl}${src}`;
-    });
-
     // Clean up price (e.g., "25€" -> "25.00 EUR")
     const numericPrice = product.price
       .replace(/[^0-9.,]/g, "")
@@ -26,6 +16,17 @@ export const GET: APIRoute = async ({ site }) => {
     const formattedPrice = `${parseFloat(numericPrice).toFixed(2)} EUR`;
 
     for (const color of product.colors) {
+      const colorImages = product.images[color] || [];
+      const mainImageSrc = colorImages[0]?.src || "";
+      const mainImage = mainImageSrc.startsWith("http")
+        ? mainImageSrc
+        : `${baseUrl}${mainImageSrc}`;
+
+      const additionalImages = colorImages.slice(1).map((img) => {
+        const src = img.src || "";
+        return src.startsWith("http") ? src : `${baseUrl}${src}`;
+      });
+
       for (const size of product.sizes) {
         // Get the specific variant ID if it exists
         const variantId = product.variants[color]?.[size];

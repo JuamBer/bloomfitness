@@ -4,17 +4,39 @@ import { Image } from "astro:assets";
 interface Props {
   title: string;
   price?: string;
-  images?: ImageMetadata[];
+  images?: Record<string, ImageMetadata[]>;
   slug: string;
+  initialColor?: string;
+  sizes?: string[];
 }
 
-const { title, price = "25€", images = [], slug } = Astro.props;
+const {
+  title,
+  price = "25€",
+  images = {},
+  slug,
+  initialColor,
+  sizes = [],
+} = Astro.props;
 
-const firstImage = images.length > 0 ? images[0] : null;
-const secondImage = images.length > 1 ? images[1] : null;
+const sizeRange =
+  sizes.length > 0 ? `${sizes[0]}-${sizes[sizes.length - 1]}` : "";
+const selectedColorImages =
+  (initialColor && images[initialColor]) ||
+  images["Azul Turquesa"] ||
+  Object.values(images)[0] ||
+  [];
+const firstImage =
+  selectedColorImages.length > 0 ? selectedColorImages[0] : null;
+const secondImage =
+  selectedColorImages.length > 1 ? selectedColorImages[1] : null;
+
+const productUrl = initialColor
+  ? `/tienda/${slug}?color=${encodeURIComponent(initialColor)}`
+  : `/tienda/${slug}`;
 ---
 
-<a href={`/tienda/${slug}`} class="group block">
+<a href={productUrl} class="group block">
   <div
     class="relative aspect-square w-full overflow-hidden bg-zinc-900 rounded-md border-2 border-gray-800 group-hover:border-[var(--color-orange-strong)] transition-all duration-500"
   >
@@ -24,12 +46,20 @@ const secondImage = images.length > 1 ? images[1] : null;
           <Image
             src={firstImage}
             alt={title}
+            widths={[240, 540, 720, 1024]}
+            sizes="(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1024px) 720px, 1024px"
+            format="webp"
+            quality={80}
             class={`h-full w-full object-cover object-center transition-all duration-700 group-hover:scale-105 ${secondImage ? "group-hover:opacity-0" : "group-hover:opacity-80"}`}
           />
           {secondImage && (
             <Image
               src={secondImage}
               alt={`${title} alternate view`}
+              widths={[240, 540, 720, 1024]}
+              sizes="(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1024px) 720px, 1024px"
+              format="webp"
+              quality={80}
               class="absolute inset-0 h-full w-full object-cover object-center opacity-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105"
             />
           )}
@@ -72,7 +102,7 @@ const secondImage = images.length > 1 ? images[1] : null;
     <div class="flex items-center justify-center gap-2 mt-2">
       <span
         class="text-xs text-gray-400 uppercase tracking-widest font-semibold"
-        >Unisex • S-XXL</span
+        >Unisex {sizeRange ? `• ${sizeRange}` : ""}</span
       >
       <span class="w-1 h-1 bg-gray-600 rounded-full"></span>
       <p class="text-lg font-bold text-[var(--color-orange-strong)]">{price}</p>

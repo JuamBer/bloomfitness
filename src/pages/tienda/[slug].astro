@@ -23,6 +23,10 @@ const colorMap: Record<string, string> = {
   Blanco: "#ffffff",
   Naranja: "#ED6D35",
 };
+
+const allImages = Object.entries(product.images).flatMap(([color, imgs]) =>
+  imgs.map((img, i) => ({ color, img, index: i })),
+);
 ---
 
 <Layout
@@ -40,33 +44,40 @@ const colorMap: Record<string, string> = {
         {/* Image gallery */}
         <div class="flex flex-col-reverse sm:flex-row gap-4">
           <!-- Image Selector -->
-          <div class="hidden sm:block w-20 lg:w-24 flex-shrink-0">
+          <div class="w-full sm:w-20 lg:w-24 flex-shrink-0">
             <div
-              class="flex flex-col gap-4"
+              class="flex sm:flex-col gap-4 overflow-x-auto sm:overflow-x-visible p-1 sm:pb-0 scrollbar-hide"
               aria-orientation="vertical"
               role="tablist"
             >
               {
-                product.images.map((image, index) => (
+                allImages.map(({ color, img, index }) => (
                   <button
-                    id={`tab-${index}`}
-                    class="relative h-16 lg:h-20 bg-zinc-900 rounded-md flex items-center justify-center text-sm font-medium uppercase text-white cursor-pointer hover:bg-zinc-800 transition-colors focus:outline-none"
+                    id={`tab-${color.replace(/ /g, "-")}-${index}`}
+                    data-color={color}
+                    class={`relative h-16 lg:h-20 w-16 sm:w-full flex-shrink-0 bg-zinc-900 rounded-md items-center justify-center text-sm font-medium uppercase text-white cursor-pointer hover:bg-zinc-800 transition-colors focus:outline-none ${color === "Azul Turquesa" ? "flex" : "hidden"}`}
                     role="tab"
                     type="button"
-                    onclick={`switchImage(${index})`}
+                    onclick={`switchImage('${color.replace(/ /g, "-")}', ${index})`}
                   >
-                    <span class="sr-only">Image {index + 1}</span>
+                    <span class="sr-only">
+                      Image {color} {index + 1}
+                    </span>
                     <div class="absolute inset-0 rounded-md overflow-hidden">
                       <Image
-                        src={image}
+                        src={img}
                         alt=""
+                        widths={[80, 160]}
+                        sizes="(max-width: 768px) 80px, 160px"
+                        format="webp"
+                        quality={80}
                         class="w-full h-full object-center object-cover opacity-60 hover:opacity-100 transition-opacity"
                       />
                     </div>
                     <div
-                      class={`ring-transparent absolute inset-0 rounded-md ring-2 ring-offset-2 ring-offset-black pointer-events-none transition-all ${index === 0 ? "ring-[var(--color-orange-strong)]" : ""}`}
+                      class={`ring-transparent absolute inset-0 rounded-md ring-2 ring-offset-2 ring-offset-black pointer-events-none transition-all ${color === "Azul Turquesa" && index === 0 ? "ring-[var(--color-orange-strong)]" : ""}`}
                       aria-hidden="true"
-                      id={`ring-${index}`}
+                      id={`ring-${color.replace(/ /g, "-")}-${index}`}
                     />
                   </button>
                 ))
@@ -78,16 +89,21 @@ const colorMap: Record<string, string> = {
             class="w-full flex-1 aspect-square bg-zinc-900 rounded-lg overflow-hidden lg:aspect-none lg:h-[60vh] relative border-2 border-zinc-800"
           >
             {
-              product.images.length > 0 ? (
-                product.images.map((image, index) => (
+              allImages.length > 0 ? (
+                allImages.map(({ color, img, index }) => (
                   <div
-                    id={`image-${index}`}
-                    class={`w-full h-full ${index === 0 ? "block" : "hidden"}`}
+                    id={`image-${color.replace(/ /g, "-")}-${index}`}
+                    data-color={color}
+                    class={`w-full h-full ${color === "Azul Turquesa" && index === 0 ? "block" : "hidden"}`}
                   >
                     <Image
-                      src={image}
+                      src={img}
                       alt={product.title}
-                      class="w-full h-full object-contain object-center bg-zinc-900"
+                      widths={[320, 640, 1024, 1500]}
+                      sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, (max-width: 1536px) 1024px, 1500px"
+                      format="webp"
+                      quality={80}
+                      class="w-full h-full object-cover object-center bg-zinc-900 scale-125 sm:scale-100 transition-transform"
                     />
                   </div>
                 ))
@@ -334,7 +350,7 @@ const colorMap: Record<string, string> = {
   window.selectedColor = null;
   window.selectedSize = null;
 
-  function switchImage(index) {
+  function switchImage(colorId, index) {
     // Hide all images
     const images = document.querySelectorAll('[id^="image-"]');
     images.forEach((img) => {
@@ -343,7 +359,7 @@ const colorMap: Record<string, string> = {
     });
 
     // Show selected image
-    const selectedImage = document.getElementById(`image-${index}`);
+    const selectedImage = document.getElementById(`image-${colorId}-${index}`);
     if (selectedImage) {
       selectedImage.classList.remove("hidden");
       selectedImage.classList.add("block");
@@ -356,7 +372,7 @@ const colorMap: Record<string, string> = {
       ring.classList.add("ring-transparent");
     });
 
-    const selectedRing = document.getElementById(`ring-${index}`);
+    const selectedRing = document.getElementById(`ring-${colorId}-${index}`);
     if (selectedRing) {
       selectedRing.classList.remove("ring-transparent");
       selectedRing.classList.add("ring-[var(--color-orange-strong)]");
@@ -367,6 +383,17 @@ const colorMap: Record<string, string> = {
     const color = input.value;
     window.selectedColor = color;
     const cleanColor = color.replace(/\s+/g, "-");
+
+    const allTabs = document.querySelectorAll('[id^="tab-"]');
+    allTabs.forEach((tab) => {
+      if (tab.dataset.color === color) {
+        tab.classList.remove("hidden");
+        tab.classList.add("flex");
+      } else {
+        tab.classList.add("hidden");
+        tab.classList.remove("flex");
+      }
+    });
 
     // Reset all color rings
     const allRings = document.querySelectorAll('[id^="color-ring-"]');
@@ -379,6 +406,8 @@ const colorMap: Record<string, string> = {
     // Update text
     const textElement = document.getElementById("selected-color-text");
     if (textElement) textElement.innerText = `Color: ${color}`;
+
+    switchImage(cleanColor, 0);
 
     updateUrlParams();
     updateBuyButton();
@@ -445,10 +474,20 @@ const colorMap: Record<string, string> = {
   }
 
   // Initialize from URL parameters on page load
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("astro:page-load", () => {
     const urlParams = new URLSearchParams(window.location.search);
-    const colorParam = urlParams.get("color");
+    let colorParam = urlParams.get("color");
     const sizeParam = urlParams.get("size");
+
+    if (
+      !colorParam ||
+      !document.querySelector(
+        `input[name="color-choice"][value="${colorParam}"]`,
+      )
+    ) {
+      const firstColorInput = document.querySelector('input[name="color-choice"]');
+      colorParam = firstColorInput ? firstColorInput.value : "Azul Turquesa";
+    }
 
     if (colorParam) {
       const colorInput = document.querySelector(
