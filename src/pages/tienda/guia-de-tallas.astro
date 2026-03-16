@@ -1,21 +1,75 @@
 ---
+import anborBronxPdf from "../../assets/size-guides/anbor-bronx.pdf?url";
+import jhkPdf from "../../assets/size-guides/jhk.pdf?url";
 import ColorBar from "../../components/ColorBar.astro";
 import Footer from "../../components/Footer.astro";
 import Header from "../../components/Header.astro";
+import { products } from "../../data/products";
 import Layout from "../../layouts/Layout.astro";
 
-const sizeGuide = [
-  { size: "S", width: "48 cm", length: "69 cm" },
-  { size: "M", width: "50 cm", length: "71 cm" },
-  { size: "L", width: "52 cm", length: "73 cm" },
-  { size: "XL", width: "54 cm", length: "75 cm" },
-  { size: "XXL", width: "56 cm", length: "77 cm" },
-];
+type SizeGuideKey = "anbor-bronx" | "jhk";
+
+type SizeMeasurement = {
+  size: string;
+  width: string;
+  length: string;
+};
+
+const sizeGuides: Record<
+  SizeGuideKey,
+  {
+    title: string;
+    appliesTo: string;
+    pdfUrl: string;
+    measurements: SizeMeasurement[];
+    notes: string[];
+  }
+> = {
+  "anbor-bronx": {
+    title: "Anbor Bronx",
+    appliesTo: "Rojo Carmín y Gris Pizarra",
+    pdfUrl: anborBronxPdf,
+    measurements: [
+      { size: "S", width: "56 cm", length: "72 cm" },
+      { size: "M", width: "59 cm", length: "74 cm" },
+      { size: "L", width: "62 cm", length: "76 cm" },
+      { size: "XL", width: "65 cm", length: "78 cm" },
+      { size: "XXL", width: "68 cm", length: "80 cm" },
+    ],
+    notes: [
+      "Medidas aproximadas +/- 2 cm.",
+      "A (Ancho): medida de sisa a sisa de la prenda plana.",
+      "B (Largo): medida desde el hombro hasta el inferior de la prenda.",
+    ],
+  },
+  jhk: {
+    title: "JHK",
+    appliesTo: "Azul Turquesa",
+    pdfUrl: jhkPdf,
+    measurements: [
+      { size: "XS", width: "52 cm", length: "70 cm" },
+      { size: "S", width: "55 cm", length: "72 cm" },
+      { size: "M", width: "57 cm", length: "75 cm" },
+      { size: "L", width: "60 cm", length: "77 cm" },
+      { size: "XL", width: "63 cm", length: "79 cm" },
+      { size: "XXL", width: "67 cm", length: "81 cm" },
+    ],
+    notes: ["Medidas en centímetros según la guía técnica JHK."],
+  },
+};
+
+const allGuides = Object.entries(sizeGuides).map(([key, guide]) => ({
+  key: key as SizeGuideKey,
+  ...guide,
+}));
+
+const contextText =
+  "Selecciona una camiseta desde la tienda para ver automáticamente su guía de tallas correcta.";
 ---
 
 <Layout
   title="Guía de Tallas | Bloom Fitness Shop"
-  description="Consulta nuestra guía de tallas para elegir la prenda que mejor se adapte a ti. Medidas detalladas de nuestras camisetas unisex."
+  description="Consulta la guía de tallas correcta según producto y color. Incluye las fichas técnicas Anbor y JHK en PDF."
   keywords="guía de tallas, medidas camisetas, tallaje ropa, bloom fitness shop"
 >
   <Header />
@@ -48,88 +102,90 @@ const sizeGuide = [
 
       <div class="prose prose-invert max-w-none mb-12">
         <p class="text-gray-300 text-lg leading-relaxed">
-          Nuestras prendas están diseñadas para ofrecerte la máxima comodidad
-          durante tus entrenamientos y en tu día a día. Para asegurar un ajuste
-          perfecto, te recomendamos medir una de tus camisetas favoritas y
-          comparar las medidas con nuestra tabla.
+          El tallaje de nuestras camisetas depende del modelo base. Usamos guía
+          <strong class="text-white">Anbor Bronx</strong> para colores
+          <strong class="text-white"> Rojo Carmín y Gris Pizarra</strong>, y
+          guía <strong class="text-white">JHK</strong> para
+          <strong class="text-white"> Azul Turquesa</strong>.
+        </p>
+        <p class="text-sm text-[var(--color-orange-strong)] font-semibold mt-4">
+          <span id="size-guide-context-text">{contextText}</span>
         </p>
       </div>
 
-      <div
-        class="bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden shadow-2xl"
-      >
-        <table class="w-full text-left text-white border-collapse">
-          <thead>
-            <tr class="bg-zinc-800 border-b border-zinc-700">
-              <th class="px-6 py-4 font-bold uppercase tracking-wider text-sm"
-                >Talla</th
-              >
-              <th class="px-6 py-4 font-bold uppercase tracking-wider text-sm"
-                >Ancho (A)</th
-              >
-              <th class="px-6 py-4 font-bold uppercase tracking-wider text-sm"
-                >Largo (B)</th
-              >
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-zinc-800">
-            {
-              sizeGuide.map((item) => (
-                <tr class="hover:bg-zinc-800/50 transition-colors">
-                  <td class="px-6 py-4 font-bold text-[var(--color-orange-strong)]">
-                    {item.size}
-                  </td>
-                  <td class="px-6 py-4 text-gray-300">{item.width}</td>
-                  <td class="px-6 py-4 text-gray-300">{item.length}</td>
-                </tr>
-              ))
-            }
-          </tbody>
-        </table>
-      </div>
+      <div class="space-y-8">
+        {
+          allGuides.map((guide) => (
+            <section
+              class="bg-zinc-900 border border-zinc-800 rounded-xl p-4 sm:p-6 shadow-2xl"
+              id={`size-guide-${guide.key}`}
+              data-guide-key={guide.key}
+            >
+              <h2 class="text-xl font-bold text-white uppercase tracking-wide">
+                {guide.title}
+              </h2>
+              <p class="text-xs uppercase tracking-wider text-gray-400 mt-2">
+                Aplica a:
+              </p>
+              <p class="text-xs uppercase tracking-wider text-[var(--color-orange-strong)] font-semibold mt-1">
+                {guide.appliesTo}
+              </p>
 
-      <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div
-          class="bg-zinc-900/50 p-6 rounded-xl border border-zinc-800 border-dashed"
-        >
-          <h3
-            class="text-white font-bold uppercase tracking-wide mb-4 flex items-center gap-2"
-          >
-            <span class="w-2 h-2 bg-[var(--color-orange-strong)] rounded-full"
-            ></span>
-            ¿Cómo medir?
-          </h3>
-          <ul class="space-y-4 text-gray-300 text-sm">
-            <li class="flex gap-3">
-              <span
-                class="font-bold text-[var(--color-orange-strong)] whitespace-nowrap"
-                >Ancho:</span
-              >
-              <span
-                >Mide de sisa a sisa (un centímetro por debajo de las mangas).</span
-              >
-            </li>
-            <li class="flex gap-3">
-              <span
-                class="font-bold text-[var(--color-orange-strong)] whitespace-nowrap"
-                >Largo:</span
-              >
-              <span
-                >Mide desde el punto más alto del hombro hasta el borde
-                inferior.</span
-              >
-            </li>
-          </ul>
-        </div>
+              <div class="mt-5 overflow-x-auto border border-zinc-800 rounded-lg">
+                <table class="w-full text-left text-sm text-gray-200 border-collapse">
+                  <thead>
+                    <tr class="bg-zinc-800/70 border-b border-zinc-700">
+                      <th class="px-4 py-3 font-bold uppercase tracking-wider text-xs">
+                        Talla
+                      </th>
+                      <th class="px-4 py-3 font-bold uppercase tracking-wider text-xs">
+                        A (Ancho)
+                      </th>
+                      <th class="px-4 py-3 font-bold uppercase tracking-wider text-xs">
+                        B (Largo)
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-zinc-800 bg-zinc-900/80">
+                    {guide.measurements.map((measurement) => (
+                      <tr class="hover:bg-zinc-800/40 transition-colors">
+                        <td class="px-4 py-3 font-bold text-[var(--color-orange-strong)]">
+                          {measurement.size}
+                        </td>
+                        <td class="px-4 py-3">{measurement.width}</td>
+                        <td class="px-4 py-3">{measurement.length}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
 
-        <div
-          class="text-center p-6 bg-[var(--color-orange-strong)]/5 rounded-xl border border-[var(--color-orange-strong)]/20 flex items-center justify-center"
-        >
-          <p class="text-gray-300 text-sm italic">
-            * Las medidas son aproximadas y pueden variar ±1-2 cm según la
-            fabricación. Todas las tallas son unisex.
-          </p>
-        </div>
+              <ul class="mt-3 space-y-1 text-xs text-gray-400">
+                {guide.notes.map((note) => (
+                  <li>{note}</li>
+                ))}
+              </ul>
+
+              <div class="mt-4 flex flex-wrap gap-3">
+                <a
+                  href={guide.pdfUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center justify-center px-4 py-2 text-xs font-bold uppercase tracking-wider bg-zinc-800 border border-zinc-700 text-white rounded-md hover:border-[var(--color-orange-strong)] hover:text-[var(--color-orange-strong)] transition-colors"
+                >
+                  Abrir PDF
+                </a>
+                <a
+                  href={guide.pdfUrl}
+                  download
+                  class="inline-flex items-center justify-center px-4 py-2 text-xs font-bold uppercase tracking-wider bg-transparent border border-zinc-700 text-gray-300 rounded-md hover:border-[var(--color-orange-strong)] hover:text-[var(--color-orange-strong)] transition-colors"
+                >
+                  Descargar PDF
+                </a>
+              </div>
+            </section>
+          ))
+        }
       </div>
 
       <div class="mt-16 text-center">
@@ -159,3 +215,79 @@ const sizeGuide = [
   <ColorBar loading="lazy" />
   <Footer />
 </Layout>
+
+<script define:vars={{ products }}>
+  window.sizeGuideProducts = products;
+</script>
+
+<script is:inline>
+  function showAllGuides() {
+    const sections = document.querySelectorAll("[data-guide-key]");
+    sections.forEach((section) => section.classList.remove("hidden"));
+  }
+
+  function showSingleGuide(guideKey) {
+    const sections = document.querySelectorAll("[data-guide-key]");
+    sections.forEach((section) => {
+      if (section.getAttribute("data-guide-key") === guideKey) {
+        section.classList.remove("hidden");
+      } else {
+        section.classList.add("hidden");
+      }
+    });
+  }
+
+  function setContextText(text) {
+    const contextEl = document.getElementById("size-guide-context-text");
+    if (contextEl) contextEl.textContent = text;
+  }
+
+  function resolveGuideFromParams() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const slugParam = (urlParams.get("slug") || "").trim();
+    const colorParam = (urlParams.get("color") || "").trim();
+
+    if (!slugParam) {
+      showAllGuides();
+      setContextText(
+        "No se recibió producto. Mostramos ambas guías para que puedas comprobar el tallaje.",
+      );
+      return;
+    }
+
+    const selectedProduct = (window.sizeGuideProducts || []).find(
+      (product) => product.slug === slugParam,
+    );
+
+    if (!selectedProduct) {
+      showAllGuides();
+      setContextText(
+        "Producto no reconocido. Mostramos ambas guías para que puedas comprobar el tallaje.",
+      );
+      return;
+    }
+
+    const hasValidColor = colorParam
+      ? selectedProduct.colors.includes(colorParam)
+      : false;
+    const resolvedColor = hasValidColor
+      ? colorParam
+      : selectedProduct.colors[0];
+    const resolvedGuideKey = selectedProduct.sizeGuideByColor?.[resolvedColor];
+
+    if (!resolvedGuideKey) {
+      showAllGuides();
+      setContextText(
+        `No se pudo resolver una guía concreta para ${selectedProduct.title}. Mostramos ambas guías.`,
+      );
+      return;
+    }
+
+    showSingleGuide(resolvedGuideKey);
+    setContextText(
+      `Mostrando guía para ${selectedProduct.title}${resolvedColor ? ` en ${resolvedColor}` : ""}.`,
+    );
+  }
+
+  document.addEventListener("astro:page-load", resolveGuideFromParams);
+</script>

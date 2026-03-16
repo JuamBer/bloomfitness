@@ -222,7 +222,8 @@ const allImages = Object.entries(product.images).flatMap(([color, imgs]) =>
                     Tallas
                   </h2>
                   <a
-                    href="/tienda/guia-de-tallas"
+                    id="size-guide-link"
+                    href={`/tienda/guia-de-tallas?slug=${product.slug}`}
                     class="text-[9px] font-bold text-gray-400 uppercase tracking-tighter hover:text-[var(--color-orange-strong)] transition-colors border-b border-gray-800"
                   >
                     Guía de tallas
@@ -349,9 +350,16 @@ const allImages = Object.entries(product.images).flatMap(([color, imgs]) =>
   <Footer />
 </Layout>
 
-<script define:vars={{ productVariants: product.variants, baseBuyLink }}>
+<script
+  define:vars={{
+    productVariants: product.variants,
+    baseBuyLink,
+    productSlug: product.slug,
+  }}
+>
   window.productVariants = productVariants;
   window.baseBuyLink = baseBuyLink;
+  window.productSlug = productSlug;
 </script>
 
 <script is:inline>
@@ -454,6 +462,7 @@ const allImages = Object.entries(product.images).flatMap(([color, imgs]) =>
     switchImage(cleanColor, 0);
 
     updateUrlParams();
+    updateSizeGuideLink();
     updateBuyButton();
   }
 
@@ -497,6 +506,23 @@ const allImages = Object.entries(product.images).flatMap(([color, imgs]) =>
     window.history.replaceState({}, "", url);
   }
 
+  function updateSizeGuideLink() {
+    const sizeGuideLink = document.getElementById("size-guide-link");
+    if (!sizeGuideLink) return;
+
+    const sizeGuideUrl = new URL(
+      "/tienda/guia-de-tallas",
+      window.location.origin,
+    );
+    sizeGuideUrl.searchParams.set("slug", window.productSlug);
+
+    if (window.selectedColor) {
+      sizeGuideUrl.searchParams.set("color", window.selectedColor);
+    }
+
+    sizeGuideLink.href = `${sizeGuideUrl.pathname}${sizeGuideUrl.search}`;
+  }
+
   function updateBuyButton() {
     const buyButton = document.getElementById("buy-button");
     const colorVariants = window.productVariants?.[window.selectedColor];
@@ -508,12 +534,12 @@ const allImages = Object.entries(product.images).flatMap(([color, imgs]) =>
         "pointer-events-none",
         "grayscale",
       );
-      buyButton.removeAttribute('data-disabled');
+      buyButton.removeAttribute("data-disabled");
       buyButton.href = window.baseBuyLink + timpId;
       buyButton.innerText = "COMPRAR AHORA";
     } else {
       buyButton.classList.add("opacity-50", "pointer-events-none", "grayscale");
-      buyButton.setAttribute('data-disabled', 'true');
+      buyButton.setAttribute("data-disabled", "true");
       buyButton.href = "#";
       buyButton.innerText = "ELIGE TALLA Y COLOR";
     }
@@ -556,5 +582,7 @@ const allImages = Object.entries(product.images).flatMap(([color, imgs]) =>
         selectSize(sizeInput);
       }
     }
+
+    updateSizeGuideLink();
   });
 </script>

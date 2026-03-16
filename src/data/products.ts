@@ -33,10 +33,19 @@ export interface Product {
   ageGroup?: string;
   sizeSystem?: string;
   sizeType?: string;
+  sizeGuideByColor?: SizeGuideByColor;
 }
+
+type SizeGuideByColor = Record<string, "anbor-bronx" | "jhk">;
 
 const colors = ["Gris Pizarra", "Rojo Carmín", "Azul Turquesa"];
 const sizes = ["S", "M", "L", "XL", "XXL"];
+
+const defaultSizeGuideByColor: SizeGuideByColor = {
+  "Gris Pizarra": "anbor-bronx",
+  "Rojo Carmín": "anbor-bronx",
+  "Azul Turquesa": "jhk",
+};
 
 const defaultClothingMetadata = {
   googleCategory: "Ropa y accesorios > Ropa > Camisetas y tops",
@@ -44,6 +53,7 @@ const defaultClothingMetadata = {
   ageGroup: "adult",
   sizeSystem: "EU",
   sizeType: "oversize",
+  sizeGuideByColor: defaultSizeGuideByColor,
 };
 
 export const baseBuyLink =
