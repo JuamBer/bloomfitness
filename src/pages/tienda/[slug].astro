@@ -230,7 +230,7 @@ const allImages = Object.entries(product.images).flatMap(([color, imgs]) =>
                   </a>
                 </div>
 
-                <div class="grid grid-cols-5 gap-1.5">
+                <div id="size-grid-container" class="grid grid-cols-6 gap-1.5">
                   {
                     product.sizes.map((size) => (
                       <label
@@ -447,6 +447,48 @@ const allImages = Object.entries(product.images).flatMap(([color, imgs]) =>
       }
     });
 
+    // Update size availability
+    const availableSizes = window.productVariants[color] || {};
+    const sizeLabels = document.querySelectorAll('[id^="size-label-"]');
+    let availableCount = 0;
+    
+    sizeLabels.forEach((label) => {
+      const size = label.id.replace("size-label-", "");
+      if (availableSizes[size]) {
+        label.classList.remove("hidden");
+        label.classList.add("flex");
+        availableCount++;
+      } else {
+        label.classList.add("hidden");
+        label.classList.remove("flex");
+
+        // If the currently selected size is now hidden, deselect it
+        if (window.selectedSize === size) {
+          window.selectedSize = null;
+          const radio = label.querySelector('input');
+          if (radio) radio.checked = false;
+          const textElement = document.getElementById("selected-size-text");
+          if (textElement) textElement.innerText = "";
+
+          // Hide size ring if visible
+          const sizeRing = document.getElementById(`size-ring-${size}`);
+          if (sizeRing) sizeRing.classList.add("hidden");
+        }
+      }
+    });
+
+    // Dynamically update grid columns
+    const gridContainer = document.getElementById("size-grid-container");
+    if (gridContainer) {
+      if (availableCount <= 5) {
+        gridContainer.classList.remove("grid-cols-6");
+        gridContainer.classList.add("grid-cols-5");
+      } else {
+        gridContainer.classList.remove("grid-cols-5");
+        gridContainer.classList.add("grid-cols-6");
+      }
+    }
+
     // Reset all color rings
     const allRings = document.querySelectorAll('[id^="color-ring-"]');
     allRings.forEach((ring) => ring.classList.add("hidden"));
@@ -577,7 +619,8 @@ const allImages = Object.entries(product.images).flatMap(([color, imgs]) =>
       const sizeInput = document.querySelector(
         `input[name="size-choice"][value="${sizeParam}"]`,
       );
-      if (sizeInput) {
+      const availableSizes = window.productVariants[window.selectedColor] || {};
+      if (sizeInput && availableSizes[sizeParam]) {
         sizeInput.checked = true;
         selectSize(sizeInput);
       }

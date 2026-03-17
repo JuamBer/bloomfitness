@@ -39,7 +39,7 @@ export interface Product {
 type SizeGuideByColor = Record<string, "anbor-bronx" | "jhk">;
 
 const colors = ["Gris Pizarra", "Rojo Carmín", "Azul Turquesa"];
-const sizes = ["S", "M", "L", "XL", "XXL"];
+const sizes = ["XS", "S", "M", "L", "XL", "XXL"];
 
 const defaultSizeGuideByColor: SizeGuideByColor = {
   "Gris Pizarra": "anbor-bronx",
@@ -76,7 +76,14 @@ export const products: Product[] = [
     variants: {
       "Gris Pizarra": { S: 38645, M: 38646, L: 38647, XL: 38648, XXL: 38649 },
       "Rojo Carmín": { S: 38650, M: 38651, L: 38652, XL: 38653, XXL: 38654 },
-      "Azul Turquesa": { S: 38655, M: 38656, L: 38657, XL: 38658, XXL: 38659 },
+      "Azul Turquesa": {
+        XS: 39513,
+        S: 38655,
+        M: 38656,
+        L: 38657,
+        XL: 38658,
+        XXL: 38659,
+      },
     },
     ...defaultClothingMetadata,
   },
@@ -96,7 +103,14 @@ export const products: Product[] = [
     variants: {
       "Gris Pizarra": { S: 38660, M: 38661, L: 38662, XL: 38663, XXL: 38664 },
       "Rojo Carmín": { S: 38665, M: 38666, L: 38667, XL: 38668, XXL: 38669 },
-      "Azul Turquesa": { S: 38670, M: 38671, L: 38672, XL: 38673, XXL: 38674 },
+      "Azul Turquesa": {
+        XS: 39516,
+        S: 38670,
+        M: 38671,
+        L: 38672,
+        XL: 38673,
+        XXL: 38674,
+      },
     },
     ...defaultClothingMetadata,
   },
@@ -116,7 +130,14 @@ export const products: Product[] = [
     variants: {
       "Gris Pizarra": { S: 38675, M: 38676, L: 38677, XL: 38678, XXL: 38680 },
       "Rojo Carmín": { S: 38681, M: 38682, L: 38683, XL: 38684, XXL: 38685 },
-      "Azul Turquesa": { S: 38686, M: 38687, L: 38688, XL: 38689, XXL: 38690 },
+      "Azul Turquesa": {
+        XS: 39519,
+        S: 38686,
+        M: 38687,
+        L: 38688,
+        XL: 38689,
+        XXL: 38690,
+      },
     },
     ...defaultClothingMetadata,
   },
