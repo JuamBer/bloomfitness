@@ -1,4 +1,5 @@
 import type { APIRoute } from "astro";
+import { getImage } from "astro:assets";
 import { products } from "../data/products";
 
 export const GET: APIRoute = async ({ site }) => {
@@ -17,14 +18,34 @@ export const GET: APIRoute = async ({ site }) => {
 
     for (const color of product.colors) {
       const colorImages = product.images[color] || [];
-      const mainImageSrc = colorImages[0]?.src || "";
-      const mainImage = mainImageSrc.startsWith("http")
-        ? mainImageSrc
-        : `${baseUrl}${mainImageSrc}`;
+      if (colorImages.length === 0) continue;
 
-      const additionalImages = colorImages.slice(1).map((img) => {
-        const src = img.src || "";
-        return src.startsWith("http") ? src : `${baseUrl}${src}`;
+      // Optimize images to ensure they are under 8MB
+      // Converting to webp and setting a max width of 1024px
+      const optimizedMainImg = await getImage({
+        src: colorImages[0],
+        width: 1024,
+        format: "webp",
+        quality: 85,
+      });
+
+      const mainImage = optimizedMainImg.src.startsWith("http")
+        ? optimizedMainImg.src
+        : `${baseUrl}${optimizedMainImg.src}`;
+
+      const optimizedAdditionalImgs = await Promise.all(
+        colorImages.slice(1).map((img) =>
+          getImage({
+            src: img,
+            width: 1024,
+            format: "webp",
+            quality: 85,
+          }),
+        ),
+      );
+
+      const additionalImages = optimizedAdditionalImgs.map((img) => {
+        return img.src.startsWith("http") ? img.src : `${baseUrl}${img.src}`;
       });
 
       for (const size of product.sizes) {
