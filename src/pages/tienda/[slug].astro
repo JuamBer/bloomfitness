@@ -26,8 +26,7 @@ const colorMap: Record<string, string> = {
 
 const firstColor = product.colors[0];
 const allImages = Object.entries(product.photos).flatMap(([color, photos]) => {
-  const renders = product.images[color] || [];
-  return [...photos, ...renders].map((img, i) => ({ color, img, index: i }));
+  return photos.map((img, i) => ({ color, img, index: i }));
 });
 ---
 
