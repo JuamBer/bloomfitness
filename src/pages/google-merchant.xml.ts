@@ -17,7 +17,10 @@ export const GET: APIRoute = async ({ site }) => {
     const formattedPrice = `${parseFloat(numericPrice).toFixed(2)} EUR`;
 
     for (const color of product.colors) {
-      const colorImages = product.images[color] || [];
+      const renders = product.images[color] || [];
+      const photos = product.photos[color] || [];
+      const colorImages = [...renders, ...photos];
+      
       if (colorImages.length === 0) continue;
 
       // Optimize images to ensure they are under 8MB
