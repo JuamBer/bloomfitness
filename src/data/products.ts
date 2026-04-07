@@ -2,12 +2,12 @@ import { type ImageMetadata } from "astro";
 
 // --- FAITH MOVES MOUNTAINS ---
 // Renders
-import faithCarminRenderDelantera from "../assets/products/faith-moves-mountains/faith-moves-mountains-carmin-render-delantera.png";
-import faithCarminRenderTrasera from "../assets/products/faith-moves-mountains/faith-moves-mountains-carmin-render-trasera.png";
-import faithPizarraRenderDelantera from "../assets/products/faith-moves-mountains/faith-moves-mountains-pizarra-render-delantera.png";
-import faithPizarraRenderTrasera from "../assets/products/faith-moves-mountains/faith-moves-mountains-pizarra-render-trasera.png";
-import faithTurquesaRenderDelantera from "../assets/products/faith-moves-mountains/faith-moves-mountains-turquesa-render-delantera.png";
-import faithTurquesaRenderTrasera from "../assets/products/faith-moves-mountains/faith-moves-mountains-turquesa-render-trasera.png";
+import faithCarminRenderDelantera from "../assets/products/faith-moves-mountains/renders/faith-moves-mountains-carmin-render-delantera.webp";
+import faithCarminRenderTrasera from "../assets/products/faith-moves-mountains/renders/faith-moves-mountains-carmin-render-trasera.webp";
+import faithPizarraRenderDelantera from "../assets/products/faith-moves-mountains/renders/faith-moves-mountains-pizarra-render-delantera.webp";
+import faithPizarraRenderTrasera from "../assets/products/faith-moves-mountains/renders/faith-moves-mountains-pizarra-render-trasera.webp";
+import faithTurquesaRenderDelantera from "../assets/products/faith-moves-mountains/renders/faith-moves-mountains-turquesa-render-delantera.webp";
+import faithTurquesaRenderTrasera from "../assets/products/faith-moves-mountains/renders/faith-moves-mountains-turquesa-render-trasera.webp";
 
 // Photos - Carmín
 import faithCarminHombreDelantera1 from "../assets/products/faith-moves-mountains/photos/faith-moves-mountains-carmin-hombre-delantera-1.webp";
@@ -42,12 +42,12 @@ import faithTurquesaMujerTrasera2 from "../assets/products/faith-moves-mountains
 
 // --- GO TO BLOOM ---
 // Renders
-import bloomCarminRenderDelantera from "../assets/products/go-to-bloom/go-to-bloom-carmin-render-delantera.png";
-import bloomCarminRenderTrasera from "../assets/products/go-to-bloom/go-to-bloom-carmin-render-trasera.png";
-import bloomPizarraRenderDelantera from "../assets/products/go-to-bloom/go-to-bloom-pizarra-render-delantera.png";
-import bloomPizarraRenderTrasera from "../assets/products/go-to-bloom/go-to-bloom-pizarra-render-trasera.png";
-import bloomTurquesaRenderDelantera from "../assets/products/go-to-bloom/go-to-bloom-turquesa-render-delantera.png";
-import bloomTurquesaRenderTrasera from "../assets/products/go-to-bloom/go-to-bloom-turquesa-render-trasera.png";
+import bloomCarminRenderDelantera from "../assets/products/go-to-bloom/renders/go-to-bloom-carmin-render-delantera.webp";
+import bloomCarminRenderTrasera from "../assets/products/go-to-bloom/renders/go-to-bloom-carmin-render-trasera.webp";
+import bloomPizarraRenderDelantera from "../assets/products/go-to-bloom/renders/go-to-bloom-pizarra-render-delantera.webp";
+import bloomPizarraRenderTrasera from "../assets/products/go-to-bloom/renders/go-to-bloom-pizarra-render-trasera.webp";
+import bloomTurquesaRenderDelantera from "../assets/products/go-to-bloom/renders/go-to-bloom-turquesa-render-delantera.webp";
+import bloomTurquesaRenderTrasera from "../assets/products/go-to-bloom/renders/go-to-bloom-turquesa-render-trasera.webp";
 
 // Photos - Carmín
 import bloomCarminHombreDelantera1 from "../assets/products/go-to-bloom/photos/go-to-bloom-carmin-hombre-delantera-1.webp";
@@ -80,12 +80,12 @@ import bloomTurquesaMujerTrasera2 from "../assets/products/go-to-bloom/photos/go
 
 // --- YOUR ONLY LIMIT IS MENTAL ---
 // Renders
-import mentalCarminRenderDelantera from "../assets/products/your-only-limit-is-mental/your-only-limit-is-mental-carmin-render-delantera.png";
-import mentalCarminRenderTrasera from "../assets/products/your-only-limit-is-mental/your-only-limit-is-mental-carmin-render-trasera.png";
-import mentalPizarraRenderDelantera from "../assets/products/your-only-limit-is-mental/your-only-limit-is-mental-pizarra-render-delantera.png";
-import mentalPizarraRenderTrasera from "../assets/products/your-only-limit-is-mental/your-only-limit-is-mental-pizarra-render-trasera.png";
-import mentalTurquesaRenderDelantera from "../assets/products/your-only-limit-is-mental/your-only-limit-is-mental-turquesa-render-delantera.png";
-import mentalTurquesaRenderTrasera from "../assets/products/your-only-limit-is-mental/your-only-limit-is-mental-turquesa-render-trasera.png";
+import mentalCarminRenderDelantera from "../assets/products/your-only-limit-is-mental/renders/your-only-limit-is-mental-carmin-render-delantera.webp";
+import mentalCarminRenderTrasera from "../assets/products/your-only-limit-is-mental/renders/your-only-limit-is-mental-carmin-render-trasera.webp";
+import mentalPizarraRenderDelantera from "../assets/products/your-only-limit-is-mental/renders/your-only-limit-is-mental-pizarra-render-delantera.webp";
+import mentalPizarraRenderTrasera from "../assets/products/your-only-limit-is-mental/renders/your-only-limit-is-mental-pizarra-render-trasera.webp";
+import mentalTurquesaRenderDelantera from "../assets/products/your-only-limit-is-mental/renders/your-only-limit-is-mental-turquesa-render-delantera.webp";
+import mentalTurquesaRenderTrasera from "../assets/products/your-only-limit-is-mental/renders/your-only-limit-is-mental-turquesa-render-trasera.webp";
 
 // Photos - Carmín
 import mentalCarminHombreDelantera1 from "../assets/products/your-only-limit-is-mental/photos/your-only-limit-is-mental-carmin-hombre-delantera-1.webp";
