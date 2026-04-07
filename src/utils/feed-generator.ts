@@ -65,7 +65,7 @@ export function generateProductFeed(baseUrl: string, platform: FeedPlatform): st
       <g:link>${link}</g:link>
       <g:image_link>${mainImage}</g:image_link>${additionalImagesXml}
       <g:condition>new</g:condition>
-      <g:availability>in_stock</g:availability>
+      <g:availability>${platform === "tiktok" ? "in stock" : "in_stock"}</g:availability>
       <g:price>${formattedPrice}</g:price>
       <g:brand><![CDATA[Bloom Fitness]]></g:brand>
       <g:item_group_id>${product.slug}</g:item_group_id>
