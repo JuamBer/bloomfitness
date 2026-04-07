@@ -16,18 +16,74 @@ import Layout from "../../layouts/Layout.astro";
 const nutritionists = professionals.filter(
   (p) => p.area === ProfessionalArea.NUTRICIONISTA,
 );
+const nutritionServiceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Nutricionista y nutricion en Mislata",
+  serviceType: "Nutricion",
+  areaServed: {
+    "@type": "City",
+    name: "Mislata",
+  },
+  provider: {
+    "@type": "HealthAndBeautyBusiness",
+    name: "Bloom Fitness",
+    url: "https://bloomfitness.es",
+    telephone: "+34 614 047 269",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Plaza Musico Ibars numero 5",
+      addressLocality: "Mislata",
+      addressRegion: "Valencia",
+      postalCode: "46920",
+      addressCountry: "ES",
+    },
+  },
+  offers: {
+    "@type": "Offer",
+    priceCurrency: "EUR",
+    price: "45",
+    description: "Revisiones de nutricion desde 45 EUR",
+  },
+  url: "https://bloomfitness.es/servicios/nutricion",
+};
+
+const nutritionFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Cuanto cuesta el servicio de nutricionista en Mislata?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "La sesion inicial son 65 euros e incluye valoracion y plan personalizado. Las revisiones son de 45 euros.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Sirve para perder grasa o mejorar rendimiento?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Si. Adaptamos la estrategia segun tu objetivo: salud, composicion corporal, rendimiento o adherencia a largo plazo.",
+      },
+    },
+  ],
+};
 ---
 
 <Layout
-  title="Nutrición en Mislata | Bloom Fitness"
-  description="Asesoramiento nutricional personalizado en Mislata con Bloom Fitness. Planes adaptados a tus objetivos y estilo de vida para optimizar tus resultados."
-  keywords="nutrición Mislata, nutricionista Mislata, dieta personalizada, pérdida de peso Mislata, nutrición deportiva, salud alimentaria"
+  title="Nutricionista y Nutricion en Mislata | Bloom Fitness"
+  description="Servicio de nutricionista en Mislata con evaluacion, plan nutricional personalizado y revisiones para salud, composicion corporal y rendimiento."
+  keywords="nutricionista Mislata, nutricion Mislata, dieta personalizada Mislata, nutricion deportiva Mislata, perdida de peso Mislata, Bloom Fitness"
 >
+  <script type="application/ld+json" set:html={JSON.stringify(nutritionServiceSchema)}></script>
+  <script type="application/ld+json" set:html={JSON.stringify(nutritionFaqSchema)}></script>
   <Header />
   <ColorBar />
 
   <main class="min-h-screen bg-black pt-16 pb-16">
-    <nav class="max-w-7xl mx-auto px-6 md:px-12 mb-8">
+    <nav class="max-w-7xl mx-auto px-6 md:px-12 mb-8" aria-label="Migas de pan">
       <ol class="flex items-center gap-2 text-sm">
         <li>
           <a
@@ -61,6 +117,10 @@ const nutritionists = professionals.filter(
         Asesoramiento nutricional personalizado en Mislata para complementar tu
         entrenamiento y optimizar tus resultados. Planes adaptados a tus
         objetivos y estilo de vida.
+      </p>
+      <p class="text-gray-400 text-base md:text-lg max-w-3xl leading-relaxed mt-4">
+        Si buscas nutricionista en Mislata, te acompaniamos con pautas practicas,
+        revisiones y educacion nutricional para resultados sostenibles.
       </p>
     </section>
 
@@ -116,6 +176,36 @@ const nutritionists = professionals.filter(
               </p>
               <p class="text-white text-4xl font-extrabold">45€</p>
             </div>
+          </div>
+        </section>
+        <section>
+          <h2
+            class="text-white font-bold text-2xl uppercase tracking-wide mb-6 flex items-center gap-3"
+          >
+            <span
+              class="w-8 h-[2px] bg-[var(--color-orange-light)] inline-block"
+            ></span>
+            Preguntas frecuentes
+          </h2>
+          <div class="space-y-4">
+            <article class="bg-gray-900 border border-gray-700 rounded-lg p-5">
+              <h3 class="text-white font-bold mb-2">
+                Cuanto cuesta el servicio de nutricionista en Mislata?
+              </h3>
+              <p class="text-gray-300 text-sm">
+                La sesion inicial son 65 euros e incluye valoracion y plan
+                personalizado. Las revisiones son de 45 euros.
+              </p>
+            </article>
+            <article class="bg-gray-900 border border-gray-700 rounded-lg p-5">
+              <h3 class="text-white font-bold mb-2">
+                Sirve para perder grasa o mejorar rendimiento?
+              </h3>
+              <p class="text-gray-300 text-sm">
+                Si. Adaptamos la estrategia segun tu objetivo: salud, composicion
+                corporal, rendimiento o adherencia a largo plazo.
+              </p>
+            </article>
           </div>
         </section>
 
@@ -240,6 +330,7 @@ const nutritionists = professionals.filter(
           href="https://reserve.timp.pro/centers/18931-bloom-fitness-mislata/connect_activities/5345"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Reservar consulta de nutricion en Mislata"
           class="inline-block px-8 py-4 text-white font-bold text-lg uppercase tracking-wide rounded-full transition-all duration-300 shadow-lg hover:shadow-2xl relative overflow-hidden cursor-pointer group"
         >
           <span class="relative z-10">RESERVAR</span>

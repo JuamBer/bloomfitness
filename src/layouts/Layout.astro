@@ -7,6 +7,7 @@ export interface Props {
   description?: string;
   image?: string;
   keywords?: string;
+  ogType?: string;
 }
 
 import favicon from "../assets/favicon.ico";
@@ -23,6 +24,7 @@ const siteKeywords =
   Astro.props.keywords ||
   "entrenamiento Mislata, fisioterapia cerca de mí, entrenador personal Mislata, gimnasio no masificado Mislata, readaptación lesiones Valencia, dolor espalda ejercicio, entrenamiento seguro, salud integral, nutrición, bloom fitness";
 const socialImageURL = new URL(Astro.props.image || ogImage.src, Astro.site);
+const ogType = Astro.props.ogType || "website";
 ---
 
 <!doctype html>
@@ -57,11 +59,12 @@ const socialImageURL = new URL(Astro.props.image || ogImage.src, Astro.site);
     <meta name="robots" content="index, follow" />
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={siteTitle} />
     <meta property="og:description" content={siteDescription} />
     <meta property="og:image" content={socialImageURL} />
+    <meta property="og:locale" content="es_ES" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />

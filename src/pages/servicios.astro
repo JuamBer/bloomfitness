@@ -8,16 +8,17 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout
-  title="Servicios en Mislata | Bloom Fitness"
-  description="Descubre nuestros servicios de entrenamiento, fisioterapia y nutrición en Mislata con Bloom Fitness. Tarifas personalizadas para alcanzar tus objetivos."
-  keywords="servicios bloom fitness, entrenamiento, fisioterapia, nutrición, salud Mislata, bienestar Valencia"
+  title="Servicios de Entrenamiento, Fisioterapia y Nutricion en Mislata | Bloom Fitness"
+  description="Servicios en Mislata de entrenamiento personal y grupal, fisioterapia y nutricion. Conoce precios, bonos y programas personalizados en Bloom Fitness."
+  keywords="servicios Mislata, entrenamiento personal Mislata, entrenamiento grupal Mislata, fisioterapia Mislata, nutricionista Mislata, nutricion Mislata, Bloom Fitness"
 >
   <Header />
   <ColorBar />
 
   <main class="min-h-screen bg-black pt-16 pb-16">
-    <section class="max-w-7xl mx-auto px-6 md:px-12 mb-20">
+    <section class="max-w-7xl mx-auto px-6 md:px-12 mb-20" aria-labelledby="servicios-intro-title">
       <h1
+        id="servicios-intro-title"
         class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-wider text-white uppercase mb-8"
       >
         SERVICIOS <span class="text-[var(--color-orange-strong)]"
@@ -32,10 +33,11 @@ import Layout from "../layouts/Layout.astro";
       </p>
     </section>
 
-    <section class="max-w-7xl mx-auto px-6 md:px-12 mb-20">
+    <section class="max-w-7xl mx-auto px-6 md:px-12 mb-20" aria-label="Listado de servicios en Mislata">
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         <a
           href="/servicios/entrenamiento"
+          aria-label="Ver servicio de entrenamiento personal y grupal en Mislata"
           class="group bg-gray-900 border border-gray-700 rounded-xl p-8 hover:border-[var(--color-orange-strong)] transition-all duration-300 block"
         >
           <span
@@ -83,6 +85,7 @@ import Layout from "../layouts/Layout.astro";
 
         <a
           href="/servicios/fisioterapia"
+          aria-label="Ver servicio de fisioterapia en Mislata"
           class="group bg-gray-900 border border-gray-700 rounded-xl p-8 hover:border-[var(--color-blue)] transition-all duration-300 block"
         >
           <span
@@ -128,6 +131,7 @@ import Layout from "../layouts/Layout.astro";
 
         <a
           href="/servicios/nutricion"
+          aria-label="Ver servicio de nutricion en Mislata"
           class="group bg-gray-900 border border-gray-700 rounded-xl p-8 hover:border-[var(--color-orange-light)] transition-all duration-300 block"
         >
           <span
@@ -168,6 +172,44 @@ import Layout from "../layouts/Layout.astro";
             </div>
           </div>
         </a>
+      </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-6 md:px-12 mb-20" aria-labelledby="faq-servicios-title">
+      <h2
+        id="faq-servicios-title"
+        class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-wider text-white uppercase mb-8"
+      >
+        Preguntas frecuentes sobre servicios en Mislata
+      </h2>
+      <div class="space-y-6 max-w-4xl">
+        <article>
+          <h3 class="text-xl font-bold text-white mb-2">
+            Ofreceis entrenamiento personal y grupal en Mislata?
+          </h3>
+          <p class="text-gray-300">
+            Si. Dispones de entrenamiento personal y grupal con valoracion funcional
+            inicial para adaptar las cargas a tu nivel.
+          </p>
+        </article>
+        <article>
+          <h3 class="text-xl font-bold text-white mb-2">
+            Teneis fisioterapeuta en Mislata?
+          </h3>
+          <p class="text-gray-300">
+            Si. Nuestro servicio de fisioterapia en Mislata incluye sesiones,
+            bonos y programas orientados a dolor, lesion y readaptacion.
+          </p>
+        </article>
+        <article>
+          <h3 class="text-xl font-bold text-white mb-2">
+            Teneis nutricionista en Mislata?
+          </h3>
+          <p class="text-gray-300">
+            Si. El servicio de nutricion en Mislata incluye evaluacion inicial,
+            plan personalizado y revisiones periodicas.
+          </p>
+        </article>
       </div>
     </section>
 

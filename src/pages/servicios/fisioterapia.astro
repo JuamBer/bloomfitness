@@ -11,18 +11,74 @@ import Layout from "../../layouts/Layout.astro";
 const physios = professionals.filter(
   (p) => p.area === ProfessionalArea.FISIOTERAPIA,
 );
+const physioServiceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Fisioterapia en Mislata",
+  serviceType: "Fisioterapia",
+  areaServed: {
+    "@type": "City",
+    name: "Mislata",
+  },
+  provider: {
+    "@type": "HealthAndBeautyBusiness",
+    name: "Bloom Fitness",
+    url: "https://bloomfitness.es",
+    telephone: "+34 614 047 269",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Plaza Musico Ibars numero 5",
+      addressLocality: "Mislata",
+      addressRegion: "Valencia",
+      postalCode: "46920",
+      addressCountry: "ES",
+    },
+  },
+  offers: {
+    "@type": "Offer",
+    priceCurrency: "EUR",
+    price: "25",
+    description: "Sesiones de fisioterapia desde 25 EUR",
+  },
+  url: "https://bloomfitness.es/servicios/fisioterapia",
+};
+
+const physioFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Cuanto cuesta la fisioterapia en Mislata?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Puedes empezar desde 25 euros en sesiones de 30 minutos o elegir bonos para reducir el coste por sesion.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Trabajais recuperacion de lesiones deportivas?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Si. Adaptamos el tratamiento y la readaptacion segun evolucion para volver a tu actividad con mayor seguridad.",
+      },
+    },
+  ],
+};
 ---
 
 <Layout
-  title="Fisioterapia en Mislata | Bloom Fitness"
-  description="Servicio de fisioterapia profesional en Mislata con Bloom Fitness. Tratamiento, recuperación y prevención de lesiones con seguimiento personalizado."
-  keywords="fisioterapia Mislata, fisioterapeuta Mislata, rehabilitación lesiones, dolor de espalda Mislata, punción seca Mislata, masaje deportivo"
+  title="Fisioterapia en Mislata para Dolor y Lesiones | Bloom Fitness"
+  description="Fisioterapia en Mislata para dolor, lesiones y readaptacion. Sesiones, bonos y programas con seguimiento profesional en Bloom Fitness."
+  keywords="fisioterapia Mislata, fisioterapeuta Mislata, rehabilitacion Mislata, dolor espalda Mislata, lesion deportiva Mislata, Bloom Fitness"
 >
+  <script type="application/ld+json" set:html={JSON.stringify(physioServiceSchema)}></script>
+  <script type="application/ld+json" set:html={JSON.stringify(physioFaqSchema)}></script>
   <Header />
   <ColorBar />
 
   <main class="min-h-screen bg-black pt-16 pb-16">
-    <nav class="max-w-7xl mx-auto px-6 md:px-12 mb-8">
+    <nav class="max-w-7xl mx-auto px-6 md:px-12 mb-8" aria-label="Migas de pan">
       <ol class="flex items-center gap-2 text-sm">
         <li>
           <a
@@ -52,6 +108,10 @@ const physios = professionals.filter(
         Servicio de fisioterapia profesional en Mislata para tratamiento,
         recuperación y prevención de lesiones. Ofrecemos sesiones individuales,
         bonos y programas completos con seguimiento personalizado.
+      </p>
+      <p class="text-gray-400 text-base md:text-lg max-w-3xl leading-relaxed mt-4">
+        Si buscas fisioterapeuta en Mislata para aliviar dolor, recuperar movilidad
+        y volver a entrenar con seguridad, te ayudamos con un plan progresivo.
       </p>
     </section>
 
@@ -91,6 +151,35 @@ const physios = professionals.filter(
               </p>
               <p class="text-white text-3xl font-extrabold">38€</p>
             </div>
+          </div>
+        </section>
+        <section>
+          <h2
+            class="text-white font-bold text-2xl uppercase tracking-wide mb-6 flex items-center gap-3"
+          >
+            <span class="w-8 h-[2px] bg-[var(--color-blue)] inline-block"
+            ></span>
+            Preguntas frecuentes
+          </h2>
+          <div class="space-y-4">
+            <article class="bg-gray-900 border border-gray-700 rounded-lg p-5">
+              <h3 class="text-white font-bold mb-2">
+                Cuanto cuesta la fisioterapia en Mislata?
+              </h3>
+              <p class="text-gray-300 text-sm">
+                Puedes empezar desde 25 euros en sesiones de 30 minutos o elegir
+                bonos para reducir el coste por sesion.
+              </p>
+            </article>
+            <article class="bg-gray-900 border border-gray-700 rounded-lg p-5">
+              <h3 class="text-white font-bold mb-2">
+                Trabajais recuperacion de lesiones deportivas?
+              </h3>
+              <p class="text-gray-300 text-sm">
+                Si. Adaptamos el tratamiento y la readaptacion segun evolucion para
+                volver a tu actividad con mayor seguridad.
+              </p>
+            </article>
           </div>
         </section>
 
@@ -229,6 +318,7 @@ const physios = professionals.filter(
           href="https://reserve.timp.pro/centers/18931-bloom-fitness-mislata/connect_activities/5276"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Reservar fisioterapia en Mislata"
           class="inline-block px-8 py-4 text-white font-bold text-lg uppercase tracking-wide rounded-full transition-all duration-300 shadow-lg hover:shadow-2xl relative overflow-hidden cursor-pointer group"
         >
           <span class="relative z-10">RESERVAR</span>
