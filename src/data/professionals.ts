@@ -143,6 +143,11 @@ export const professionals: Professional[] = [
         comment:
           "Tuve problemas para llegar a la hora establecida y me retrasó la visita con amabilidad. Me va a preparar un plan personalizado y seguro que me ayuda a lograrlo",
       },
+      {
+        name: "Pepi Porta Benitez",
+        comment:
+          "Son un equipo muy profesionales, la atención buenísima yo se lo recomiendo a todo el mundo",
+      },
     ],
   },
   {
