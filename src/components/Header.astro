@@ -93,7 +93,7 @@ import isotype from "../assets/isotype.svg";
         </li>
         <li>
           <a
-            href="/#contact"
+            href="/contacto"
             class="menu-link text-white text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-wider hover:text-[var(--color-orange-strong)] transition-all duration-300 inline-block hover:translate-x-4"
           >
             CONTACTO
@@ -115,7 +115,7 @@ import isotype from "../assets/isotype.svg";
     const menuOverlay = document.getElementById("menu-overlay");
     const menuClose = document.getElementById("menu-close");
     const menuLinks = document.querySelectorAll(".menu-link");
-    let previousFocusedElement = null;
+    let previousFocusedElement: Element | null = null;
 
     function openMenu() {
       previousFocusedElement = document.activeElement;

@@ -1,6 +1,6 @@
 # Bloom Fitness 🌸
 
-Tu centro familiar de entrenamiento, fisioterapia y nutrición en Mislata. Olvídate de los gimnasios masificados. Nos centramos en tu salud, fuerza y readaptación de lesiones leves con un trato 100% personal.
+Tu centro familiar de entrenamiento, fisioterapia y nutrición en Mislata. Olvídate de los gimnasios masificados. Nos centramos en tu salud, fuerza y readaptación de lesiones con un trato 100% personal.
 
 ## 🚀 Descripción del Proyecto
 

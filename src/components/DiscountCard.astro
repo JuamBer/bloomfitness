@@ -1,0 +1,68 @@
+---
+import arrowRight from "../assets/icons/arrow-right-solid-full.svg";
+import gift from "../assets/icons/gift-solid-full.svg";
+
+interface Props {
+  href: string;
+  title?: string;
+  description: string;
+  discount: string;
+  label: string;
+}
+
+const {
+  href,
+  title = "Descuentos y Promociones",
+  description,
+  discount,
+  label,
+} = Astro.props;
+---
+
+<a
+  href={href}
+  class="group block bg-gray-900 border border-gray-800 rounded-2xl p-8 md:p-10 transition-all duration-300 hover:border-[var(--color-red)]/50"
+>
+  <div class="flex flex-col md:flex-row md:items-center justify-between gap-8">
+    <div class="flex items-start gap-6">
+      <div
+        class="flex-shrink-0 w-14 h-14 rounded-xl bg-[var(--color-red)] flex items-center justify-center shadow-[0_5px_15px_rgba(230,44,40,0.3)]"
+      >
+        <span
+          class="w-7 h-7 bg-white"
+          style={`mask: url(${gift.src}) no-repeat center / contain; -webkit-mask: url(${gift.src}) no-repeat center / contain;`}
+          aria-hidden="true"></span>
+      </div>
+      <div>
+        <h2
+          class="text-2xl sm:text-3xl font-bold text-white uppercase mb-2 group-hover:text-[var(--color-red)] transition-colors"
+        >
+          {title}
+        </h2>
+        <p class="text-gray-400 text-base md:text-lg max-w-xl leading-relaxed">
+          {description}
+        </p>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-6">
+      <div class="hidden md:block h-12 w-px bg-gray-800"></div>
+      <div class="flex flex-col">
+        <span class="text-[var(--color-red)] font-black text-3xl"
+          >{discount}</span
+        >
+        <span class="text-gray-500 text-xs uppercase tracking-widest font-bold"
+          >{label}</span
+        >
+      </div>
+      <div
+        class="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center group-hover:bg-[var(--color-red)] group-hover:border-[var(--color-red)] group-hover:text-black transition-all text-white"
+      >
+        <span
+          class="w-4 h-4 bg-current"
+          style={`mask: url(${arrowRight.src}) no-repeat center / contain; -webkit-mask: url(${arrowRight.src}) no-repeat center / contain;`}
+          aria-hidden="true"></span>
+      </div>
+    </div>
+  </div>
+</a>

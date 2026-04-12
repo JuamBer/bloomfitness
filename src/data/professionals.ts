@@ -150,15 +150,4 @@ export const professionals: Professional[] = [
       },
     ],
   },
-  {
-    slug: "enzo-perez",
-    name: "Enzo Pérez Maraver",
-    area: ProfessionalArea.ENTRENADOR_PERSONAL,
-    email: "enzo.perez.maraver2002@gmail.com",
-    whatsapp: "608773717",
-    description: "Se revelará pronto",
-    image: null,
-    dot: blueDot,
-    comingSoon: true,
-  },
-];
+  ];

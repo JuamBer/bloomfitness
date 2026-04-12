@@ -1,0 +1,67 @@
+---
+import arrowRight from "../assets/icons/arrow-right-solid-full.svg";
+
+interface Props {
+  href: string;
+  number: string;
+  title: string;
+  description: string;
+  tags: string[];
+  price: string;
+  colorVar: string;
+}
+
+const { href, number, title, description, tags, price, colorVar } = Astro.props;
+const transitionNameNumber = `servicio-numero-${number}`;
+const transitionNameTitle = `servicio-nombre-${title.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")}`;
+---
+
+<a
+  href={href}
+  aria-label={`Ver servicio de ${title.toLowerCase()} en Mislata`}
+  class="group bg-gray-900 border border-gray-700 rounded-xl p-8 transition-all duration-300 block"
+  style={`--hover-color: var(${colorVar});`}
+>
+  <span
+    class="uppercase tracking-wider font-bold text-sm mb-2 block"
+    style={`color: var(${colorVar});`}
+    transition:name={transitionNameNumber}>{number}</span
+  >
+  <h2
+    class="text-2xl sm:text-3xl font-extrabold tracking-wider text-white uppercase mb-4 transition-colors group-hover:text-[var(--hover-color)]"
+    transition:name={transitionNameTitle}
+  >
+    {title}
+  </h2>
+  <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+    {description}
+  </p>
+  <div class="flex flex-wrap gap-2 mb-6">
+    {
+      tags.map((tag) => (
+        <span class="bg-gray-800 text-gray-300 text-xs px-3 py-1 rounded-full">
+          {tag}
+        </span>
+      ))
+    }
+  </div>
+  <div class="flex items-center justify-between">
+    <p class="font-bold" style={`color: var(${colorVar});`}>
+      {price}
+    </p>
+    <div
+      class="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center transition-all group-hover:bg-[var(--hover-color)] group-hover:border-[var(--hover-color)] group-hover:text-black text-[var(--hover-color)]"
+    >
+      <span
+        class="w-4 h-4 bg-current"
+        style={`mask: url(${arrowRight.src}) no-repeat center / contain; -webkit-mask: url(${arrowRight.src}) no-repeat center / contain;`}
+        aria-hidden="true"></span>
+    </div>
+  </div>
+</a>
+
+<style>
+  .group:hover {
+    border-color: var(--hover-color);
+  }
+</style>

@@ -45,7 +45,7 @@ const allImages = Object.entries(product.photos).flatMap(([color, photos]) => {
         {/* Image gallery */}
         <div class="flex flex-col-reverse sm:flex-row gap-4">
           <!-- Image Selector -->
-          <div class="w-full sm:w-20 lg:w-24 flex-shrink-0 sm:max-h-[60vh] sm:overflow-y-auto sm:pr-2 custom-scrollbar">
+          <div class="w-full sm:w-20 lg:w-24 flex-shrink-0 sm:max-h-[60vh] sm:overflow-y-auto sm:pr-3 custom-scrollbar">
             <div
               class="flex sm:flex-col gap-4 overflow-x-auto sm:overflow-y-visible p-1 sm:pb-0"
               aria-orientation="vertical"
@@ -451,23 +451,29 @@ const allImages = Object.entries(product.photos).flatMap(([color, photos]) => {
     // Update size availability
     const availableSizes = window.productVariants[color] || {};
     const sizeLabels = document.querySelectorAll('[id^="size-label-"]');
-    let availableCount = 0;
     
     sizeLabels.forEach((label) => {
       const size = label.id.replace("size-label-", "");
+      const sizeText = document.getElementById(`size-text-${size}`);
+      const input = label.querySelector('input');
+      
       if (availableSizes[size]) {
-        label.classList.remove("hidden");
-        label.classList.add("flex");
-        availableCount++;
+        // Size is available - enable it
+        label.classList.remove("opacity-50", "pointer-events-none", "cursor-not-allowed");
+        label.classList.add("cursor-pointer");
+        if (sizeText) sizeText.classList.remove("line-through", "text-gray-500");
+        if (input) input.disabled = false;
       } else {
-        label.classList.add("hidden");
-        label.classList.remove("flex");
+        // Size is not available - disable it but keep it visible
+        label.classList.add("opacity-50", "pointer-events-none", "cursor-not-allowed");
+        label.classList.remove("cursor-pointer");
+        if (sizeText) sizeText.classList.add("line-through", "text-gray-500");
+        if (input) input.disabled = true;
 
-        // If the currently selected size is now hidden, deselect it
+        // If the currently selected size is now disabled, deselect it
         if (window.selectedSize === size) {
           window.selectedSize = null;
-          const radio = label.querySelector('input');
-          if (radio) radio.checked = false;
+          if (input) input.checked = false;
           const textElement = document.getElementById("selected-size-text");
           if (textElement) textElement.innerText = "";
 
@@ -477,18 +483,6 @@ const allImages = Object.entries(product.photos).flatMap(([color, photos]) => {
         }
       }
     });
-
-    // Dynamically update grid columns
-    const gridContainer = document.getElementById("size-grid-container");
-    if (gridContainer) {
-      if (availableCount <= 5) {
-        gridContainer.classList.remove("grid-cols-6");
-        gridContainer.classList.add("grid-cols-5");
-      } else {
-        gridContainer.classList.remove("grid-cols-5");
-        gridContainer.classList.add("grid-cols-6");
-      }
-    }
 
     // Reset all color rings
     const allRings = document.querySelectorAll('[id^="color-ring-"]');
@@ -638,6 +632,7 @@ const allImages = Object.entries(product.photos).flatMap(([color, photos]) => {
   .custom-scrollbar::-webkit-scrollbar-track {
     background: #18181b; /* zinc-900 */
     border-radius: 10px;
+    margin: 4px 0;
   }
   .custom-scrollbar::-webkit-scrollbar-thumb {
     background: #ed6d35; /* Orange strong */
@@ -646,5 +641,12 @@ const allImages = Object.entries(product.photos).flatMap(([color, photos]) => {
   }
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: #f18d63; /* Lighter orange */
+  }
+  
+  /* Mobile scrollbar spacing */
+  @media (max-width: 640px) {
+    .custom-scrollbar::-webkit-scrollbar-track {
+      margin: 20px 0;
+    }
   }
 </style>

@@ -1,8 +1,6 @@
 ---
 import Banner from "../components/Banner.astro";
-import BloomFitnessMap from "../components/BloomFitnessMap.astro";
 import ColorBar from "../components/ColorBar.astro";
-import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import Reviews from "../components/Reviews.astro";
@@ -14,7 +12,7 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout
   title="Bloom Fitness | Entrenamiento, Fisioterapia y Nutrición Personalizada"
-  description="Tu centro familiar de entrenamiento, fisioterapia y nutrición en Mislata. Olvídate de los gimnasios masificados. Nos centramos en tu salud, fuerza y readaptación de lesiones leves. Trato 100% personal."
+  description="Tu centro familiar de entrenamiento, fisioterapia y nutrición en Mislata. Olvídate de los gimnasios masificados. Nos centramos en tu salud, fuerza y readaptación de lesiones. Trato 100% personal."
   keywords="entrenamiento Mislata, gimnasio Mislata, entrenador personal Mislata, gimnasio no masificado Mislata, fisioterapia Mislata, fisioterapeuta Mislata, readaptación lesiones Mislata, dolor espalda ejercicio, nutrición Mislata, nutricionista Mislata, salud integral Mislata, bloom fitness"
 >
   <Header />
@@ -24,14 +22,10 @@ import Layout from "../layouts/Layout.astro";
     <Services />
   </div>
   <Video />
+  <Reviews />
   <div id="team">
     <Team />
   </div>
-  <Reviews />
-  <div id="contact">
-    <Contact />
-  </div>
-  <BloomFitnessMap />
   <ColorBar loading="lazy" />
   <Footer />
 </Layout>
