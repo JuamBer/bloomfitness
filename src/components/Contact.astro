@@ -6,15 +6,54 @@ import whatsappIcon from "../assets/icons/whatsapp-brands-solid-full.svg";
 
 <section id="contact" class="min-h-screen bg-black py-16">
   <div class="container mx-auto px-4">
-    <div class="flex justify-center items-center mb-12">
-      <h2
-        class="text-white
-      text-4xl sm:text-5xl md:text-6xl lg:text-7xl
-      font-extrabold
-      tracking-wider"
+    <div class="max-w-4xl mx-auto mb-12">
+      <a
+        href="https://wa.me/+34614047269"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="block bg-gradient-to-r from-[#25D366] to-[#20BA5A] rounded-xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] group"
       >
-        CONTÁCTANOS
-      </h2>
+        <div
+          class="flex flex-col sm:flex-row items-center justify-between gap-4"
+        >
+          <div class="flex items-center gap-4 text-white">
+            <div class="bg-white p-3 rounded-full">
+              <Image
+                src={whatsappIcon}
+                alt="WhatsApp"
+                class="w-8 h-8"
+                style="filter: brightness(0) saturate(100%) invert(50%) sepia(89%) saturate(1637%) hue-rotate(98deg) brightness(94%) contrast(89%);"
+                loading="lazy"
+              />
+            </div>
+            <div>
+              <p class="font-bold text-xl uppercase tracking-wide">
+                ¿Prefieres WhatsApp?
+              </p>
+              <p class="text-base opacity-90">
+                Chatea directamente con nosotros
+              </p>
+            </div>
+          </div>
+          <div
+            class="flex items-center gap-2 text-white font-bold text-lg uppercase tracking-wide group-hover:gap-3 transition-all duration-300"
+          >
+            <span>Abrir Chat</span>
+            <svg
+              class="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </div>
+        </div>
+      </a>
     </div>
 
     <form
@@ -115,56 +154,6 @@ import whatsappIcon from "../assets/icons/whatsapp-brands-solid-full.svg";
         </button>
       </div>
     </form>
-
-    <div class="max-w-4xl mx-auto mb-12">
-      <a
-        href="https://wa.me/+34614047269"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="block bg-gradient-to-r from-[#25D366] to-[#20BA5A] rounded-xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] group"
-      >
-        <div
-          class="flex flex-col sm:flex-row items-center justify-between gap-4"
-        >
-          <div class="flex items-center gap-4 text-white">
-            <div class="bg-white p-3 rounded-full">
-              <Image
-                src={whatsappIcon}
-                alt="WhatsApp"
-                class="w-8 h-8"
-                style="filter: brightness(0) saturate(100%) invert(50%) sepia(89%) saturate(1637%) hue-rotate(98deg) brightness(94%) contrast(89%);"
-                loading="lazy"
-              />
-            </div>
-            <div>
-              <p class="font-bold text-xl uppercase tracking-wide">
-                ¿Prefieres WhatsApp?
-              </p>
-              <p class="text-base opacity-90">
-                Chatea directamente con nosotros
-              </p>
-            </div>
-          </div>
-          <div
-            class="flex items-center gap-2 text-white font-bold text-lg uppercase tracking-wide group-hover:gap-3 transition-all duration-300"
-          >
-            <span>Abrir Chat</span>
-            <svg
-              class="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-            </svg>
-          </div>
-        </div>
-      </a>
-    </div>
 
     <script is:inline>
       function prefillSubject() {

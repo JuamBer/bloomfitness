@@ -1,10 +1,10 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import Contact from "../components/Contact.astro";
 import BloomFitnessMap from "../components/BloomFitnessMap.astro";
 import ColorBar from "../components/ColorBar.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout
@@ -13,31 +13,30 @@ import ColorBar from "../components/ColorBar.astro";
   keywords="contacto Bloom Fitness, gimnasio Mislata contacto, reservar entrenamiento Mislata, fisioterpapeut Mislata cita, nutricionista Mislata cita"
 >
   <Header />
-  
+
   <main class="bg-black">
-    <div class="pt-24 pb-12">
+    <div class="pt-24">
       <div class="container mx-auto px-4 text-center">
-        <h1 class="text-white text-5xl md:text-7xl font-extrabold tracking-tighter mb-6 uppercase">
-          Empieza tu <span class="bg-gradient-to-r from-[var(--color-red)] to-[var(--color-orange-strong)] bg-clip-text text-transparent">cambio</span> hoy
+        <h1
+          class="text-white text-5xl md:text-7xl font-extrabold tracking-tighter mb-6 uppercase"
+        >
+          Empieza tu <span
+            class="bg-gradient-to-r from-[var(--color-red)] to-[var(--color-orange-strong)] bg-clip-text text-transparent"
+            >cambio</span
+          > hoy
         </h1>
-        <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-          ¿Tienes dudas o estás listo para dar el primer paso? Rellena el formulario o hablamos por WhatsApp. Estamos deseando conocerte.
+        <p
+          class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
+        >
+          ¿Tienes dudas o estás listo para dar el primer paso? Rellena el
+          formulario o hablamos por WhatsApp. Estamos deseando conocerte.
         </p>
       </div>
     </div>
 
     <Contact />
-    
-    <div class="py-12">
-      <div class="container mx-auto px-4">
-        <div class="flex flex-col items-center justify-center text-center space-y-4 mb-12">
-            <h2 class="text-white text-3xl md:text-5xl font-bold uppercase tracking-wide">Nuestra Ubicación</h2>
-            <div class="w-24 h-1 bg-gradient-to-r from-[var(--color-red)] to-[var(--color-orange-strong)] rounded-full"></div>
-            <p class="text-gray-400 text-lg">Pza Músico Ibars, 5, Mislata, Valencia</p>
-        </div>
-      </div>
-      <BloomFitnessMap />
-    </div>
+
+    <BloomFitnessMap />
 
     <ColorBar loading="lazy" />
   </main>

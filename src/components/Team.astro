@@ -19,65 +19,24 @@ import { professionals } from "../data/professionals";
       />
     </div>
 
-    <div class="flex flex-wrap justify-center gap-8 max-w-6xl mx-auto">
-      {
-        professionals.map((professional, index) => (
-          <div class="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)]">
-            {professional.comingSoon ? (
-              <div class="relative">
-                <div class="w-full aspect-[4/6] flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-800 border-2 border-gray-700 rounded-md relative overflow-hidden">
-                  <div class="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-blue-500/10 animate-pulse" />
-                  <div class="relative z-10 text-center px-4">
-                    <p class="text-white text-2xl font-bold uppercase mb-2">
-                      Próximamente
-                    </p>
-                    <p class="text-gray-200 text-sm uppercase tracking-wider">
-                      Se revelará pronto
-                    </p>
-                  </div>
-                </div>
-                <div class="p-6 text-center">
-                  <Image
-                    src={professional.dot}
-                    alt="Decorative Dot"
-                    class="w-6 h-6 mx-auto mb-4"
-                    loading="lazy"
-                  />
-                  <p class="text-gray-200 text-sm leading-relaxed">
-                    {professional.description}
-                  </p>
-                </div>
-              </div>
-            ) : (
-              professional.image && (
-                <a
-                  href={`/equipo/${professional.slug}#professional`}
-                  class="block group cursor-pointer"
-                >
-                  <div class="relative">
-                    <Image
-                      src={professional.image}
-                      alt={professional.name}
-                      class="aspect-[4/6] w-full h-auto object-cover border-2 border-gray-700 rounded-md group-hover:border-[#ED6D35] transition-colors"
-                      loading="lazy"
-                      transition:name={`professional-image-${professional.slug}`}
-                      widths={[320, 500, 555, 640]}
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-                    <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 backdrop-blur-xs border-2 border-white rounded-full px-6 py-3 text-center whitespace-nowrap group-hover:border-[#ED6D35] transition-colors">
-                      <p
-                        class="text-white text-lg font-bold uppercase"
-                        transition:name={`professional-name-${professional.slug}`}
-                      >
-                        {professional.name.split(" ").length > 2
-                          ? professional.name.split(" ").slice(0, -1).join(" ")
-                          : professional.name}
+    <div class="relative w-full max-w-[100vw] overflow-hidden">
+      <div 
+        id="team-scroll-container"
+        class="flex overflow-x-auto snap-x snap-mandatory gap-6 md:gap-8 max-w-7xl mx-auto px-4 md:px-8 pb-8 no-scrollbar scroll-smooth"
+      >
+        {
+          professionals.map((professional, index) => (
+            <div class="shrink-0 w-full sm:w-[80vw] md:w-[calc(50%-1.5rem)] lg:w-[calc(33.333%-1.5rem)] snap-center group/card team-card">
+              {professional.comingSoon ? (
+                <div class="relative h-full">
+                  <div class="w-full aspect-[4/6] flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-800 border-2 border-gray-700 rounded-xl relative overflow-hidden group-hover/card:border-gray-500 transition-colors duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-blue-500/10 animate-pulse" />
+                    <div class="relative z-10 text-center px-4">
+                      <p class="text-white text-2xl font-bold uppercase mb-2">
+                        Próximamente
                       </p>
-                      <p
-                        class="text-white text-xs font-semibold uppercase tracking-wide"
-                        transition:name={`professional-area-${professional.slug}`}
-                      >
-                        {professional.area}
+                      <p class="text-gray-200 text-sm uppercase tracking-wider">
+                        Se revelará pronto
                       </p>
                     </div>
                   </div>
@@ -88,16 +47,117 @@ import { professionals } from "../data/professionals";
                       class="w-6 h-6 mx-auto mb-4"
                       loading="lazy"
                     />
-                    <p class="text-gray-200 text-sm leading-relaxed group-hover:text-gray-300 transition-colors">
+                    <p class="text-gray-200 text-sm leading-relaxed">
                       {professional.description}
                     </p>
                   </div>
-                </a>
-              )
-            )}
-          </div>
-        ))
-      }
+                </div>
+              ) : (
+                professional.image && (
+                  <a
+                    href={`/equipo/${professional.slug}#professional`}
+                    class="block cursor-pointer h-full"
+                  >
+                    <div class="relative overflow-hidden rounded-xl">
+                      <Image
+                        src={professional.image}
+                        alt={professional.name}
+                        class="aspect-[4/6] w-full h-auto object-cover border-2 border-gray-700 rounded-xl group-hover/card:border-[#ED6D35] group-hover/card:scale-[1.02] transition-all duration-500"
+                        loading="lazy"
+                        transition:name={`professional-image-${professional.slug}`}
+                        widths={[320, 500, 555, 640]}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      />
+                      <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 backdrop-blur-md bg-black/40 border border-white/50 rounded-full px-6 py-3 text-center whitespace-nowrap group-hover/card:border-[#ED6D35] transition-colors duration-300">
+                        <p
+                          class="text-white text-lg font-bold uppercase"
+                          transition:name={`professional-name-${professional.slug}`}
+                        >
+                          {professional.name.split(" ").length > 2
+                            ? professional.name.split(" ").slice(0, -1).join(" ")
+                            : professional.name}
+                        </p>
+                        <p
+                          class="text-white text-xs font-semibold uppercase tracking-wide"
+                          transition:name={`professional-area-${professional.slug}`}
+                        >
+                          {professional.area}
+                        </p>
+                      </div>
+                    </div>
+                    <div class="p-6 text-center">
+                      <Image
+                        src={professional.dot}
+                        alt="Decorative Dot"
+                        class="w-6 h-6 mx-auto mb-4 transform group-hover/card:scale-110 transition-transform duration-300"
+                        loading="lazy"
+                      />
+                      <p class="text-gray-300 text-sm leading-relaxed group-hover/card:text-white transition-colors duration-300">
+                        {professional.description}
+                      </p>
+                    </div>
+                  </a>
+                )
+              )}
+            </div>
+          ))
+        }
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+</style>
+
+<script>
+  // Add 1-by-1 snap auto carousel
+  const initCarousel = () => {
+    const container = document.getElementById('team-scroll-container');
+    if (!container) return;
+
+    if (window.teamCarouselInterval) {
+       clearInterval(window.teamCarouselInterval);
+    }
+
+    let isPaused = false;
+
+    // Pause auto-scroll on interactions
+    container.addEventListener('mouseenter', () => isPaused = true);
+    container.addEventListener('mouseleave', () => isPaused = false);
+    container.addEventListener('touchstart', () => isPaused = true, { passive: true });
+    container.addEventListener('touchend', () => {
+       // resume after a short delay
+       setTimeout(() => isPaused = false, 2000);
+    });
+
+    window.teamCarouselInterval = setInterval(() => {
+      if (isPaused) return;
+
+      // Find a card to calculate how much to scroll
+      const firstCard = container.querySelector('.team-card');
+      if (!firstCard) return;
+      
+      const gap = window.innerWidth >= 768 ? 32 : 24; // md:gap-8 (32px), gap-6 (24px)
+      const scrollAmount = firstCard.offsetWidth + gap;
+      
+      // If we are at the end, rewind
+      if (Math.ceil(container.scrollLeft + container.clientWidth) >= container.scrollWidth - 10) {
+         container.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+         container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+    }, 3500); // 3.5 seconds per slide
+  };
+
+  document.addEventListener('astro:page-load', initCarousel);
+</script>
