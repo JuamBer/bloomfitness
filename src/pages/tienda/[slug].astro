@@ -59,8 +59,9 @@ const allImages = Object.entries(product.photos).flatMap(([color, photos]) => {
                     class={`relative h-16 lg:h-20 w-16 sm:w-full flex-shrink-0 bg-zinc-900 rounded-md items-center justify-center text-sm font-medium uppercase text-white cursor-pointer hover:bg-zinc-800 transition-colors focus:outline-none ${color === firstColor ? "flex" : "hidden"}`}
                     role="tab"
                     type="button"
-                    onclick={`switchImage('${color.replace(/ /g, "-")}', ${index})`}
+                    onclick={`switchImage('${color.replace(/ /g, "-")}', ${index}, true)`}
                   >
+
                     <span class="sr-only">
                       Image {color} {index + 1}
                     </span>
@@ -98,9 +99,10 @@ const allImages = Object.entries(product.photos).flatMap(([color, photos]) => {
                     id={`image-${color.replace(/ /g, "-")}-${index}`}
                     data-color={color}
                     class={`w-full h-full cursor-zoom-in group/image relative overflow-hidden select-none ${color === firstColor && index === 0 ? "block" : "hidden"}`}
-                    onclick="toggleProductZoom(this, event)"
+                    onclick="stopAutoSlider(); toggleProductZoom(this, event)"
                     onmousemove="handleZoomPan(this, event)"
                     onmouseleave="resetProductZoom(this)"
+
                   >
                     <Image
                       src={img}
@@ -366,8 +368,34 @@ const allImages = Object.entries(product.photos).flatMap(([color, photos]) => {
 <script is:inline>
   window.selectedColor = null;
   window.selectedSize = null;
+  let autoSliderInterval = null;
 
-  function switchImage(colorId, index) {
+  function startAutoSlider() {
+    stopAutoSlider();
+    autoSliderInterval = setInterval(() => {
+      if (!window.selectedColor) return;
+      
+      const cleanColor = window.selectedColor.replace(/\s+/g, "-");
+      const imagesForColor = document.querySelectorAll(`[id^="image-${cleanColor}-"]`);
+      const currentVisibleImg = Array.from(imagesForColor).find(img => !img.classList.contains('hidden'));
+      
+      if (currentVisibleImg && imagesForColor.length > 1) {
+        const currentIndex = parseInt(currentVisibleImg.id.split('-').pop());
+        const nextIndex = (currentIndex + 1) % imagesForColor.length;
+        switchImage(cleanColor, nextIndex);
+      }
+    }, 4000);
+  }
+
+  function stopAutoSlider() {
+    if (autoSliderInterval) {
+      clearInterval(autoSliderInterval);
+      autoSliderInterval = null;
+    }
+  }
+
+  function switchImage(colorId, index, isManual = false) {
+    if (isManual) stopAutoSlider();
     // Hide all images
     const images = document.querySelectorAll('[id^="image-"]');
     images.forEach((img) => {
@@ -395,6 +423,7 @@ const allImages = Object.entries(product.photos).flatMap(([color, photos]) => {
       selectedRing.classList.add("ring-[var(--color-orange-strong)]");
     }
   }
+
 
   function toggleProductZoom(container, event) {
     const isZoomed = container.classList.contains("is-zoomed");
@@ -497,6 +526,7 @@ const allImages = Object.entries(product.photos).flatMap(([color, photos]) => {
     if (textElement) textElement.innerText = `Color: ${color}`;
 
     switchImage(cleanColor, 0);
+    startAutoSlider();
 
     updateUrlParams();
     updateSizeGuideLink();

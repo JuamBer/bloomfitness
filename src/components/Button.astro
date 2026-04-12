@@ -1,0 +1,98 @@
+---
+interface Props {
+  href?: string;
+  variant?: "primary" | "outline";
+  color?: "orange" | "blue" | "orange-light" | "red";
+  size?: "sm" | "md" | "lg";
+  className?: string; // Additional custom classes
+  target?: string;
+  rel?: string;
+  ariaLabel?: string;
+  type?: "button" | "submit" | "reset";
+}
+
+const {
+  href,
+  variant = "primary",
+  color = "orange",
+  size = "md",
+  className = "",
+  target,
+  rel,
+  ariaLabel,
+  type = "button",
+} = Astro.props;
+
+// Component selection (a or button)
+const Element = href ? "a" : "button";
+
+// Size classes
+const sizeClasses = {
+  sm: "px-4 py-2 text-sm",
+  md: "px-6 py-3 text-base",
+  lg: "px-8 py-4 text-lg",
+};
+
+// Color theme classes for Primary (Gradient)
+const primaryThemes = {
+  orange: "from-[var(--color-red)] via-[var(--color-orange-strong)] to-[var(--color-red)]",
+  blue: "from-[var(--color-blue)] via-[#60c5f1] to-[var(--color-blue)]",
+  "orange-light": "from-[var(--color-orange-light)] via-[var(--color-orange-strong)] to-[var(--color-orange-light)]",
+  red: "from-[var(--color-red)] via-[#ff4d4d] to-[var(--color-red)]",
+};
+
+// Color theme classes for Outline
+const outlineThemes = {
+  orange: "border-[var(--color-orange-strong)] text-[var(--color-orange-strong)] hover:bg-[var(--color-orange-strong)]",
+  blue: "border-[var(--color-blue)] text-[var(--color-blue)] hover:bg-[var(--color-blue)]",
+  "orange-light": "border-[var(--color-orange-light)] text-[var(--color-orange-light)] hover:bg-[var(--color-orange-light)]",
+  red: "border-[var(--color-red)] text-[var(--color-red)] hover:bg-[var(--color-red)]",
+};
+
+// Animatable gradient layer for Primary
+const gradientBg = variant === "primary" ? primaryThemes[color] : "";
+
+// Combined classes
+const baseClasses = "inline-block font-bold uppercase tracking-wide rounded-full transition-all duration-300 relative overflow-hidden cursor-pointer group text-center";
+const variantClasses = variant === "primary" 
+  ? "text-white shadow-lg hover:shadow-2xl" 
+  : `border-2 ${outlineThemes[color]} hover:text-black`;
+
+---
+
+<Element
+  href={href}
+  target={target}
+  rel={rel}
+  aria-label={ariaLabel}
+  type={href ? undefined : type}
+  class:list={[baseClasses, variantClasses, sizeClasses[size], className]}
+>
+  <span class="relative z-10 flex items-center justify-center gap-2">
+    <slot />
+  </span>
+  
+  {variant === "primary" && (
+    <div
+      class:list={[
+        "absolute inset-0 bg-gradient-to-r bg-[length:200%_100%] group-hover:animate-[gradient-shift_2s_ease_infinite]",
+        gradientBg
+      ]}
+    >
+    </div>
+  )}
+</Element>
+
+<style>
+  @keyframes gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+</style>

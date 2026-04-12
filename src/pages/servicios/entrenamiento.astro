@@ -8,6 +8,7 @@ import Header from "../../components/Header.astro";
 import ProfessionalsSidebar from "../../components/ProfessionalsSidebar.astro";
 import { ProfessionalArea, professionals } from "../../data/professionals";
 import Layout from "../../layouts/Layout.astro";
+import Button from "../../components/Button.astro";
 
 const trainers = professionals.filter(
   (p) => p.area === ProfessionalArea.ENTRENADOR_PERSONAL,
@@ -336,17 +337,13 @@ const trainingFaqSchema = {
               Consulta nuestros descuentos por referidos, mayores de 65 años y
               más.
             </p>
-            <a
-              href="/servicios/descuentos"
-              class="inline-flex px-6 py-3 border-2 border-[var(--color-orange-strong)] text-[var(--color-orange-strong)] font-bold uppercase tracking-wide rounded-full hover:bg-[var(--color-orange-strong)] hover:text-black transition-all duration-300 items-center gap-2"
-            >
+            <Button href="/servicios/descuentos" variant="outline" color="orange">
               Ver Descuentos
-
               <span
                 class="w-5 h-5 bg-current flex-shrink-0"
                 style={`mask: url(${arrowRight.src}) no-repeat center / contain; -webkit-mask: url(${arrowRight.src}) no-repeat center / contain;`}
                 aria-hidden="true"></span>
-            </a>
+            </Button>
           </div>
         </section>
       </div>
@@ -362,35 +359,20 @@ const trainingFaqSchema = {
           Contacta con nosotros para más información o reserva tu sesión
           directamente.
         </p>
-        <a
+        <Button
           href="https://reserve.timp.pro/centers/18931-bloom-fitness-mislata/connect_activities/5343"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Reservar entrenamiento en Mislata"
-          class="inline-block px-8 py-4 text-white font-bold text-lg uppercase tracking-wide rounded-full transition-all duration-300 shadow-lg hover:shadow-2xl relative overflow-hidden cursor-pointer group"
+          ariaLabel="Reservar entrenamiento en Mislata"
+          color="orange"
+          size="lg"
         >
-          <span class="relative z-10">RESERVAR</span>
-          <div
-            class="absolute inset-0 bg-gradient-to-r from-[var(--color-red)] via-[var(--color-orange-strong)] to-[var(--color-red)] bg-[length:200%_100%] group-hover:animate-[gradient-shift_2s_ease_infinite]"
-          >
-          </div>
-        </a>
+          RESERVAR
+        </Button>
       </div>
     </section>
   </main>
   <ColorBar />
   <Footer />
 </Layout>
-<style>
-  @keyframes gradient-shift {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-</style>
+

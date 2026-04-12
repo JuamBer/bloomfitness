@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import Button from "./Button.astro";
 
 import whatsappIcon from "../assets/icons/whatsapp-brands-solid-full.svg";
 ---
@@ -141,17 +142,9 @@ import whatsappIcon from "../assets/icons/whatsapp-brands-solid-full.svg";
       <div id="form-message" class="hidden text-center p-4 rounded-lg"></div>
 
       <div class="flex justify-center sm:justify-end">
-        <button
-          type="submit"
-          id="submit-btn"
-          class="px-8 py-4 text-white font-bold text-lg uppercase tracking-wide rounded-full transition-all duration-300 shadow-lg hover:shadow-2xl relative overflow-hidden cursor-pointer group"
-        >
-          <span class="relative z-10">Enviar Mensaje</span>
-          <div
-            class="absolute inset-0 bg-gradient-to-r from-[var(--color-red)] via-[var(--color-orange-strong)] to-[var(--color-red)] bg-[length:200%_100%] group-hover:animate-[gradient-shift_2s_ease_infinite]"
-          >
-          </div>
-        </button>
+        <Button type="submit" id="submit-btn" color="red" size="lg">
+          Enviar Mensaje
+        </Button>
       </div>
     </form>
 

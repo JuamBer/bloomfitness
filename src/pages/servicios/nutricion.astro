@@ -12,6 +12,7 @@ import Header from "../../components/Header.astro";
 import ProfessionalsSidebar from "../../components/ProfessionalsSidebar.astro";
 import { ProfessionalArea, professionals } from "../../data/professionals";
 import Layout from "../../layouts/Layout.astro";
+import Button from "../../components/Button.astro";
 
 const nutritionists = professionals.filter(
   (p) => p.area === ProfessionalArea.NUTRICIONISTA,
@@ -326,35 +327,20 @@ const nutritionFaqSchema = {
           Contacta con nosotros para más información o reserva tu consulta
           directamente.
         </p>
-        <a
+        <Button
           href="https://reserve.timp.pro/centers/18931-bloom-fitness-mislata/connect_activities/5345"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Reservar consulta de nutricion en Mislata"
-          class="inline-block px-8 py-4 text-white font-bold text-lg uppercase tracking-wide rounded-full transition-all duration-300 shadow-lg hover:shadow-2xl relative overflow-hidden cursor-pointer group"
+          ariaLabel="Reservar consulta de nutricion en Mislata"
+          color="orange-light"
+          size="lg"
         >
-          <span class="relative z-10">RESERVAR</span>
-          <div
-            class="absolute inset-0 bg-gradient-to-r from-[var(--color-orange-light)] via-[var(--color-orange-strong)] to-[var(--color-orange-light)] bg-[length:200%_100%] group-hover:animate-[gradient-shift_2s_ease_infinite]"
-          >
-          </div>
-        </a>
+          RESERVAR
+        </Button>
       </div>
     </section>
   </main><ColorBar />
   <Footer /></Layout
 >
 
-<style>
-  @keyframes gradient-shift {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-</style>
+
