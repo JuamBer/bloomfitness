@@ -79,6 +79,12 @@ const ogType = Astro.props.ogType || "website";
     <meta name="geo.position" content="39.473568;-0.418877" />
     <meta name="ICBM" content="39.473568, -0.418877" />
 
+    <!-- Facebook Domain Verification -->
+    <meta
+      name="facebook-domain-verification"
+      content="8o9lakn3obuh4oa6m6csaqiivgh6us"
+    />
+
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalURL} />
 
@@ -203,7 +209,6 @@ const ogType = Astro.props.ogType || "website";
       });
     </script>
   </head>
-
   <body>
     <slot />
   </body>
