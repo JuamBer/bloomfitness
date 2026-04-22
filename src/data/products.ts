@@ -39,7 +39,6 @@ import faithTurquesaMujerDelantera3 from "../assets/products/faith-moves-mountai
 import faithTurquesaMujerTrasera1 from "../assets/products/faith-moves-mountains/photos/faith-moves-mountains-turquesa-mujer-trasera-1.webp";
 import faithTurquesaMujerTrasera2 from "../assets/products/faith-moves-mountains/photos/faith-moves-mountains-turquesa-mujer-trasera-2.webp";
 
-
 // --- GO TO BLOOM ---
 // Renders
 import bloomCarminRenderDelantera from "../assets/products/go-to-bloom/renders/go-to-bloom-carmin-render-delantera.webp";
@@ -76,7 +75,6 @@ import bloomTurquesaMujerDelantera2 from "../assets/products/go-to-bloom/photos/
 import bloomTurquesaMujerDelantera3 from "../assets/products/go-to-bloom/photos/go-to-bloom-turquesa-mujer-delantera-3.webp";
 import bloomTurquesaMujerTrasera1 from "../assets/products/go-to-bloom/photos/go-to-bloom-turquesa-mujer-trasera-1.webp";
 import bloomTurquesaMujerTrasera2 from "../assets/products/go-to-bloom/photos/go-to-bloom-turquesa-mujer-trasera-2.webp";
-
 
 // --- YOUR ONLY LIMIT IS MENTAL ---
 // Renders
@@ -117,7 +115,6 @@ import mentalTurquesaMujerDelantera3 from "../assets/products/your-only-limit-is
 import mentalTurquesaMujerTrasera1 from "../assets/products/your-only-limit-is-mental/photos/your-only-limit-is-mental-turquesa-mujer-trasera-1.webp";
 import mentalTurquesaMujerTrasera2 from "../assets/products/your-only-limit-is-mental/photos/your-only-limit-is-mental-turquesa-mujer-trasera-2.webp";
 
-
 export interface Product {
   title: string;
   slug: string;
@@ -157,7 +154,7 @@ const defaultClothingMetadata = {
 };
 
 export const baseBuyLink =
-  "https://web.timp.pro/home/18931/branch_building/siblings#/home/18931/branch_building/store/item/";
+  "https://web.timp.pro/home/18931/branch_building/store/item/";
 
 export const products: Product[] = [
   {
@@ -171,20 +168,41 @@ export const products: Product[] = [
     images: {
       "Gris Pizarra": [faithPizarraRenderDelantera, faithPizarraRenderTrasera],
       "Rojo Carmín": [faithCarminRenderDelantera, faithCarminRenderTrasera],
-      "Azul Turquesa": [faithTurquesaRenderDelantera, faithTurquesaRenderTrasera],
+      "Azul Turquesa": [
+        faithTurquesaRenderDelantera,
+        faithTurquesaRenderTrasera,
+      ],
     },
     photos: {
       "Gris Pizarra": [
-        faithPizarraHombreDelantera1, faithPizarraHombreDelantera2, faithPizarraHombreTrasera1, faithPizarraHombreTrasera2,
-        faithPizarraMujerDelantera1, faithPizarraMujerDelantera2, faithPizarraMujerTrasera1
+        faithPizarraHombreDelantera1,
+        faithPizarraHombreDelantera2,
+        faithPizarraHombreTrasera1,
+        faithPizarraHombreTrasera2,
+        faithPizarraMujerDelantera1,
+        faithPizarraMujerDelantera2,
+        faithPizarraMujerTrasera1,
       ],
       "Rojo Carmín": [
-        faithCarminHombreDelantera1, faithCarminHombreDelantera2, faithCarminHombreTrasera1, faithCarminHombreTrasera2,
-        faithCarminMujerDelantera1, faithCarminMujerDelantera2, faithCarminMujerTrasera1
+        faithCarminHombreDelantera1,
+        faithCarminHombreDelantera2,
+        faithCarminHombreTrasera1,
+        faithCarminHombreTrasera2,
+        faithCarminMujerDelantera1,
+        faithCarminMujerDelantera2,
+        faithCarminMujerTrasera1,
       ],
       "Azul Turquesa": [
-        faithTurquesaHombreDelantera1, faithTurquesaHombreDelantera2, faithTurquesaHombreDelantera3, faithTurquesaHombreTrasera1, faithTurquesaHombreTrasera2,
-        faithTurquesaMujerDelantera1, faithTurquesaMujerDelantera2, faithTurquesaMujerDelantera3, faithTurquesaMujerTrasera1, faithTurquesaMujerTrasera2
+        faithTurquesaHombreDelantera1,
+        faithTurquesaHombreDelantera2,
+        faithTurquesaHombreDelantera3,
+        faithTurquesaHombreTrasera1,
+        faithTurquesaHombreTrasera2,
+        faithTurquesaMujerDelantera1,
+        faithTurquesaMujerDelantera2,
+        faithTurquesaMujerDelantera3,
+        faithTurquesaMujerTrasera1,
+        faithTurquesaMujerTrasera2,
       ],
     },
     variants: {
@@ -212,19 +230,39 @@ export const products: Product[] = [
     images: {
       "Gris Pizarra": [bloomPizarraRenderDelantera, bloomPizarraRenderTrasera],
       "Rojo Carmín": [bloomCarminRenderDelantera, bloomCarminRenderTrasera],
-      "Azul Turquesa": [bloomTurquesaRenderDelantera, bloomTurquesaRenderTrasera],
+      "Azul Turquesa": [
+        bloomTurquesaRenderDelantera,
+        bloomTurquesaRenderTrasera,
+      ],
     },
     photos: {
       "Gris Pizarra": [
-        bloomPizarraHombreDelantera1, bloomPizarraHombreDelantera2, bloomPizarraHombreDelantera3, bloomPizarraHombreTrasera1, bloomPizarraHombreTrasera2
+        bloomPizarraHombreDelantera1,
+        bloomPizarraHombreDelantera2,
+        bloomPizarraHombreDelantera3,
+        bloomPizarraHombreTrasera1,
+        bloomPizarraHombreTrasera2,
       ],
       "Rojo Carmín": [
-        bloomCarminHombreDelantera1, bloomCarminHombreDelantera2, bloomCarminHombreDelantera3, bloomCarminHombreTrasera1,
-        bloomCarminMujerDelantera1, bloomCarminMujerDelantera2, bloomCarminMujerTrasera1
+        bloomCarminHombreDelantera1,
+        bloomCarminHombreDelantera2,
+        bloomCarminHombreDelantera3,
+        bloomCarminHombreTrasera1,
+        bloomCarminMujerDelantera1,
+        bloomCarminMujerDelantera2,
+        bloomCarminMujerTrasera1,
       ],
       "Azul Turquesa": [
-        bloomTurquesaHombreDelantera1, bloomTurquesaHombreDelantera2, bloomTurquesaHombreDelantera3, bloomTurquesaHombreTrasera1, bloomTurquesaHombreTrasera2,
-        bloomTurquesaMujerDelantera1, bloomTurquesaMujerDelantera2, bloomTurquesaMujerDelantera3, bloomTurquesaMujerTrasera1, bloomTurquesaMujerTrasera2
+        bloomTurquesaHombreDelantera1,
+        bloomTurquesaHombreDelantera2,
+        bloomTurquesaHombreDelantera3,
+        bloomTurquesaHombreTrasera1,
+        bloomTurquesaHombreTrasera2,
+        bloomTurquesaMujerDelantera1,
+        bloomTurquesaMujerDelantera2,
+        bloomTurquesaMujerDelantera3,
+        bloomTurquesaMujerTrasera1,
+        bloomTurquesaMujerTrasera2,
       ],
     },
     variants: {
@@ -250,22 +288,46 @@ export const products: Product[] = [
     colors: colors,
     sizes: sizes,
     images: {
-      "Gris Pizarra": [mentalPizarraRenderDelantera, mentalPizarraRenderTrasera],
+      "Gris Pizarra": [
+        mentalPizarraRenderDelantera,
+        mentalPizarraRenderTrasera,
+      ],
       "Rojo Carmín": [mentalCarminRenderDelantera, mentalCarminRenderTrasera],
-      "Azul Turquesa": [mentalTurquesaRenderDelantera, mentalTurquesaRenderTrasera],
+      "Azul Turquesa": [
+        mentalTurquesaRenderDelantera,
+        mentalTurquesaRenderTrasera,
+      ],
     },
     photos: {
       "Gris Pizarra": [
-        mentalPizarraHombreDelantera1, mentalPizarraHombreDelantera2, mentalPizarraHombreDelantera3, mentalPizarraHombreTrasera1, mentalPizarraHombreTrasera2,
-        mentalPizarraMujerTrasera1
+        mentalPizarraHombreDelantera1,
+        mentalPizarraHombreDelantera2,
+        mentalPizarraHombreDelantera3,
+        mentalPizarraHombreTrasera1,
+        mentalPizarraHombreTrasera2,
+        mentalPizarraMujerTrasera1,
       ],
       "Rojo Carmín": [
-        mentalCarminHombreDelantera1, mentalCarminHombreDelantera2, mentalCarminHombreDelantera3, mentalCarminHombreTrasera1, mentalCarminHombreTrasera2,
-        mentalCarminMujerDelantera1, mentalCarminMujerDelantera2, mentalCarminMujerTrasera1
+        mentalCarminHombreDelantera1,
+        mentalCarminHombreDelantera2,
+        mentalCarminHombreDelantera3,
+        mentalCarminHombreTrasera1,
+        mentalCarminHombreTrasera2,
+        mentalCarminMujerDelantera1,
+        mentalCarminMujerDelantera2,
+        mentalCarminMujerTrasera1,
       ],
       "Azul Turquesa": [
-        mentalTurquesaHombreDelantera1, mentalTurquesaHombreDelantera2, mentalTurquesaHombreDelantera3, mentalTurquesaHombreTrasera1, mentalTurquesaHombreTrasera2,
-        mentalTurquesaMujerDelantera1, mentalTurquesaMujerDelantera2, mentalTurquesaMujerDelantera3, mentalTurquesaMujerTrasera1, mentalTurquesaMujerTrasera2
+        mentalTurquesaHombreDelantera1,
+        mentalTurquesaHombreDelantera2,
+        mentalTurquesaHombreDelantera3,
+        mentalTurquesaHombreTrasera1,
+        mentalTurquesaHombreTrasera2,
+        mentalTurquesaMujerDelantera1,
+        mentalTurquesaMujerDelantera2,
+        mentalTurquesaMujerDelantera3,
+        mentalTurquesaMujerTrasera1,
+        mentalTurquesaMujerTrasera2,
       ],
     },
     variants: {
