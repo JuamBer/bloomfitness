@@ -104,6 +104,7 @@ export function generateProductFeed(baseUrl: string, platform: FeedPlatform): st
     <title>Bloom Fitness Store</title>
     <link>${baseUrl}</link>
     <description>Productos oficiales de Bloom Fitness</description>
+    <language>es-ES</language>
     ${itemsXml}
   </channel>
 </rss>`;
