@@ -175,8 +175,8 @@ export const products: Product[] = [
     },
     photos: {
       "Gris Pizarra": [
-        faithPizarraHombreDelantera1,
         faithPizarraHombreDelantera2,
+        faithPizarraHombreDelantera1,
         faithPizarraHombreTrasera1,
         faithPizarraHombreTrasera2,
         faithPizarraMujerDelantera1,
@@ -184,15 +184,16 @@ export const products: Product[] = [
         faithPizarraMujerTrasera1,
       ],
       "Rojo Carmín": [
+        faithCarminHombreTrasera2,
         faithCarminHombreDelantera1,
         faithCarminHombreDelantera2,
         faithCarminHombreTrasera1,
-        faithCarminHombreTrasera2,
         faithCarminMujerDelantera1,
         faithCarminMujerDelantera2,
         faithCarminMujerTrasera1,
       ],
       "Azul Turquesa": [
+        faithTurquesaMujerTrasera2,
         faithTurquesaHombreDelantera1,
         faithTurquesaHombreDelantera2,
         faithTurquesaHombreDelantera3,
@@ -202,7 +203,6 @@ export const products: Product[] = [
         faithTurquesaMujerDelantera2,
         faithTurquesaMujerDelantera3,
         faithTurquesaMujerTrasera1,
-        faithTurquesaMujerTrasera2,
       ],
     },
     variants: {
@@ -237,27 +237,27 @@ export const products: Product[] = [
     },
     photos: {
       "Gris Pizarra": [
+        bloomPizarraHombreTrasera1,
         bloomPizarraHombreDelantera1,
         bloomPizarraHombreDelantera2,
         bloomPizarraHombreDelantera3,
-        bloomPizarraHombreTrasera1,
         bloomPizarraHombreTrasera2,
       ],
       "Rojo Carmín": [
+        bloomCarminMujerDelantera2,
         bloomCarminHombreDelantera1,
         bloomCarminHombreDelantera2,
         bloomCarminHombreDelantera3,
         bloomCarminHombreTrasera1,
         bloomCarminMujerDelantera1,
-        bloomCarminMujerDelantera2,
         bloomCarminMujerTrasera1,
       ],
       "Azul Turquesa": [
+        bloomTurquesaHombreTrasera2,
         bloomTurquesaHombreDelantera1,
         bloomTurquesaHombreDelantera2,
         bloomTurquesaHombreDelantera3,
         bloomTurquesaHombreTrasera1,
-        bloomTurquesaHombreTrasera2,
         bloomTurquesaMujerDelantera1,
         bloomTurquesaMujerDelantera2,
         bloomTurquesaMujerDelantera3,
@@ -300,17 +300,17 @@ export const products: Product[] = [
     },
     photos: {
       "Gris Pizarra": [
+        mentalPizarraHombreTrasera1,
         mentalPizarraHombreDelantera1,
         mentalPizarraHombreDelantera2,
         mentalPizarraHombreDelantera3,
-        mentalPizarraHombreTrasera1,
         mentalPizarraHombreTrasera2,
         mentalPizarraMujerTrasera1,
       ],
       "Rojo Carmín": [
+        mentalCarminHombreDelantera3,
         mentalCarminHombreDelantera1,
         mentalCarminHombreDelantera2,
-        mentalCarminHombreDelantera3,
         mentalCarminHombreTrasera1,
         mentalCarminHombreTrasera2,
         mentalCarminMujerDelantera1,
@@ -318,6 +318,7 @@ export const products: Product[] = [
         mentalCarminMujerTrasera1,
       ],
       "Azul Turquesa": [
+        mentalTurquesaMujerDelantera3,
         mentalTurquesaHombreDelantera1,
         mentalTurquesaHombreDelantera2,
         mentalTurquesaHombreDelantera3,
@@ -325,7 +326,6 @@ export const products: Product[] = [
         mentalTurquesaHombreTrasera2,
         mentalTurquesaMujerDelantera1,
         mentalTurquesaMujerDelantera2,
-        mentalTurquesaMujerDelantera3,
         mentalTurquesaMujerTrasera1,
         mentalTurquesaMujerTrasera2,
       ],

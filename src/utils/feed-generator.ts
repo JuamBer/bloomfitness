@@ -18,19 +18,24 @@ export function generateProductFeed(baseUrl: string, platform: FeedPlatform): st
 
   const tracking = utmParams[platform];
 
-  for (const product of products) {
+  // Sort products by title to ensure consistent "model" sorting
+  const sortedProducts = [...products].sort((a, b) => a.title.localeCompare(b.title));
+
+  for (const product of sortedProducts) {
     // Clean and format price (e.g., "25€" -> "25.00 EUR")
     const numericPrice = product.price
       .replace(/[^0-9.,]/g, "")
       .replace(",", ".");
     const formattedPrice = `${parseFloat(numericPrice).toFixed(2)} EUR`;
 
-    for (const color of product.colors) {
+    // Sort colors alphabetically
+    const sortedColors = [...product.colors].sort();
+
+    for (const color of sortedColors) {
       const photos = product.photos[color] || [];
       if (photos.length === 0) continue;
 
       // Use the first photo as the main image
-      // Note: No optimization applied as per user request (images are pre-optimized)
       const mainImageSrc = photos[0].src;
       const mainImage = mainImageSrc.startsWith("http")
         ? mainImageSrc
@@ -46,7 +51,15 @@ export function generateProductFeed(baseUrl: string, platform: FeedPlatform): st
         })
         .join("");
 
-      for (const size of product.sizes) {
+      // Sort sizes using the standard order
+      const sizeOrder = ["XS", "S", "M", "L", "XL", "XXL"];
+      const sortedSizes = [...product.sizes].sort((a, b) => {
+        const idxA = sizeOrder.indexOf(a);
+        const idxB = sizeOrder.indexOf(b);
+        return (idxA === -1 ? 999 : idxA) - (idxB === -1 ? 999 : idxB);
+      });
+
+      for (const size of sortedSizes) {
         // Get the specific variant ID if it exists
         const variantId = product.variants[color]?.[size];
         if (!variantId) continue; // Skip if no variant ID exists for this combination
@@ -54,7 +67,6 @@ export function generateProductFeed(baseUrl: string, platform: FeedPlatform): st
         const title = platform === "meta" ? product.title : `${product.title} - ${color} - Talla ${size}`;
         
         // Construct the link with tracking parameters
-        // Escaping '&' to '&amp;' for XML safety
         const link = `${baseUrl}/tienda/${product.slug}?color=${encodeURIComponent(color)}&amp;size=${encodeURIComponent(size)}&amp;${tracking.replace(/&/g, "&amp;")}`;
 
         const inventoryTags = platform === "meta" 
