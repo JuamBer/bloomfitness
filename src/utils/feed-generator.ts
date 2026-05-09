@@ -51,11 +51,15 @@ export function generateProductFeed(baseUrl: string, platform: FeedPlatform): st
         const variantId = product.variants[color]?.[size];
         if (!variantId) continue; // Skip if no variant ID exists for this combination
 
-        const title = `${product.title} - ${color} - Talla ${size}`;
+        const title = platform === "meta" ? product.title : `${product.title} - ${color} - Talla ${size}`;
         
         // Construct the link with tracking parameters
         // Escaping '&' to '&amp;' for XML safety
         const link = `${baseUrl}/tienda/${product.slug}?color=${encodeURIComponent(color)}&amp;size=${encodeURIComponent(size)}&amp;${tracking.replace(/&/g, "&amp;")}`;
+
+        const inventoryTags = platform === "meta" 
+          ? `\n      <g:inventory>1</g:inventory>\n      <g:quantity_to_sell_on_facebook>1</g:quantity_to_sell_on_facebook>` 
+          : `\n      <g:quantity>1</g:quantity>`;
 
         itemsXml += `
     <item>
@@ -76,7 +80,7 @@ export function generateProductFeed(baseUrl: string, platform: FeedPlatform): st
       <g:size_system>${product.sizeSystem || "EU"}</g:size_system>
       <g:size_type>${product.sizeType || "regular"}</g:size_type>
       <g:google_product_category>${(product.googleCategory || "Ropa y accesorios > Ropa > Camisetas y tops").replace(/>/g, "&gt;")}</g:google_product_category>
-      <g:identifier_exists>no</g:identifier_exists>
+      <g:identifier_exists>no</g:identifier_exists>${inventoryTags}
     </item>`;
       }
     }
