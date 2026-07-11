@@ -1,0 +1,489 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+
+import facebookIcon from "../assets/icons/facebook-brands-solid-full.svg";
+import instagramIcon from "../assets/icons/instagram-brands-solid-full.svg";
+import linkedinIcon from "../assets/icons/linkedin-brands-solid-full.svg";
+import tiktokIcon from "../assets/icons/tiktok-brands-solid-full.svg";
+import whatsappIcon from "../assets/icons/whatsapp-brands-solid-full.svg";
+import youtubeIcon from "../assets/icons/youtube-brands-solid-full.svg";
+import isotype from "../assets/isotype.svg";
+
+// ─────────────────────────────────────────────────────────────
+// TODO: Formulario de leads (Google Forms) — pendiente de definir.
+// Pega aquí la URL cuando la tengáis. Mientras esté vacío, el botón
+// apunta a /contacto (que ya tiene formulario + WhatsApp).
+const FORM_URL = "";
+const formHref = FORM_URL || "/contacto";
+// ─────────────────────────────────────────────────────────────
+
+// Datos de contacto / negocio
+const PHONE = "34614047269"; // WhatsApp (sin +, sin espacios)
+const WHATSAPP_URL = `https://wa.me/${PHONE}?text=${encodeURIComponent(
+  "¡Hola Bloom Fitness! Me gustaría recibir información.",
+)}`;
+const MAPS_DIR_URL =
+  "https://www.google.com/maps/dir/?api=1&destination=Bloom+Fitness+Plaza+M%C3%BAsico+Ibars+5+Mislata";
+const REVIEW_URL = "https://g.page/r/CQcE03LnZQAaEAE/review";
+
+// Redes sociales (icono blanco, acento en hover)
+const socials = [
+  {
+    label: "Instagram",
+    handle: "@bloomfitnessmislata",
+    href: "https://www.instagram.com/bloomfitnessmislata/",
+    icon: instagramIcon,
+    accent: "#E1306C",
+  },
+  {
+    label: "TikTok",
+    handle: "@bloomfitnessmislata",
+    href: "https://www.tiktok.com/@bloomfitnessmislata",
+    icon: tiktokIcon,
+    accent: "#25F4EE",
+  },
+  {
+    label: "YouTube",
+    handle: "@bloomfitnessmislata",
+    href: "https://www.youtube.com/@bloomfitnessmislata",
+    icon: youtubeIcon,
+    accent: "#FF0000",
+  },
+  {
+    label: "Facebook",
+    handle: "Bloom Fitness",
+    href: "https://www.facebook.com/people/Bloom-Fitness/61583805626769/",
+    icon: facebookIcon,
+    accent: "#1877F2",
+  },
+  {
+    label: "LinkedIn",
+    handle: "Bloom Fitness Mislata",
+    href: "https://www.linkedin.com/company/bloom-fitness-mislata/",
+    icon: linkedinIcon,
+    accent: "#0A66C2",
+  },
+];
+---
+
+<Layout
+  title="Accesos | Bloom Fitness Mislata"
+  description="Todos los enlaces de Bloom Fitness en un solo sitio: información, reseñas, web oficial, WhatsApp y redes sociales. Tu centro de entrenamiento, fisioterapia y nutrición en Mislata."
+  keywords="bloom fitness enlaces, accesos bloom fitness, contacto gimnasio Mislata, reseña bloom fitness, redes sociales bloom fitness"
+>
+  <main
+    class="relative min-h-screen overflow-hidden bg-black px-5 pt-12 pb-14 text-white"
+  >
+    <!-- Atmósfera de fondo: blobs de marca + isotipo watermark -->
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+      <div class="blob blob-a"></div>
+      <div class="blob blob-b"></div>
+      <Image
+        src={isotype}
+        alt=""
+        class="absolute -top-10 -right-24 w-104 max-w-none opacity-[0.04] blur-[1px] rotate-12 select-none"
+        loading="eager"
+      />
+      <div class="grain"></div>
+    </div>
+
+    <div class="relative z-10 mx-auto flex w-full max-w-md flex-col">
+      <!-- ── Encabezado ── -->
+      <header class="reveal flex flex-col items-center text-center">
+        <div class="logo-halo">
+          <Image
+            src={isotype}
+            alt="Bloom Fitness"
+            class="h-16 w-auto drop-shadow-[0_6px_24px_rgba(237,109,53,0.35)]"
+            loading="eager"
+          />
+        </div>
+        <h1
+          class="mt-5 text-3xl font-extrabold uppercase tracking-tight leading-none"
+        >
+          Bloom Fitness
+        </h1>
+        <p
+          class="mt-2 bg-linear-to-r from-(--color-red) to-(--color-orange-light) bg-clip-text text-sm font-bold uppercase tracking-[0.25em] text-transparent"
+        >
+          Mislata
+        </p>
+        <p class="mt-3 max-w-xs text-sm leading-relaxed text-gray-400">
+          Entrenamiento · Fisioterapia · Nutrición
+        </p>
+      </header>
+
+      <!-- ── Acciones destacadas ── -->
+      <div class="mt-9 flex flex-col gap-3.5">
+        <!-- Info / Leads (CTA principal) -->
+        <a
+          href={formHref}
+          target={FORM_URL ? "_blank" : null}
+          rel={FORM_URL ? "noopener noreferrer" : null}
+          class="reveal group relative flex items-center gap-4 overflow-hidden rounded-2xl bg-linear-to-r from-(--color-red) to-(--color-orange-strong) p-[1.15rem] shadow-[0_10px_40px_-12px_rgba(237,109,53,0.7)] transition-transform duration-200 active:scale-[0.98]"
+          style="animation-delay:80ms"
+        >
+          <span
+            class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-white/20 backdrop-blur-sm"
+          >
+            <svg
+              class="h-6 w-6 text-white"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+              ></path>
+              <path d="M14 2v6h6"></path>
+              <path d="M9 13h6M9 17h4"></path>
+            </svg>
+          </span>
+          <span class="flex-1 text-left">
+            <span
+              class="block text-base font-extrabold uppercase tracking-wide text-white"
+              >Quiero información</span
+            >
+            <span class="block text-sm font-medium text-white/80"
+              >Déjanos tus datos · te contactamos</span
+            >
+          </span>
+          <svg
+            class="h-5 w-5 shrink-0 text-white transition-transform duration-200 group-hover:translate-x-1"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg
+          >
+        </a>
+
+        <!-- Reseña en Google (CTA destacado dorado) -->
+        <a
+          href={REVIEW_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="reveal group relative flex items-center gap-4 overflow-hidden rounded-2xl border border-amber-400/40 bg-white/4 p-[1.15rem] backdrop-blur-sm transition-all duration-200 hover:border-amber-400/80 hover:bg-white/[0.07] hover:shadow-[0_0_34px_-10px_rgba(251,191,36,0.8)] active:scale-[0.98]"
+          style="animation-delay:150ms"
+        >
+          <span
+            class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-amber-400/15"
+          >
+            <svg class="h-6 w-6 text-amber-400" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 2.5l2.9 5.88 6.49.94-4.7 4.58 1.11 6.46L12 17.9l-5.8 3.05 1.1-6.46-4.69-4.58 6.49-.94L12 2.5z"
+              ></path>
+            </svg>
+          </span>
+          <span class="flex-1 text-left">
+            <span
+              class="block text-base font-extrabold uppercase tracking-wide text-white"
+              >Déjanos tu reseña</span
+            >
+            <span class="mt-0.5 flex items-center gap-4">
+              <span class="text-amber-400 text-sm tracking-tight">★★★★★</span>
+              <span class="text-sm font-medium text-gray-400"
+                >¡Nos ayuda un montón!</span
+              >
+            </span>
+          </span>
+          <svg
+            class="h-5 w-5 shrink-0 text-gray-500 transition-all duration-200 group-hover:translate-x-1 group-hover:text-amber-400"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg
+          >
+        </a>
+      </div>
+
+      <!-- ── Enlaces ── -->
+      <div class="mt-6 flex flex-col gap-3">
+        <!-- WhatsApp -->
+        <a
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link-row reveal"
+          style="--accent:#25D366;animation-delay:210ms"
+        >
+          <span class="link-chip">
+            <Image src={whatsappIcon} alt="" class="h-5 w-5 brightness-0 invert" loading="lazy" />
+          </span>
+          <span class="link-body">
+            <span class="link-title">WhatsApp</span>
+            <span class="link-sub">Escríbenos directamente</span>
+          </span>
+          <span class="link-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <!-- Grupo de WhatsApp -->
+        <a
+          href="https://chat.whatsapp.com/ISS15oLRlhU94YG40OqbS6"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link-row reveal"
+          style="--accent:#25D366;animation-delay:240ms"
+        >
+          <span class="link-chip">
+            <Image src={whatsappIcon} alt="" class="h-5 w-5 brightness-0 invert" loading="lazy" />
+          </span>
+          <span class="link-body">
+            <span class="link-title">Grupo de WhatsApp</span>
+            <span class="link-sub">Únete a la comunidad Bloom</span>
+          </span>
+          <span class="link-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <!-- Web oficial -->
+        <a
+          href="https://bloomfitness.es/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link-row reveal"
+          style="--accent:#ed6d35;animation-delay:270ms"
+        >
+          <span class="link-chip">
+            <svg
+              class="h-5 w-5 text-white"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="9"></circle>
+              <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"></path>
+            </svg>
+          </span>
+          <span class="link-body">
+            <span class="link-title">Web oficial</span>
+            <span class="link-sub">bloomfitness.es</span>
+          </span>
+          <span class="link-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <!-- Redes sociales -->
+        {
+          socials.map((s, i) => (
+            <a
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="link-row reveal"
+              style={`--accent:${s.accent};animation-delay:${330 + i * 60}ms`}
+            >
+              <span class="link-chip">
+                <Image src={s.icon} alt="" class="h-5 w-5 brightness-0 invert" loading="lazy" />
+              </span>
+              <span class="link-body">
+                <span class="link-title">{s.label}</span>
+                <span class="link-sub">{s.handle}</span>
+              </span>
+              <span class="link-arrow" aria-hidden="true">
+                →
+              </span>
+            </a>
+          ))
+        }
+      </div>
+
+      <!-- ── Pie: ubicación ── -->
+      <a
+        href={MAPS_DIR_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="reveal mt-7 flex items-center justify-center gap-2 text-center text-sm text-gray-500 transition-colors duration-200 hover:text-(--color-orange-strong)"
+        style="animation-delay:600ms"
+      >
+        <svg
+          class="h-4 w-4 shrink-0"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+        Plaza Músico Ibars, 5 · Mislata — Cómo llegar
+      </a>
+
+      <p class="reveal mt-6 text-center text-xs text-gray-600" style="animation-delay:660ms">
+        © {new Date().getFullYear()} Bloom Fitness
+      </p>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  /* ── Filas de enlace (estilo linktree) ── */
+  .link-row {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.85rem 1rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.035);
+    backdrop-filter: blur(6px);
+    transition:
+      transform 0.2s ease,
+      border-color 0.2s ease,
+      background-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+  .link-row:hover {
+    border-color: color-mix(in srgb, var(--accent) 65%, transparent);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 0 30px -12px var(--accent);
+  }
+  .link-row:active {
+    transform: scale(0.98);
+  }
+
+  .link-chip {
+    display: grid;
+    place-items: center;
+    height: 2.75rem;
+    width: 2.75rem;
+    flex-shrink: 0;
+    border-radius: 0.75rem;
+    background: rgba(255, 255, 255, 0.06);
+    transition:
+      background-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+  .link-row:hover .link-chip {
+    background: color-mix(in srgb, var(--accent) 22%, transparent);
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+
+  .link-body {
+    flex: 1;
+    text-align: left;
+    line-height: 1.2;
+  }
+  .link-title {
+    display: block;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    font-size: 0.95rem;
+  }
+  .link-sub {
+    display: block;
+    margin-top: 0.1rem;
+    font-size: 0.8rem;
+    color: #9ca3af;
+  }
+
+  .link-arrow {
+    flex-shrink: 0;
+    font-size: 1.1rem;
+    color: #6b7280;
+    transition:
+      transform 0.2s ease,
+      color 0.2s ease;
+  }
+  .link-row:hover .link-arrow {
+    transform: translateX(3px);
+    color: var(--accent);
+  }
+
+  /* ── Halo del logo ── */
+  .logo-halo {
+    position: relative;
+    display: grid;
+    place-items: center;
+    padding: 0.75rem;
+  }
+  .logo-halo::before {
+    content: "";
+    position: absolute;
+    inset: -20%;
+    border-radius: 9999px;
+    background: radial-gradient(
+      circle,
+      rgba(237, 109, 53, 0.28),
+      transparent 68%
+    );
+    filter: blur(6px);
+  }
+
+  /* ── Blobs de ambiente ── */
+  .blob {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(70px);
+    opacity: 0.5;
+  }
+  .blob-a {
+    top: -8rem;
+    left: -6rem;
+    width: 22rem;
+    height: 22rem;
+    background: radial-gradient(circle, #ed6d35, transparent 70%);
+    animation: drift 14s ease-in-out infinite alternate;
+  }
+  .blob-b {
+    bottom: -10rem;
+    right: -8rem;
+    width: 24rem;
+    height: 24rem;
+    background: radial-gradient(circle, #e62c28, transparent 72%);
+    opacity: 0.35;
+    animation: drift 18s ease-in-out infinite alternate-reverse;
+  }
+  @keyframes drift {
+    from {
+      transform: translate(0, 0) scale(1);
+    }
+    to {
+      transform: translate(2rem, 1.5rem) scale(1.1);
+    }
+  }
+
+  /* Textura de grano sutil */
+  .grain {
+    position: absolute;
+    inset: 0;
+    opacity: 0.5;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+  }
+
+  /* ── Entrada escalonada ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    animation: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  @keyframes rise {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+    .blob-a,
+    .blob-b {
+      animation: none;
+    }
+  }
+</style>
