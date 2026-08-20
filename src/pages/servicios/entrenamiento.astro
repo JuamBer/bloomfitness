@@ -2,13 +2,13 @@
 import { Image } from "astro:assets";
 import arrowRight from "../../assets/icons/arrow-right-solid-full.svg";
 import percent from "../../assets/icons/percent-solid-full.svg";
+import Button from "../../components/Button.astro";
 import ColorBar from "../../components/ColorBar.astro";
 import Footer from "../../components/Footer.astro";
 import Header from "../../components/Header.astro";
 import ProfessionalsSidebar from "../../components/ProfessionalsSidebar.astro";
 import { ProfessionalArea, professionals } from "../../data/professionals";
 import Layout from "../../layouts/Layout.astro";
-import Button from "../../components/Button.astro";
 
 const trainers = professionals.filter(
   (p) => p.area === ProfessionalArea.ENTRENADOR_PERSONAL,
@@ -39,8 +39,8 @@ const trainingServiceSchema = {
   offers: {
     "@type": "Offer",
     priceCurrency: "EUR",
-    price: "50",
-    description: "Tarifas de entrenamiento desde 50 EUR al mes",
+    price: "60",
+    description: "Tarifas de entrenamiento desde 60 EUR al mes",
   },
   url: "https://bloomfitness.es/servicios/entrenamiento",
 };
@@ -54,7 +54,7 @@ const trainingFaqSchema = {
       name: "Cuanto cuesta el entrenamiento en Mislata?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Tienes opciones desde 50 euros al mes en grupal y desde 32,50 euros por sesion en individual.",
+        text: "Tienes opciones desde 60 euros al mes en grupal y desde 32,50 euros por sesion en individual.",
       },
     },
     {
@@ -146,7 +146,7 @@ const trainingFaqSchema = {
             <p
               class="text-[var(--color-orange-strong)] text-4xl font-extrabold"
             >
-              40€
+              45€
             </p>
           </div>
         </section>
@@ -164,7 +164,7 @@ const trainingFaqSchema = {
                 Cuanto cuesta el entrenamiento en Mislata?
               </h3>
               <p class="text-gray-300 text-sm">
-                Tienes opciones desde 50 euros al mes en grupal y desde 32,50 euros
+                Tienes opciones desde 60 euros al mes en grupal y desde 32,50 euros
                 por sesion en individual.
               </p>
             </article>
@@ -188,102 +188,47 @@ const trainingFaqSchema = {
               class="w-8 h-[2px] bg-[var(--color-orange-strong)] inline-block"
             ></span> Entrenamiento Grupal
           </h2>
-          <div class="mb-10">
-            <p
-              class="text-[var(--color-orange-strong)] font-semibold uppercase tracking-wider text-sm mb-4"
+          <p
+            class="text-[var(--color-orange-strong)] font-semibold uppercase tracking-wider text-sm mb-4"
+          >
+            Tarifas Mensuales
+          </p>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div
+              class="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-[var(--color-orange-strong)] transition-all duration-300"
             >
-              Tarifas Mensuales
-            </p>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <div
-                class="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-[var(--color-orange-strong)] transition-all duration-300"
-              >
-                <p class="text-gray-400 text-sm uppercase tracking-wide mb-2">
-                  1 sesión/semana
-                </p>
-                <p class="text-white text-3xl font-extrabold">50€</p>
-              </div>
-              <div
-                class="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-[var(--color-orange-strong)] transition-all duration-300"
-              >
-                <p class="text-gray-400 text-sm uppercase tracking-wide mb-2">
-                  2 sesiones/semana
-                </p>
-                <p class="text-white text-3xl font-extrabold">70€</p>
-              </div>
-              <div
-                class="bg-gray-900 border-2 border-[var(--color-orange-strong)] rounded-lg p-6 relative overflow-hidden"
-              >
-                <span
-                  class="absolute bottom-2 right-2 bg-[var(--color-orange-strong)] text-black text-[10px] font-bold px-2 py-1 rounded-full uppercase"
-                  >Popular</span
-                >
-                <p class="text-gray-400 text-sm uppercase tracking-wide mb-2">
-                  3 sesiones/semana
-                </p>
-                <p class="text-white text-3xl font-extrabold">90€</p>
-              </div>
-              <div
-                class="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-[var(--color-orange-strong)] transition-all duration-300"
-              >
-                <p class="text-gray-400 text-sm uppercase tracking-wide mb-2">
-                  Tarifa Plana
-                </p>
-                <p class="text-white text-3xl font-extrabold">110€</p>
-              </div>
+              <p class="text-gray-400 text-sm uppercase tracking-wide mb-2">
+                1 sesión/semana
+              </p>
+              <p class="text-white text-3xl font-extrabold">60€</p>
             </div>
-          </div>
-          <div>
-            <p
-              class="text-[var(--color-orange-strong)] font-semibold uppercase tracking-wider text-sm mb-4"
+            <div
+              class="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-[var(--color-orange-strong)] transition-all duration-300"
             >
-              Tarifas Anuales
-            </p>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <div
-                class="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-[var(--color-orange-strong)] transition-all duration-300"
+              <p class="text-gray-400 text-sm uppercase tracking-wide mb-2">
+                2 sesiones/semana
+              </p>
+              <p class="text-white text-3xl font-extrabold">85€</p>
+            </div>
+            <div
+              class="bg-gray-900 border-2 border-[var(--color-orange-strong)] rounded-lg p-6 relative overflow-hidden"
+            >
+              <span
+                class="absolute bottom-2 right-2 bg-[var(--color-orange-strong)] text-black text-[10px] font-bold px-2 py-1 rounded-full uppercase"
+                >Popular</span
               >
-                <p class="text-gray-400 text-sm uppercase tracking-wide mb-2">
-                  1 sesión/semana
-                </p>
-                <p class="text-white text-3xl font-extrabold">480€</p>
-                <p class="text-[var(--color-orange-strong)] text-xs mt-2">
-                  Ahorras 120€
-                </p>
-              </div>
-              <div
-                class="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-[var(--color-orange-strong)] transition-all duration-300"
-              >
-                <p class="text-gray-400 text-sm uppercase tracking-wide mb-2">
-                  2 sesiones/semana
-                </p>
-                <p class="text-white text-3xl font-extrabold">675€</p>
-                <p class="text-[var(--color-orange-strong)] text-xs mt-2">
-                  Ahorras 165€
-                </p>
-              </div>
-              <div
-                class="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-[var(--color-orange-strong)] transition-all duration-300"
-              >
-                <p class="text-gray-400 text-sm uppercase tracking-wide mb-2">
-                  3 sesiones/semana
-                </p>
-                <p class="text-white text-3xl font-extrabold">865€</p>
-                <p class="text-[var(--color-orange-strong)] text-xs mt-2">
-                  Ahorras 215€
-                </p>
-              </div>
-              <div
-                class="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-[var(--color-orange-strong)] transition-all duration-300"
-              >
-                <p class="text-gray-400 text-sm uppercase tracking-wide mb-2">
-                  Tarifa Plana
-                </p>
-                <p class="text-white text-3xl font-extrabold">975€</p>
-                <p class="text-[var(--color-orange-strong)] text-xs mt-2">
-                  Ahorras 345€
-                </p>
-              </div>
+              <p class="text-gray-400 text-sm uppercase tracking-wide mb-2">
+                3 sesiones/semana
+              </p>
+              <p class="text-white text-3xl font-extrabold">105€</p>
+            </div>
+            <div
+              class="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-[var(--color-orange-strong)] transition-all duration-300"
+            >
+              <p class="text-gray-400 text-sm uppercase tracking-wide mb-2">
+                Tarifa Plana
+              </p>
+              <p class="text-white text-3xl font-extrabold">120€</p>
             </div>
           </div>
         </section>

@@ -1,13 +1,14 @@
 ---
 import arrowRight from "../../assets/icons/arrow-right-solid-full.svg";
 import percent from "../../assets/icons/percent-solid-full.svg";
+import Button from "../../components/Button.astro";
 import ColorBar from "../../components/ColorBar.astro";
 import Footer from "../../components/Footer.astro";
 import Header from "../../components/Header.astro";
+import PhysioVariantCard from "../../components/PhysioVariantCard.astro";
 import ProfessionalsSidebar from "../../components/ProfessionalsSidebar.astro";
 import { ProfessionalArea, professionals } from "../../data/professionals";
 import Layout from "../../layouts/Layout.astro";
-import Button from "../../components/Button.astro";
 
 const physios = professionals.filter(
   (p) => p.area === ProfessionalArea.FISIOTERAPIA,
@@ -38,8 +39,8 @@ const physioServiceSchema = {
   offers: {
     "@type": "Offer",
     priceCurrency: "EUR",
-    price: "25",
-    description: "Sesiones de fisioterapia desde 25 EUR",
+    price: "32",
+    description: "Sesiones de fisioterapia desde 32 EUR",
   },
   url: "https://bloomfitness.es/servicios/fisioterapia",
 };
@@ -53,7 +54,7 @@ const physioFaqSchema = {
       name: "Cuanto cuesta la fisioterapia en Mislata?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Puedes empezar desde 25 euros en sesiones de 30 minutos o elegir bonos para reducir el coste por sesion.",
+        text: "Puedes empezar desde 45 euros en sesion de seguimiento o elegir bonos y programas para reducir el coste por sesion.",
       },
     },
     {
@@ -135,22 +136,41 @@ const physioFaqSchema = {
             ></span>
             Sesiones
           </h2>
-          <div class="grid md:grid-cols-2 gap-6 max-w-2xl">
+          <p class="text-gray-500 text-xs mb-4">
+            Elige entre en centro o a domicilio en cada tarjeta.
+          </p>
+          <div class="grid sm:grid-cols-2 gap-6 max-w-2xl">
+            <PhysioVariantCard
+              id="sesion-completa"
+              label="Sesión Completa"
+              priceCenter={45}
+              priceDomicilio={50}
+            />
+            <PhysioVariantCard
+              id="sesion-seguimiento"
+              label="Sesión Seguimiento"
+              priceCenter={32}
+              priceDomicilio={37}
+            />
+          </div>
+        </section>
+
+        <section>
+          <h2
+            class="text-white font-bold text-2xl uppercase tracking-wide mb-6 flex items-center gap-3"
+          >
+            <span class="w-8 h-[2px] bg-[var(--color-blue)] inline-block"
+            ></span>
+            Informe Clínico
+          </h2>
+          <div class="max-w-md">
             <div
               class="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-[var(--color-blue)] transition-all duration-300"
             >
               <p class="text-gray-400 text-sm uppercase tracking-wide mb-2">
-                Sesión 30 minutos
+                Informe Clínico
               </p>
-              <p class="text-white text-3xl font-extrabold">25€</p>
-            </div>
-            <div
-              class="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-[var(--color-blue)] transition-all duration-300"
-            >
-              <p class="text-gray-400 text-sm uppercase tracking-wide mb-2">
-                Sesión 60 minutos
-              </p>
-              <p class="text-white text-3xl font-extrabold">38€</p>
+              <p class="text-white text-3xl font-extrabold">30€</p>
             </div>
           </div>
         </section>
@@ -168,8 +188,8 @@ const physioFaqSchema = {
                 Cuanto cuesta la fisioterapia en Mislata?
               </h3>
               <p class="text-gray-300 text-sm">
-                Puedes empezar desde 25 euros en sesiones de 30 minutos o elegir
-                bonos para reducir el coste por sesion.
+                Puedes empezar desde 45 euros en sesion de seguimiento o elegir
+                bonos y programas para reducir el coste por sesion.
               </p>
             </article>
             <article class="bg-gray-900 border border-gray-700 rounded-lg p-5">
@@ -192,33 +212,24 @@ const physioFaqSchema = {
             ></span>
             Bonos
           </h2>
-          <div class="grid md:grid-cols-2 gap-6 max-w-2xl">
-            <div
-              class="bg-gray-900 border-2 border-[var(--color-blue)] rounded-lg p-6 relative overflow-hidden"
-            >
-              <span
-                class="absolute bottom-2 right-2 bg-[var(--color-blue)] text-black text-[10px] font-bold px-2 py-1 rounded-full uppercase"
-                >Popular</span
-              >
-              <p class="text-gray-400 text-sm uppercase tracking-wide mb-2">
-                Bono 5 Sesiones
-              </p>
-              <p class="text-white text-3xl font-extrabold">180€</p>
-              <p class="text-[var(--color-blue)] text-xs mt-2">
-                36€ por sesión
-              </p>
-            </div>
-            <div
-              class="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-[var(--color-blue)] transition-all duration-300"
-            >
-              <p class="text-gray-400 text-sm uppercase tracking-wide mb-2">
-                Bono 10 Sesiones
-              </p>
-              <p class="text-white text-3xl font-extrabold">350€</p>
-              <p class="text-[var(--color-blue)] text-xs mt-2">
-                35€ por sesión
-              </p>
-            </div>
+          <div class="grid sm:grid-cols-2 gap-6 max-w-2xl">
+            <PhysioVariantCard
+              id="bono-05"
+              label="Bono 05 Sesiones"
+              priceCenter={215}
+              priceDomicilio={240}
+              noteCenter="43€ por sesión"
+              noteDomicilio="48€ por sesión"
+              popular
+            />
+            <PhysioVariantCard
+              id="bono-10"
+              label="Bono 10 Sesiones"
+              priceCenter={420}
+              priceDomicilio={470}
+              noteCenter="42€ por sesión"
+              noteDomicilio="47€ por sesión"
+            />
           </div>
         </section>
 
@@ -234,42 +245,36 @@ const physioFaqSchema = {
             * Los programas incluyen test + dinamometría + informe de evolución
           </p>
           <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div
-              class="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-[var(--color-blue)] transition-all duration-300"
-            >
-              <p class="text-[var(--color-blue)] text-sm font-semibold mb-1">
-                8 Semanas
-              </p>
-              <p class="text-gray-400 text-sm uppercase tracking-wide mb-2">
-                16 Sesiones
-              </p>
-              <p class="text-white text-3xl font-extrabold">544€</p>
-              <p class="text-gray-500 text-xs mt-2">34€ por sesión</p>
-            </div>
-            <div
-              class="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-[var(--color-blue)] transition-all duration-300"
-            >
-              <p class="text-[var(--color-blue)] text-sm font-semibold mb-1">
-                12 Semanas
-              </p>
-              <p class="text-gray-400 text-sm uppercase tracking-wide mb-2">
-                24 Sesiones
-              </p>
-              <p class="text-white text-3xl font-extrabold">792€</p>
-              <p class="text-gray-500 text-xs mt-2">33€ por sesión</p>
-            </div>
-            <div
-              class="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-[var(--color-blue)] transition-all duration-300"
-            >
-              <p class="text-[var(--color-blue)] text-sm font-semibold mb-1">
-                24 Semanas
-              </p>
-              <p class="text-gray-400 text-sm uppercase tracking-wide mb-2">
-                48 Sesiones
-              </p>
-              <p class="text-white text-3xl font-extrabold">1.536€</p>
-              <p class="text-gray-500 text-xs mt-2">32€ por sesión</p>
-            </div>
+            <PhysioVariantCard
+              id="programa-8-semanas"
+              sublabel="8 Semanas"
+              label="16 Sesiones"
+              priceCenter={656}
+              priceDomicilio={736}
+              noteCenter="41€ por sesión"
+              noteDomicilio="46€ por sesión"
+              colorVar="--color-blue"
+            />
+            <PhysioVariantCard
+              id="programa-12-semanas"
+              sublabel="12 Semanas"
+              label="24 Sesiones"
+              priceCenter={960}
+              priceDomicilio={1080}
+              noteCenter="40€ por sesión"
+              noteDomicilio="45€ por sesión"
+              colorVar="--color-blue"
+            />
+            <PhysioVariantCard
+              id="programa-24-semanas"
+              sublabel="24 Semanas"
+              label="48 Sesiones"
+              priceCenter={1872}
+              priceDomicilio={2112}
+              noteCenter="39€ por sesión"
+              noteDomicilio="44€ por sesión"
+              colorVar="--color-blue"
+            />
           </div>
         </section>
 

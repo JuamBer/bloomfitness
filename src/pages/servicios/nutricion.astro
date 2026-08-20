@@ -9,6 +9,7 @@ import question from "../../assets/icons/question-solid-full.svg";
 import ColorBar from "../../components/ColorBar.astro";
 import Footer from "../../components/Footer.astro";
 import Header from "../../components/Header.astro";
+import NutritionVariantCard from "../../components/NutritionVariantCard.astro";
 import ProfessionalsSidebar from "../../components/ProfessionalsSidebar.astro";
 import { ProfessionalArea, professionals } from "../../data/professionals";
 import Layout from "../../layouts/Layout.astro";
@@ -43,8 +44,8 @@ const nutritionServiceSchema = {
   offers: {
     "@type": "Offer",
     priceCurrency: "EUR",
-    price: "45",
-    description: "Revisiones de nutricion desde 45 EUR",
+    price: "30",
+    description: "Revisiones de nutricion desde 30 EUR",
   },
   url: "https://bloomfitness.es/servicios/nutricion",
 };
@@ -58,7 +59,7 @@ const nutritionFaqSchema = {
       name: "Cuanto cuesta el servicio de nutricionista en Mislata?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "La sesion inicial son 65 euros e incluye valoracion y plan personalizado. Las revisiones son de 45 euros.",
+        text: "La sesion inicial individual son 65 euros (50 online) y la sesion inicial duo son 55 euros (40 online). Las revisiones van desde 30 hasta 45 euros segun modalidad individual, duo, presencial u online.",
       },
     },
     {
@@ -145,38 +146,29 @@ const nutritionFaqSchema = {
             ></span>
             Nuestros Servicios
           </h2>
+          <p class="text-gray-500 text-xs mb-4">
+            Elige la modalidad y el formato en cada tarjeta.
+          </p>
           <div class="grid md:grid-cols-2 gap-6 max-w-2xl">
-            <div
-              class="bg-gradient-to-br from-gray-900 to-gray-800 border-2 border-[var(--color-orange-light)] rounded-xl p-8"
-            >
-              <h3
-                class="text-white font-bold text-xl uppercase tracking-wide mb-2"
-              >
-                Sesión Inicial
-              </h3>
-              <p class="text-gray-400 text-sm mb-4">
-                Evaluación completa, historial, objetivos y plan nutricional
-                personalizado.
-              </p>
-              <p
-                class="text-[var(--color-orange-light)] text-4xl font-extrabold"
-              >
-                65€
-              </p>
-            </div>
-            <div
-              class="bg-gray-900 border border-gray-700 rounded-lg p-8 hover:border-[var(--color-orange-light)] transition-all duration-300"
-            >
-              <h3
-                class="text-white font-bold text-xl uppercase tracking-wide mb-2"
-              >
-                Revisión
-              </h3>
-              <p class="text-gray-400 text-sm mb-4">
-                Seguimiento, ajustes del plan y resolución de dudas.
-              </p>
-              <p class="text-white text-4xl font-extrabold">45€</p>
-            </div>
+            <NutritionVariantCard
+              id="sesion-inicial"
+              label="Sesión Inicial"
+              description="Evaluación completa, historial, objetivos y plan nutricional personalizado."
+              priceIndividual={65}
+              priceIndividualOnline={50}
+              priceDuo={55}
+              priceDuoOnline={40}
+              highlight
+            />
+            <NutritionVariantCard
+              id="revision"
+              label="Revisión"
+              description="Seguimiento, ajustes del plan y resolución de dudas."
+              priceIndividual={45}
+              priceIndividualOnline={35}
+              priceDuo={40}
+              priceDuoOnline={30}
+            />
           </div>
         </section>
         <section>
@@ -194,8 +186,9 @@ const nutritionFaqSchema = {
                 Cuanto cuesta el servicio de nutricionista en Mislata?
               </h3>
               <p class="text-gray-300 text-sm">
-                La sesion inicial son 65 euros e incluye valoracion y plan
-                personalizado. Las revisiones son de 45 euros.
+                La sesion inicial individual son 65 euros (50 online) y la duo
+                55 euros (40 online). Las revisiones van desde 30 hasta 45
+                euros segun modalidad.
               </p>
             </article>
             <article class="bg-gray-900 border border-gray-700 rounded-lg p-5">

@@ -1,0 +1,161 @@
+---
+interface Props {
+  id: string;
+  label: string;
+  description?: string;
+  priceIndividual: number;
+  priceIndividualOnline: number;
+  priceDuo: number;
+  priceDuoOnline: number;
+  highlight?: boolean;
+  colorVar?: string;
+}
+
+const {
+  id,
+  label,
+  description,
+  priceIndividual,
+  priceIndividualOnline,
+  priceDuo,
+  priceDuoOnline,
+  highlight = false,
+  colorVar = "--color-orange-light",
+} = Astro.props;
+
+const formatPrice = (price: number) => {
+  const [intPart, decimalPart] = price.toFixed(2).split(".");
+  const grouped = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  return decimalPart === "00" ? `${grouped}€` : `${grouped},${decimalPart}€`;
+};
+const individualId = `${id}-individual`;
+const duoId = `${id}-duo`;
+const presencialId = `${id}-presencial`;
+const onlineId = `${id}-online`;
+---
+
+<div
+  class={`nutri-card relative rounded-xl p-8 transition-colors duration-300 ${
+    highlight
+      ? "bg-gradient-to-br from-gray-900 to-gray-800 border-2 border-[var(--accent)]"
+      : "bg-gray-900 border border-gray-700 hover:border-[var(--accent)]"
+  }`}
+  style={`--accent: var(${colorVar})`}
+>
+  <h3 class="text-white font-bold text-xl uppercase tracking-wide mb-2">
+    {label}
+  </h3>
+  {description && <p class="text-gray-400 text-sm mb-4">{description}</p>}
+
+  <div class="flex flex-wrap gap-2 mb-4">
+    <div
+      class="toggle-group inline-flex rounded-full bg-black/40 p-1 text-xs font-semibold"
+      role="group"
+      aria-label={`Modalidad para ${label}`}
+    >
+      <input
+        type="radio"
+        name={`modalidad-${id}`}
+        id={individualId}
+        class="toggle-input modalidad-individual sr-only"
+        checked
+      />
+      <label
+        for={individualId}
+        class="toggle-label toggle-label-individual px-3 py-1 rounded-full cursor-pointer transition-colors"
+      >
+        Individual
+      </label>
+      <input
+        type="radio"
+        name={`modalidad-${id}`}
+        id={duoId}
+        class="toggle-input modalidad-duo sr-only"
+      />
+      <label
+        for={duoId}
+        class="toggle-label toggle-label-duo px-3 py-1 rounded-full cursor-pointer transition-colors"
+      >
+        Duo
+      </label>
+    </div>
+
+    <div
+      class="toggle-group inline-flex rounded-full bg-black/40 p-1 text-xs font-semibold"
+      role="group"
+      aria-label={`Formato para ${label}`}
+    >
+      <input
+        type="radio"
+        name={`formato-${id}`}
+        id={presencialId}
+        class="toggle-input formato-presencial sr-only"
+        checked
+      />
+      <label
+        for={presencialId}
+        class="toggle-label toggle-label-presencial px-3 py-1 rounded-full cursor-pointer transition-colors"
+      >
+        Presencial
+      </label>
+      <input
+        type="radio"
+        name={`formato-${id}`}
+        id={onlineId}
+        class="toggle-input formato-online sr-only"
+      />
+      <label
+        for={onlineId}
+        class="toggle-label toggle-label-online px-3 py-1 rounded-full cursor-pointer transition-colors"
+      >
+        Online
+      </label>
+    </div>
+  </div>
+
+  <p class="price price-individual-presencial text-[var(--accent)] text-4xl font-extrabold">
+    {formatPrice(priceIndividual)}
+  </p>
+  <p class="price price-individual-online text-[var(--accent)] text-4xl font-extrabold">
+    {formatPrice(priceIndividualOnline)}
+  </p>
+  <p class="price price-duo-presencial text-[var(--accent)] text-4xl font-extrabold">
+    {formatPrice(priceDuo)}
+  </p>
+  <p class="price price-duo-online text-[var(--accent)] text-4xl font-extrabold">
+    {formatPrice(priceDuoOnline)}
+  </p>
+</div>
+
+<style>
+  .nutri-card .price {
+    display: none;
+  }
+  .nutri-card:has(.modalidad-individual:checked):has(.formato-presencial:checked)
+    .price-individual-presencial {
+    display: block;
+  }
+  .nutri-card:has(.modalidad-individual:checked):has(.formato-online:checked)
+    .price-individual-online {
+    display: block;
+  }
+  .nutri-card:has(.modalidad-duo:checked):has(.formato-presencial:checked)
+    .price-duo-presencial {
+    display: block;
+  }
+  .nutri-card:has(.modalidad-duo:checked):has(.formato-online:checked)
+    .price-duo-online {
+    display: block;
+  }
+  .toggle-label {
+    color: #9ca3af;
+  }
+  .toggle-input:checked + .toggle-label {
+    background: var(--accent);
+    color: #000;
+  }
+  .toggle-input:focus-visible + .toggle-label {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+</style>

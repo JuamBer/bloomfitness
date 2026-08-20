@@ -1,0 +1,134 @@
+---
+interface Props {
+  id: string;
+  label: string;
+  sublabel?: string;
+  priceCenter: number;
+  priceDomicilio: number;
+  noteCenter?: string;
+  noteDomicilio?: string;
+  popular?: boolean;
+  colorVar?: string;
+}
+
+const {
+  id,
+  label,
+  sublabel,
+  priceCenter,
+  priceDomicilio,
+  noteCenter,
+  noteDomicilio,
+  popular = false,
+  colorVar = "--color-blue",
+} = Astro.props;
+
+const formatPrice = (price: number) => {
+  const [intPart, decimalPart] = price.toFixed(2).split(".");
+  const grouped = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  return decimalPart === "00" ? `${grouped}€` : `${grouped},${decimalPart}€`;
+};
+const centroId = `${id}-centro`;
+const domicilioId = `${id}-domicilio`;
+---
+
+<div
+  class={`variant-card relative bg-gray-900 rounded-lg p-6 transition-colors duration-300 ${
+    popular
+      ? "border-2 border-[var(--accent)]"
+      : "border border-gray-700 hover:border-[var(--accent)]"
+  }`}
+  style={`--accent: var(${colorVar})`}
+>
+  {
+    popular && (
+      <span class="absolute top-3 right-3 bg-[var(--accent)] text-black text-[10px] font-bold px-2 py-1 rounded-full uppercase">
+        Popular
+      </span>
+    )
+  }
+  {
+    sublabel && (
+      <p class="text-[var(--accent)] text-sm font-semibold mb-1">{sublabel}</p>
+    )
+  }
+  <p class="text-gray-400 text-sm uppercase tracking-wide mb-3">{label}</p>
+
+  <div
+    class="toggle-group inline-flex rounded-full bg-black/40 p-1 mb-4 text-xs font-semibold"
+    role="group"
+    aria-label={`Modalidad para ${label}`}
+  >
+    <input
+      type="radio"
+      name={`loc-${id}`}
+      id={centroId}
+      class="toggle-input toggle-centro sr-only"
+      checked
+    />
+    <label
+      for={centroId}
+      class="toggle-label toggle-label-centro px-3 py-1 rounded-full cursor-pointer transition-colors"
+    >
+      En centro
+    </label>
+    <input
+      type="radio"
+      name={`loc-${id}`}
+      id={domicilioId}
+      class="toggle-input toggle-domicilio sr-only"
+    />
+    <label
+      for={domicilioId}
+      class="toggle-label toggle-label-domicilio px-3 py-1 rounded-full cursor-pointer transition-colors"
+    >
+      A domicilio
+    </label>
+  </div>
+
+  <p class="price price-centro text-white text-3xl font-extrabold">
+    {formatPrice(priceCenter)}
+  </p>
+  <p class="price price-domicilio text-white text-3xl font-extrabold hidden">
+    {formatPrice(priceDomicilio)}
+  </p>
+  {
+    noteCenter && (
+      <p class="note note-centro text-xs mt-2" style="color: var(--accent)">
+        {noteCenter}
+      </p>
+    )
+  }
+  {
+    noteDomicilio && (
+      <p
+        class="note note-domicilio text-xs mt-2 hidden"
+        style="color: var(--accent)"
+      >
+        {noteDomicilio}
+      </p>
+    )
+  }
+</div>
+
+<style>
+  .variant-card:has(.toggle-domicilio:checked) .price-centro,
+  .variant-card:has(.toggle-domicilio:checked) .note-centro {
+    display: none;
+  }
+  .variant-card:has(.toggle-domicilio:checked) .price-domicilio,
+  .variant-card:has(.toggle-domicilio:checked) .note-domicilio {
+    display: block;
+  }
+  .toggle-label {
+    color: #9ca3af;
+  }
+  .toggle-input:checked + .toggle-label {
+    background: var(--accent);
+    color: #000;
+  }
+  .toggle-input:focus-visible + .toggle-label {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+</style>
