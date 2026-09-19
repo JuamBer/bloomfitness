@@ -11,7 +11,7 @@ Bloom Fitness es una plataforma web moderna diseñada para presentar los servici
 - **Entrenamiento Personalizado**: Planes adaptados a tus objetivos y necesidades.
 - **Fisioterapia**: Readaptación de lesiones y tratamiento especializado.
 - **Nutrición**: Asesoramiento nutricional para complementar tu actividad física.
-- **Sistema de Referidos**: Descuentos exclusivos para miembros que traen a nuevos amigos.
+- **Sistema de Referidos**: Descuentos exclusivos para miembros que traen a familiares de primer grado.
 - **Historia del Centro**: Conoce el recorrido de Fran, José y el equipo desde sus inicios.
 - **Formulario de Contacto**: Integración directa para consultas y citas.
 - **SEO Optimizado**: Estructura semántica y metadatos para un mejor posicionamiento.
